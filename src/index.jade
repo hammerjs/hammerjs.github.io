@@ -1,0 +1,58 @@
+doctype html
+html
+  head
+    title Hammer.js
+    meta(name="viewport", content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1")
+    link(rel="stylesheet", href="assets/css/index.css")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600")
+  body
+    .container
+      .header
+        h1 Hammer.js 2.0
+
+        .share
+          a(href="//twitter.com/share",
+            class="twitter-share-button",
+            data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs") Tweet
+
+          iframe(src="//ghbtns.com/github-btn.html?user=eightmedia&repo=hammer.js&type=watch&count=true"
+              allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20")
+
+    .splash
+      .container
+        p.
+          Add touch gestures to your page with this small JavaScript library.<br>
+          Easy to implement, and also has the power for the pro-users.
+
+        a.download(href="http://github.com/EightMedia/hammer.js/tree/master/hammer.min.js")
+          strong Hammer.min.js
+          em v#{version} &mdash; #{gzipped} gzipped
+
+        :markdown
+          - [View the source on GitHub](http://github.com/EightMedia/hammer.js/tree/master/)
+          - [Read the README.md](http://github.com/EightMedia/hammer.js/tree/master/README.md)
+          - [Hammer.js wiki pages](http://github.com/EightMedia/hammer.js/wiki/)
+
+        .try
+          .device
+            .button
+            .screen
+              #hitarea
+
+    //.container.readme
+       | !{readme}
+      // :markdown
+        ## Getting started
+        Hammer is easy to use. Just create an instance and bind the events. By default it supports all the standard
+        gestures you would expect.
+
+          ````js
+        var mc = Hammer(myElement);
+        mc.on("swipeleft swiperight", mySwipeHandler);
+        ````
+          By default it supports the `tap`, `doubletap`, `pan`, `swipe`, `hold`, `pinch` and `rotate` gestures. The default
+        `touch-action` property is set to `pan-y`, so horizontal scrolling is being prevented, but vertical scrolling is
+        still possible.
+
+
+    script(src="assets/js/index.js")

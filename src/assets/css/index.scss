@@ -1,0 +1,203 @@
+$red: #E63B34;
+$blue: #bee2ea;
+$yellow: #ffdd00;
+
+%clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+@import "normalize.scss";
+@import "common.scss";
+
+body {
+  background: $red;
+  color: #fff;
+}
+
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 15px;
+  @extend %clearfix;
+}
+
+.header {
+  padding-top: 20px;
+  @extend %clearfix;
+
+  h1 {
+    float: left;
+    text-transform: uppercase;
+  }
+
+  .share {
+    padding: 15px 0;
+    float: right;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .header .share {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px 0 0 0;
+  }
+}
+
+
+.splash {
+  background: $red;
+  clear: both;
+  color: #fff;
+
+  p {
+    font-weight: 200;
+    font-size: 1.5em;
+    text-shadow: 0 1px 0 rgba(#000, .1);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ul {
+    font-size: 1.1em;
+  }
+
+  a { color: #fff; }
+
+  .download {
+    margin: 0 auto 40px auto;
+    background: $yellow;
+    color: #000;
+    display: block;
+    max-width: 220px;
+    padding: 11px 0;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      background: #fe0;
+    }
+
+    strong {
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+
+    em {
+      display: block;
+      font-size: .9em;
+      font-style: normal;
+    }
+  }
+}
+
+
+@media screen and (min-width:600px) {
+  .splash .download {
+    float: right;
+    padding: 11px 30px;
+  }
+}
+
+.try {
+  clear: both;
+  padding: 10px 0;
+
+  .device {
+    background: #222;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(#000, .1);
+    user-select: none;
+  }
+
+  .button { display: none; }
+
+  .screen {
+    background: $blue;
+    height: 350px;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  #hitarea {
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+
+    -ms-touch-select: none; /* Windows Phone grippers are always off. */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &.animate {
+      transition: all .3s;
+    }
+  }
+}
+
+@media screen and (min-width:700px) {
+  .try {
+    .device {
+      border-radius: 20px;
+      padding: 40px;
+      margin: 0 10%;
+      position: relative;
+    }
+
+    .device.hammertime {
+      .screen {
+        background: url(../img/hammer.gif) no-repeat;
+        background-size: cover;
+        #hitarea { display: none; }
+      }
+    }
+
+    .button {
+      content: "";
+      display: block;
+      overflow: hidden;
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      margin-top: -10px;
+      border: solid 1px #444;
+      border-radius: 100%;
+      cursor: pointer;
+    }
+  }
+}
+
+.readme {
+  background: #fff;
+  color: #222;
+  margin-bottom: 50px;
+
+  // hide the title and intro
+  h1, h1 + p { display: none; }
+
+  h2 {
+    border-bottom: solid 1px $blue;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+}
