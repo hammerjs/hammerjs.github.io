@@ -1,4 +1,4 @@
-# Static site boilerplate
+# hammerjs.github.io
 
 Clone and run `npm install && gulp`!
 
