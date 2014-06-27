@@ -1,11 +1,377 @@
-<!DOCTYPE html><html><head><title>Hammer.js</title><meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="assets/css/index.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600"></head><body><div class="container"><div class="header"><h1>Hammer.js 2.0</h1><div class="share"><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></div></div></div><div class="splash"><div class="container"><p>Add touch gestures to your page with this small JavaScript library.<br>
+<!DOCTYPE html><html><head><title>Hammer.js</title><meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="assets/css/index.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu+Mono"></head><body><div class="container"><div class="header"><h1>Hammer.js 2.0</h1><div class="share"><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></div></div></div><div class="splash"><div class="container"><p>Add touch gestures to your page with this small JavaScript library.<br>
 Easy to implement, and also has the power for the pro-users.
-</p><a href="http://github.com/EightMedia/hammer.js/tree/master/hammer.min.js" class="download"><strong>Hammer.min.js</strong><em>v2.0.0-dev &mdash; 3.41 kB gzipped</em></a><ul>
+</p><a href="http://github.com/EightMedia/hammer.js/tree/master/hammer.min.js" class="download"><strong>Hammer.min.js</strong><em>v2.0.0-dev &mdash; 3.53 kB gzipped</em></a><ul>
 <li><a href="http://github.com/EightMedia/hammer.js/tree/master/">View the source on GitHub</a></li>
 <li><a href="http://github.com/EightMedia/hammer.js/tree/master/README.md">Read the README.md</a></li>
 <li><a href="http://github.com/EightMedia/hammer.js/wiki/">Hammer.js wiki pages</a></li>
 </ul>
-<div class="try"><div class="device"><div class="button"></div><div class="screen"><div id="hitarea"></div></div></div></div></div></div><!--.container.readme| --><!-- :markdown## Getting started
+<div class="try"><div class="device"><div class="button"></div><div class="screen"><div id="hitarea"></div></div></div></div></div></div></body><div class="readme"><div class="container"><h1 id="hammer-js-2-0-development-build-status-https-travis-ci-org-eightmedia-hammer-js-svg-branch-2-0-x-https-travis-ci-org-eightmedia-hammer-js-">Hammer.js 2.0 development <a href="https://travis-ci.org/EightMedia/hammer.js/"><img src="https://travis-ci.org/EightMedia/hammer.js.svg?branch=2.0.x" alt="Build Status"></a></h1>
+<p><strong>Completely rewritten, with reusable gesture recognizers, and better support for the recent mobile browsers by
+making use of the <code>touch-action</code> css property when possible. Also support for multiple Hammer instances the same
+time, so multi-user became possible.</strong></p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Hammer is easy to use. Just create an instance and bind the events.</p>
+<pre><code class="lang-js">var mc = Hammer(myElement);
+mc.on(&quot;swipeleft swiperight&quot;, mySwipeHandler);
+</code></pre>
+<p>By default it adds the <code>tap</code>, <code>doubletap</code> and <code>press</code>, horizontal <code>pan</code> and <code>swipe</code>, and the multi-touch <code>pinch</code> and 
+<code>rotate</code> recognizers. The ppinch and rotate recognizers are disabled by default because they would make the element 
+blocking, but you can enable them by calling <code>mc.get(&#39;pinch&#39;).set(&#39;enable&#39;, true&#39;)</code></p>
+<p>Also the viewport meta tag is recommended, it gives more control back to the webpage by disableing the 
+doubletap/pinch zoom. More recent browsers that support the touch-action property don&#39;t require this.</p>
+<pre><code class="lang-html">&lt;meta name=&quot;viewport&quot; content=&quot;user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1&quot;&gt;
+</code></pre>
+<h3 id="more-control">More control</h3>
+<p>You can setup your own set of recognizers for your instance. This requires a bit more code, but it gives you more
+control and slightly better performance.</p>
+<pre><code class="lang-js">var myOptions = { };
+var mc = new Hammer.Manager(myElement, myOptions);
+
+mc.add(new Hammer.Pan({ direction: Hammer.DIRECTION_ALL }));
+mc.add(new Hammer.Tap({ event: &#39;quadrupletap&#39;, taps: 4 }));
+
+mc.on(&quot;pan&quot;, handlePan);
+mc.on(&quot;quadrupletap&quot;, handleTaps);
+</code></pre>
+<p>The example above creates an instance containing a <code>pan</code> and a <code>quadrupletap</code> gesture. The recognizer instances you
+create a being executed in the order they are added, and only one can be recognized at the time.</p>
+<h4 id="simultaneous-recognizing">Simultaneous recognizing</h4>
+<p>If you want to recognize two gestures simultaneously, you can use the the <code>recognizeWith()</code> method. The example
+below does this with the pinch and rotate recognizers, which will improve usability.</p>
+<pre><code class="lang-js">var pinch = new Hammer.Pinch();
+var rotate = new Hammer.Rotation();
+
+pinch.recognizeWith(rotate); // recognize the pinch-rotation recognizers simultaneous
+</code></pre>
+<p>Now Hammer is able to run pinch and rotate the same time. You can also separate them with the <code>dropRecognizeWith()</code> method on
+the recognizer instance.</p>
+<h4 id="require-failure-of-an-other-recognizer">Require failure of an other recognizer</h4>
+<p>With the method <code>requireFailure()</code> you can let a recognizer require the failure of an other recognizer before recognizing.
+This could become useful when you want to nest two gestures, like pan-horizontal and pan-vertical.</p>
+<pre><code class="lang-js">var horizontal = new Hammer.Pan({ event: &#39;panh&#39;, direction: Hammer.DIRECTION_HORIZONTAL });
+var vertical = new Hammer.Pan({ event: &#39;panv&#39;, direction: Hammer.DIRECTION_VERTICAL });
+
+verical.requireFailure(horizontal);
+</code></pre>
+<p>Removing the dependency could be done with the <code>dropRequireFailure()</code> method.</p>
+<h2 id="the-touch-action-property">The Touch-action property</h2>
+<p>Chrome 35+, IE10+ and soon FireFox, support the <code>touch-action</code> property. This property tells the browser how to
+handle touches on an element. It improves the detection and experience of the gestures a lot, because it can prevent
+scrolling of the page without any JavaScript has to be executed, which can be too late in some cases.
+Hammer uses a fallback for this property when needed, so it is working with older browsers too.</p>
+<p>By default it sets a value based on the recognizer settings. You can overwrite this by giving the option <code>touchAction</code>
+to the Manager.</p>
+<p>When you set the touchAction to <code>auto</code> it doesnt prevent any defaults, and Hammer would probably break. You have to 
+call <code>preventDefault</code> manually to fix this. You should only use this if you know what you&#39;re doing.</p>
+<h3 id="preferred-touch-action-values-per-gesture">Preferred touch-action values per gesture</h3>
+<p>If you <em>do</em> want to set your own value, then the table below should help you a bit...</p>
+<table>
+<thead>
+<tr>
+<th>Gesture</th>
+<th>Least restrictive touch-action value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>press</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>tap</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>multitap</td>
+<td>manipulation</td>
+</tr>
+<tr>
+<td>vertical pan/swipe</td>
+<td>pan-x</td>
+</tr>
+<tr>
+<td>horizontal pan/swipe</td>
+<td>pan-y</td>
+</tr>
+<tr>
+<td>rotate</td>
+<td>pan-x pan-y</td>
+</tr>
+<tr>
+<td>pinch</td>
+<td>pan-x pan-y</td>
+</tr>
+</tbody>
+</table>
+<h1 id="api">API</h1>
+<p>The source code is well documented (JSDoc), you could figure out the rest of the API over there!</p>
+<h3 id="hammer-htmlelement-options-">Hammer(HTMLElement, [options])</h3>
+<p>Creates a Manager instance with a default set of recognizers and returns the manager instance. The default set 
+contains <code>tap</code>, <code>doubletap</code>, <code>pan</code>, <code>swipe</code>, <code>press</code>, <code>pinch</code> and <code>rotate</code> recognizer instances.</p>
+<h3 id="hammer-manager-htmlelement-options-">Hammer.Manager(HTMLElement, [options])</h3>
+<p>Create a Manager. This sets up the input event listeners, and sets the touch-action property for you on the element.</p>
+<p>The <code>touchAction</code> option accepts the <code>auto</code>, <code>pan-y</code>, <code>pan-x</code> and <code>none</code> values, just like the css property. By default
+it is set to <code>compute</code>, which computes the correct touchAction property based on the added recognizers. </p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>touchAction</td>
+<td></td>
+<td>accepts the <code>compute</code>, <code>auto</code>, <code>pan-y</code>, <code>pan-x</code> and <code>none</code> values. Default is <code>compute</code>.</td>
+</tr>
+<tr>
+<td>domEvents</td>
+<td>false</td>
+<td>this let&#39;s hammer also fire domEvents.</td>
+</tr>
+<tr>
+<td>enable</td>
+<td>true</td>
+<td>boolean, or an function that should return a boolean which is.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="-add-recognizer-get-recognizer-and-remove-recognizer-">.add(Recognizer), .get(Recognizer) and .remove(Recognizer)</h5>
+<p>Add a new <code>Recognizer</code> instance to the Manager. The order of adding is also the order of the recognizers being
+executed. Just like the <code>get</code> method, it returns the added <code>Recognizer</code> instance.</p>
+<p>The <code>get</code> and <code>remove</code> methods takes the event name (from a recognizer) or a recognizer instance as an argument.</p>
+<h5 id="-on-events-handler-and-off-events-handler-">.on(events, handler) and .off(events, [handler])</h5>
+<p>Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events seperated
+by a space.</p>
+<h5 id="-stop-force-">.stop([force])</h5>
+<p>Stop recognizing for the current input session. When forced, the recognizer cycle is stopped immediately.</p>
+<h5 id="-destroy-">.destroy()</h5>
+<p>Unbinds all events and input events and makes the manager unusable. It does NOT unbind any domEvent listeners.</p>
+<h3 id="hammer-recognizer-options-">Hammer.Recognizer(options)</h3>
+<p>Every Recognizer extends from this class. All recognizers also have the option <code>enable</code>, 
+which is a boolean value or a callback function to enable/disable the recognizer on the fly.</p>
+<h5 id="-recognizewith-otherrecognizer-and-droprecognizewith-otherrecognizer-">.recognizeWith(otherRecognizer) and .dropRecognizeWith(otherRecognizer)</h5>
+<p>Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like 
+combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
+connection only removes the link on the recognizer, not on the other recognizer.</p>
+<h5 id="-requirefailure-otherrecognizer-and-droprequirefailure-otherrecognizer-">.requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)</h5>
+<p>Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the 
+recognizer, not on the other recognizer.</p>
+<h2 id="options-per-recognizer">Options per recognizer</h2>
+<h4 id="hammer-press-options-">Hammer.Press(options)</h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>press</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td>pointers</td>
+<td>1</td>
+<td>Required pointers.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>10</td>
+<td>Minimal movement that is allowed while pressing.</td>
+</tr>
+<tr>
+<td>time</td>
+<td>500</td>
+<td>Minimal press time.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hammer-pan-options-">Hammer.Pan(options)</h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>pan</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td>pointers</td>
+<td>1</td>
+<td>Required pointers. 0 for all pointers.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>10</td>
+<td>Minimal pan distance required before recognizing.</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>DIRECTION_ALL</td>
+<td>Direction of the panning.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hammer-pinch-options-">Hammer.Pinch(options)</h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>pinch</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td>pointers</td>
+<td>2</td>
+<td>Required pointers, with a minimal of 2.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>0</td>
+<td>Minimal scale before recognizing.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hammer-rotate-options-">Hammer.Rotate(options)</h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>rotate</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td>pointers</td>
+<td>2</td>
+<td>Required pointers, with a minimal of 2.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>0</td>
+<td>Minimal rotation before recognizing.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hammer-swipe-options-">Hammer.Swipe(options)</h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>swipe</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td>pointers</td>
+<td>1</td>
+<td>Required pointers.</td>
+</tr>
+<tr>
+<td>distance</td>
+<td>10</td>
+<td>Minimal distance required before recognizing.</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>DIRECTION_ALL</td>
+<td>Direction of the panning.</td>
+</tr>
+<tr>
+<td>velocity</td>
+<td>0.65</td>
+<td>Minimal velocity required before recognizing, unit is in px per ms.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hammer-tap-options-">Hammer.Tap(options)</h4>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>swipe</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td>pointers</td>
+<td>1</td>
+<td>Required pointers.</td>
+</tr>
+<tr>
+<td>taps</td>
+<td>1</td>
+<td>Amount of taps required.</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>300</td>
+<td>Maximum time between multiple taps.</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>0</td>
+<td>Delay after triggering the tap. Useful if you don&#39;t want to recognize a tap on each touchend.</td>
+</tr>
+<tr>
+<td>time</td>
+<td>250</td>
+<td>Maximum press time.</td>
+</tr>
+<tr>
+<td>movementBetween</td>
+<td>10</td>
+<td>The maximum distance between multiple taps.</td>
+</tr>
+<tr>
+<td>movementWhile</td>
+<td>2</td>
+<td>While doing a tap some small movement is allowed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="further-notes">Further notes</h2>
+<p>Developed by <a href="http://twitter.com/jorikdelaporik">Jorik Tangelder</a> in his spare time and at
+<a href="http://www.eight.nl/">Eight Media</a> in Arnhem, the Netherlands. It&#39;s recommended to listen to
+<a href="http://soundcloud.com/eightmedia/hammerhammerhammer">this loop</a> while using hammer.js.</p>
+<!-- :markdown## Getting started
 Hammer is easy to use. Just create an instance and bind the events. By default it supports all the standard
 gestures you would expect.
 
@@ -17,4 +383,4 @@ mc.on("swipeleft swiperight", mySwipeHandler);
 `touch-action` property is set to `pan-y`, so horizontal scrolling is being prevented, but vertical scrolling is
 still possible.
 
---><script src="assets/js/index.js"></script></body></html>
+--></div><script src="assets/js/index.js"></script></div></html>

@@ -5,6 +5,7 @@ html
     meta(name="viewport", content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1")
     link(rel="stylesheet", href="assets/css/index.css")
     link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600")
+    link(rel="stylesheet", href='http://fonts.googleapis.com/css?family=Ubuntu+Mono')
   body
     .container
       .header
@@ -39,8 +40,9 @@ html
             .screen
               #hitarea
 
-    //.container.readme
-       | !{readme}
+  .readme
+    .container
+      | !{readme}
       // :markdown
         ## Getting started
         Hammer is easy to use. Just create an instance and bind the events. By default it supports all the standard

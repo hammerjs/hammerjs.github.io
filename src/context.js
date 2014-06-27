@@ -8,6 +8,10 @@ function readHammerFileSync(path) {
 }
 
 module.exports = {
+    readme: (function() {
+        return marked(readHammerFileSync('README.md'));
+    })(),
+
     version: (function() {
         return JSON.parse(readHammerFileSync('package.json')).version;
     })(),

@@ -189,7 +189,8 @@ body {
 .readme {
   background: #fff;
   color: #222;
-  margin-bottom: 50px;
+  margin: 50px auto;
+  padding: 0 50px;
 
   // hide the title and intro
   h1, h1 + p { display: none; }
