@@ -1,8 +1,8 @@
-var Hammer = require('../../../node_modules/hammerjs/hammer.min.js');
+var Hammer = require('../../../node_modules/hammerjs/hammer.js');
 
 // polyfill
 var reqAnimationFrame = (function () {
-    return window[Hammer.prefixedName(window, 'requestAnimationFrame')] || function (callback) {
+    return window[Hammer.prefixed(window, 'requestAnimationFrame')] || function (callback) {
         window.setTimeout(callback, 1000 / 60);
     };
 })();
@@ -15,9 +15,10 @@ var startY = Math.round((el.parentNode.offsetHeight - el.offsetHeight) / 2);
 var ticking = false;
 var transform;
 
-var mc = new Hammer(el, {
-    touchAction: 'none'
-});
+var mc = new Hammer(el);
+
+mc.get('pinch').set('enable', true);
+mc.get('rotate').set('enable', true);
 
 mc.on("pan", onPan);
 mc.on("swipe", onSwipe);
