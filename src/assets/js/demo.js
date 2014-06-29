@@ -117,6 +117,6 @@ function onHold(ev) {
 
 resetElementEnd();
 
-document.querySelector(".device .button").addEventListener("click", function(){
+document.querySelector(".device-button").addEventListener("click", function(){
     document.querySelector(".device").classList.toggle('hammertime');
 }, false);

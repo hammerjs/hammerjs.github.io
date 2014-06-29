@@ -6,8 +6,8 @@
     "start": "gulp"
   },
   "devDependencies": {
-    "gulp": "~3.6.0",
-    "gulp-autoprefixer": "0.0.7",
+    "gulp": "^3.6.0",
+    "gulp-autoprefixer": "^0.0.7",
     "gulp-changed": "^0.3.0",
     "gulp-connect": "~2.0.0",
     "gulp-jade": "^0.5.0",
@@ -20,7 +20,9 @@
     "script-loader": "^0.5.2",
     "webpack": "^1.1.9",
     "hammerjs": "git://github.com/eightmedia/hammer.js#2.0.x",
+    "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",
     "pretty-bytes": "^0.1.0",
-    "gzip-size": "^0.1.0"
+    "gzip-size": "^0.1.0",
+    "jsdoc": "^3.3.0-alpha9"
   }
 }

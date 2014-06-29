@@ -3,6 +3,12 @@ var gzipSize = require('gzip-size');
 var fs = require('fs');
 var prettyBytes = require('pretty-bytes');
 
+marked.setOptions({
+    gfm: true,
+    tables: true
+});
+
+
 function readHammerFileSync(path) {
     return fs.readFileSync(__dirname +'/../node_modules/hammerjs/'+ path, {encoding:'utf8'});
 }

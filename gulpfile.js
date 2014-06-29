@@ -1,4 +1,5 @@
 var path = require('path');
+var exec = require('child_process').exec;
 
 var webpack = require("webpack");
 var webpackConfig = require("./webpack.config.js");
@@ -19,10 +20,22 @@ var prefix = require("gulp-autoprefixer");
 gulp.task("compile-sass", function () {
     gulp.src("src/assets/css/*.scss")
         .pipe(plumber())
-        .pipe(sass({errLogToConsole: true, outputStyle: 'compressed'}))
+        .pipe(sass({
+            errLogToConsole: true,
+            outputStyle: 'compressed',
+            includePaths: ['src/assets/css','bower_components','bower_components/foundation/scss']
+        }))
         .pipe(prefix())
         .pipe(gulp.dest("assets/css"))
         .pipe(connect.reload());
+});
+
+gulp.task("jsdoc", function (cb) {
+    exec([
+        'node node_modules/jsdoc/jsdoc.js',
+        '-r node_modules/hammerjs/src',
+        '-t src/jsdoc-template',
+        '-d ./jsdoc'].join(' '), null, cb);
 });
 
 gulp.task("webpack", function (cb) {
@@ -58,4 +71,4 @@ gulp.task("watch", function () {
 });
 
 gulp.task("default", ["server", "watch"]);
-gulp.task("build", ["compile-sass", "webpack", "compile-jade"]);
+gulp.task("build", ["compile-sass", "webpack", "compile-jade", "jsdoc"]);

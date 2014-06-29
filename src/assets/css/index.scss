@@ -14,100 +14,38 @@ $yellow: #ffdd00;
   }
 }
 
-
-@import "normalize.scss";
-@import "common.scss";
-
-body {
-  background: $red;
-  color: #fff;
-}
-
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 15px;
-  @extend %clearfix;
-}
+@import "settings";
+@import "foundation/scss/normalize";
+@import "foundation";
 
 .header {
+  background: $red;
+  color: #fff;
   padding-top: 20px;
-  @extend %clearfix;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  line-height: 30px;
 
-  h1 {
-    float: left;
+  .logo {
+    font-size: 30px;
+    font-weight: bold;
     text-transform: uppercase;
   }
 
-  .share {
-    padding: 15px 0;
-    float: right;
+  a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
   }
 }
-
-@media screen and (max-width: 520px) {
-  .header .share {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 10px 0 0 0;
-  }
-}
-
 
 .splash {
-  background: $red;
-  clear: both;
-  color: #fff;
-
-  p {
-    font-weight: 200;
-    font-size: 1.5em;
-    text-shadow: 0 1px 0 rgba(#000, .1);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  ul {
-    font-size: 1.1em;
-  }
-
-  a { color: #fff; }
-
-  .download {
-    margin: 0 auto 40px auto;
-    background: $yellow;
-    color: #000;
-    display: block;
-    max-width: 220px;
-    padding: 11px 0;
-    border-radius: 6px;
-    text-align: center;
-    text-decoration: none;
-
-    &:hover {
-      background: #fe0;
-    }
-
-    strong {
-      font-size: 1.4em;
-      font-weight: 600;
-    }
-
-    em {
-      display: block;
-      font-size: .9em;
-      font-style: normal;
-    }
-  }
-}
-
-
-@media screen and (min-width:600px) {
-  .splash .download {
-    float: right;
-    padding: 11px 30px;
-  }
+  text-align: center;
+  font-size: 3em;
+  font-weight: 700;
+  line-height: normal;
+  padding: .7em 0;
+  margin-bottom: 25px;
 }
 
 .try {
@@ -123,9 +61,9 @@ body {
     user-select: none;
   }
 
-  .button { display: none; }
+  .device-button { display: none; }
 
-  .screen {
+  .device-screen {
     background: $blue;
     height: 350px;
     position: relative;
@@ -162,14 +100,14 @@ body {
     }
 
     .device.hammertime {
-      .screen {
+      .device-screen {
         background: url(../img/hammer.gif) no-repeat;
         background-size: cover;
         #hitarea { display: none; }
       }
     }
 
-    .button {
+    .device-button {
       content: "";
       display: block;
       overflow: hidden;
@@ -184,20 +122,4 @@ body {
       cursor: pointer;
     }
   }
-}
-
-.readme {
-  background: #fff;
-  color: #222;
-  margin: 50px auto;
-
-  // hide the title and intro
-  h1, h1 + p { display: none; }
-
-  h2 {
-    border-bottom: solid 1px $blue;
-    margin-top: 2em;
-    margin-bottom: 1em;
-  }
-
 }
