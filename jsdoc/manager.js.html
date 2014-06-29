@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Source: manager.js</title>
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/jaguar.css">
+    
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"default":{"outputSourceFiles":true}};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html"></a></h3>
+
+    <div class="search">
+        <input id="search" type="text" class="form-control input-sm" placeholder="Search Documentations">
+    </div>
+    <ul class="list">
+    
+        <li class="item" data-name="AttrRecognizer">
+            <span class="title">
+                <a href="AttrRecognizer.html">AttrRecognizer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Hammer">
+            <span class="title">
+                <a href="Hammer.html">Hammer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Hammer~defaultRecognizers"><a href="Hammer.html#defaultRecognizers">defaultRecognizers</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Input">
+            <span class="title">
+                <a href="Input.html">Input</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Manager">
+            <span class="title">
+                <a href="Manager.html">Manager</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Manager#add"><a href="Manager.html#add">add</a></li>
+            
+                <li data-name="Manager#destroy"><a href="Manager.html#destroy">destroy</a></li>
+            
+                <li data-name="Manager#emit"><a href="Manager.html#emit">emit</a></li>
+            
+                <li data-name="Manager#get"><a href="Manager.html#get">get</a></li>
+            
+                <li data-name="Manager#off"><a href="Manager.html#off">off</a></li>
+            
+                <li data-name="Manager#on"><a href="Manager.html#on">on</a></li>
+            
+                <li data-name="Manager#recognize"><a href="Manager.html#recognize">recognize</a></li>
+            
+                <li data-name="Manager#remove"><a href="Manager.html#remove">remove</a></li>
+            
+                <li data-name="Manager#set"><a href="Manager.html#set">set</a></li>
+            
+                <li data-name="Manager#stop"><a href="Manager.html#stop">stop</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="MouseInput">
+            <span class="title">
+                <a href="MouseInput.html">MouseInput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PointerEventInput">
+            <span class="title">
+                <a href="PointerEventInput.html">PointerEventInput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Recognizer">
+            <span class="title">
+                <a href="Recognizer.html">Recognizer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Recognizer#canRecognizeWith"><a href="Recognizer.html#canRecognizeWith">canRecognizeWith</a></li>
+            
+                <li data-name="Recognizer#dropRecognizeWith"><a href="Recognizer.html#dropRecognizeWith">dropRecognizeWith</a></li>
+            
+                <li data-name="Recognizer#dropRequireFailure"><a href="Recognizer.html#dropRequireFailure">dropRequireFailure</a></li>
+            
+                <li data-name="Recognizer#emit"><a href="Recognizer.html#emit">emit</a></li>
+            
+                <li data-name="Recognizer#getTouchAction"><a href="Recognizer.html#getTouchAction">getTouchAction</a></li>
+            
+                <li data-name="Recognizer#process"><a href="Recognizer.html#process">process</a></li>
+            
+                <li data-name="Recognizer#recognize"><a href="Recognizer.html#recognize">recognize</a></li>
+            
+                <li data-name="Recognizer#recognizeWith"><a href="Recognizer.html#recognizeWith">recognizeWith</a></li>
+            
+                <li data-name="Recognizer#requireFailure"><a href="Recognizer.html#requireFailure">requireFailure</a></li>
+            
+                <li data-name="Recognizer#reset"><a href="Recognizer.html#reset">reset</a></li>
+            
+                <li data-name="Recognizer#set"><a href="Recognizer.html#set">set</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TouchInput">
+            <span class="title">
+                <a href="TouchInput.html">TouchInput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TouchMouseInput">
+            <span class="title">
+                <a href="TouchMouseInput.html">TouchMouseInput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+    </ul>
+</div>
+    <div class="main">
+        <h1 class="page-title" data-filename="manager.js.html">Source: manager.js</h1>
+        
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * Manager
+ * @param {HTMLElement} element
+ * @param {Object} [options]
+ * @constructor
+ */
+function Manager(element, options) {
+    options = options || {};
+
+    this.options = merge(options, Hammer.defaults);
+
+    this.handlers = {};
+    this.session = {};
+    this.recognizers = [];
+
+    this.element = element;
+    this.input = createInputInstance(this);
+    this.touchAction = new TouchAction(this, this.options.touchAction);
+
+    toggleCssProps(this, true);
+}
+
+Manager.prototype = {
+    /**
+     * set options
+     * @param {String} option
+     * @param {*} val
+     */
+    set: function(option, val) {
+        this.options[option] = val;
+    },
+
+    /**
+     * stop recognizing for this session.
+     * This session will be discarded, when a new [input]start event is fired.
+     * When forced, the recognizer cycle is stopped immediately.
+     * @param {Boolean} [force]
+     */
+    stop: function(force) {
+        this.session.stopped = force ? 2 : 1;
+    },
+
+    /**
+     * run the recognizers!
+     * called by the inputHandler function
+     * @param {Object} inputData
+     */
+    recognize: function(inputData) {
+        if (this.session.stopped) {
+            return;
+        }
+
+        this.touchAction.preventDefaults(inputData);
+
+        var recognizer;
+        var session = this.session;
+        var curRecognizer = session.curRecognizer;
+
+        // reset when the last recognizer is done, or this is a new session
+        if (!curRecognizer || (curRecognizer &amp;&amp; curRecognizer.state &amp; STATE_RECOGNIZED)) {
+            curRecognizer = session.curRecognizer = null;
+        }
+
+        // we're in a active recognizer
+        for (var i = 0, len = this.recognizers.length; i &lt; len; i++) {
+            recognizer = this.recognizers[i];
+
+            if (this.session.stopped !== 2 &amp;&amp; (
+                    !curRecognizer || recognizer == curRecognizer ||
+                    recognizer.canRecognizeWith(curRecognizer))) {
+                recognizer.recognize(inputData);
+            } else {
+                recognizer.reset();
+            }
+
+            if (!curRecognizer &amp;&amp; recognizer.state &amp; (STATE_BEGAN | STATE_CHANGED | STATE_ENDED)) {
+                curRecognizer = session.curRecognizer = recognizer;
+            }
+        }
+    },
+
+    /**
+     * get a recognizer by its event name.
+     * @param {Recognizer|String} recognizer
+     * @returns {Recognizer|Null}
+     */
+    get: function(recognizer) {
+        if (recognizer instanceof Recognizer) {
+            return recognizer;
+        }
+
+        var recognizers = this.recognizers;
+        for (var i = 0; i &lt; recognizers.length; i++) {
+            if (recognizers[i].options.event == recognizer) {
+                return recognizers[i];
+            }
+        }
+        return null;
+    },
+
+    /**
+     * add a recognizer to the manager
+     * existing recognizers with the same event name will be removed
+     * @param {Recognizer} recognizer
+     * @returns {Recognizer}
+     */
+    add: function(recognizer) {
+        // remove existing
+        var existing = this.get(recognizer.options.event);
+        if (existing) {
+            this.remove(existing);
+        }
+
+        this.recognizers.push(recognizer);
+        recognizer.manager = this;
+
+        this.touchAction.update();
+        return recognizer;
+    },
+
+    /**
+     * remove a recognizer by name or instance
+     * @param {Recognizer|String} recognizer
+     */
+    remove: function(recognizer) {
+        var recognizers = this.recognizers;
+        recognizer = this.get(recognizer);
+        recognizers.splice(inArray(recognizers, recognizer), 1);
+
+        this.touchAction.update();
+    },
+
+    /**
+     * bind event
+     * @param {String} events
+     * @param {Function} handler
+     * @returns {EventEmitter} this
+     */
+    on: function(events, handler) {
+        var handlers = this.handlers;
+        each(splitStr(events), function(event) {
+            handlers[event] = handlers[event] || [];
+            handlers[event].push(handler);
+        });
+        return this;
+    },
+
+    /**
+     * unbind event, leave emit blank to remove all handlers
+     * @param {String} events
+     * @param {Function} [handler]
+     * @returns {EventEmitter} this
+     */
+    off: function(events, handler) {
+        var handlers = this.handlers;
+        each(splitStr(events), function(event) {
+            if (!handler) {
+                delete handlers[event];
+            } else {
+                handlers[event].splice(inArray(handlers[event], handler), 1);
+            }
+        });
+        return this;
+    },
+
+    /**
+     * emit event to the listeners
+     * @param {String} event
+     * @param {Object} data
+     */
+    emit: function(event, data) {
+        // we also want to trigger dom events
+        if (this.options.domEvents) {
+            triggerDomEvent(event, data);
+        }
+
+        // no handlers, so skip it all
+        var handlers = this.handlers[event];
+        if (!handlers || !handlers.length) {
+            return;
+        }
+
+        data.type = event;
+        data.preventDefault = function() {
+            data.srcEvent.preventDefault();
+        };
+
+        for (var i = 0, len = handlers.length; i &lt; len; i++) {
+            handlers[i](data);
+        }
+    },
+
+    /**
+     * destroy the manager and unbinds all events
+     * it doesn't unbind dom events, that is the user own responsibility
+     */
+    destroy: function() {
+        toggleCssProps(this, false);
+
+        this.handlers = {};
+        this.session = {};
+        this.input.destroy();
+        this.element = null;
+    }
+};
+
+/**
+ * add/remove the css properties as defined in manager.options.cssProps
+ * @param {Manager} manager
+ * @param {Boolean} add
+ */
+function toggleCssProps(manager, add) {
+    var element = manager.element;
+    var cssProps = manager.options.cssProps;
+
+    each(cssProps, function(value, name) {
+        element.style[prefixed(element.style, name)] = add ? value : '';
+    });
+
+    var falseFn = add &amp;&amp; function() { return false; };
+    if (cssProps.userSelect == 'none') { element.onselectstart = falseFn; }
+    if (cssProps.userDrag == 'none') { element.ondragstart = falseFn; }
+}
+
+/**
+ * trigger dom event
+ * @param {String} event
+ * @param {Object} data
+ */
+function triggerDomEvent(event, data) {
+    var gestureEvent = document.createEvent('Event');
+    gestureEvent.initEvent(event, true, true);
+    gestureEvent.gesture = data;
+    data.target.dispatchEvent(gestureEvent);
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+        
+
+        <footer>
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Jun 29 2014 20:58:07 GMT+0200 (W. Europe Daylight Time)
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>

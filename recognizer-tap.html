@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><title>Hammer.js</title><meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="assets/css/index.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600"></head><body><div class="header"><div class="row"><div class="medium-6 columns"><div class="logo">Hammer.js 2.0</div></div><div class="medium-6 columns"><ul class="inline-list"><li><a href="api.html">Getting Started</a></li><li><a href="api.html">Documentation</a></li><li><a href="jsdoc/">API</a></li><li><a href="https://github.com/EightMedia/hammer.js">GitHub</a></li></ul></div></div></div><div class="row"><div class="column"><h1 id="hammer-tap-options-">Hammer.Tap(options)</h1>
+<p>Recognized when the pointer is doing a small tap/click. Multiple taps are recognized if they occur between the given
+interval and position. The delay option can be used to recognize multi-taps without firing a single tap.
+The eventData from the emitted event contains the property <code>tapCount</code>, which contains the amount of multi-taps being
+recognized.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>event</td>
+<td>tap</td>
+<td>Name of the event.</td>
+</tr>
+<tr>
+<td>pointers</td>
+<td>1</td>
+<td>Required pointers.</td>
+</tr>
+<tr>
+<td>taps</td>
+<td>1</td>
+<td>Amount of taps required.</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>300</td>
+<td>Maximum time in ms between multiple taps.</td>
+</tr>
+<tr>
+<td>delay</td>
+<td>0</td>
+<td>Delay in ms after emitting the tap event.</td>
+</tr>
+<tr>
+<td>time</td>
+<td>250</td>
+<td>Maximum press time in ms.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>2</td>
+<td>While doing a tap some small movement is allowed.</td>
+</tr>
+<tr>
+<td>posThreshold</td>
+<td>10</td>
+<td>The maximum position difference between multiple taps.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="events">Events</h5>
+<ul>
+<li>tap</li>
+</ul>
+</div></div><div class="footer"><div class="row"><div class="column"><hr><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></div></div></div></body></html>
