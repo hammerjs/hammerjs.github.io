@@ -48,7 +48,7 @@ gulp.task("webpack", function (cb) {
 });
 
 gulp.task("compile-jade", function () {
-    gulp.src(["src/**/*.jade", "!./src/includes/**/*.*"])
+    gulp.src(["src/**/*.jade", "!./src/inclusion/**/*.*"])
         .pipe(plumber())
         .pipe(jade({locals: require('./src/context')}))
         .pipe(gulp.dest(""))

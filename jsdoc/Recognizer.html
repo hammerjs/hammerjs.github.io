@@ -60,10 +60,6 @@
             </span>
             <ul class="members itemMembers">
             
-            <span class="subtitle">Members</span>
-            
-                <li data-name="Hammer~defaultRecognizers"><a href="Hammer.html#defaultRecognizers">defaultRecognizers</a></li>
-            
             </ul>
             <ul class="typedefs itemMembers">
             
@@ -88,6 +84,10 @@
             
             </ul>
             <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="Input#destroy"><a href="Input.html#destroy">destroy</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -155,9 +155,66 @@
             </ul>
         </li>
     
+        <li class="item" data-name="PanRecognizer">
+            <span class="title">
+                <a href="PanRecognizer.html">PanRecognizer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PinchRecognizer">
+            <span class="title">
+                <a href="PinchRecognizer.html">PinchRecognizer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="PointerEventInput">
             <span class="title">
                 <a href="PointerEventInput.html">PointerEventInput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="PressRecognizer">
+            <span class="title">
+                <a href="PressRecognizer.html">PressRecognizer</a>
                 
             </span>
             <ul class="members itemMembers">
@@ -180,6 +237,10 @@
                 
             </span>
             <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Recognizer#defaults"><a href="Recognizer.html#defaults">defaults</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -210,6 +271,94 @@
                 <li data-name="Recognizer#reset"><a href="Recognizer.html#reset">reset</a></li>
             
                 <li data-name="Recognizer#set"><a href="Recognizer.html#set">set</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="RotateRecognizer">
+            <span class="title">
+                <a href="RotateRecognizer.html">RotateRecognizer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="SwipeRecognizer">
+            <span class="title">
+                <a href="SwipeRecognizer.html">SwipeRecognizer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TapRecognizer">
+            <span class="title">
+                <a href="TapRecognizer.html">TapRecognizer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="TouchAction">
+            <span class="title">
+                <a href="TouchAction.html">TouchAction</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="TouchAction#compute"><a href="TouchAction.html#compute">compute</a></li>
+            
+                <li data-name="TouchAction#preventDefaults"><a href="TouchAction.html#preventDefaults">preventDefaults</a></li>
+            
+                <li data-name="TouchAction#preventSrc"><a href="TouchAction.html#preventSrc">preventSrc</a></li>
+            
+                <li data-name="TouchAction#set"><a href="TouchAction.html#set">set</a></li>
+            
+                <li data-name="TouchAction#update"><a href="TouchAction.html#update">update</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -287,7 +436,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line14">line 14</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line15">line 15</a>
         </div>
         
     </div>
@@ -298,7 +447,7 @@
     
     
     <div class="description">
-        Recognizer
+        RecognizerEvery recognizer needs to extend from this class.
     </div>
     
 
@@ -406,6 +555,55 @@
     
     
     
+        <h3 class="subsection-title">Members</h3>
+        
+        <dl>
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="defaults">defaults</h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        default settings
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        </dl>
+    
     
     
         <h3 class="subsection-title">Methods</h3>
@@ -421,7 +619,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line112">line 112</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line118">line 118</a>
         </div>
         
     </div>
@@ -542,7 +740,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line72">line 72</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line78">line 78</a>
         </div>
         
     </div>
@@ -663,7 +861,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line98">line 98</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line104">line 104</a>
         </div>
         
     </div>
@@ -784,7 +982,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line47">line 47</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line53">line 53</a>
         </div>
         
     </div>
@@ -900,7 +1098,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line169">line 169</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line175">line 175</a>
         </div>
         
     </div>
@@ -976,7 +1174,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line162">line 162</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line168">line 168</a>
         </div>
         
     </div>
@@ -1097,7 +1295,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line120">line 120</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line126">line 126</a>
         </div>
         
     </div>
@@ -1213,7 +1411,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line57">line 57</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line63">line 63</a>
         </div>
         
     </div>
@@ -1334,7 +1532,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line83">line 83</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line89">line 89</a>
         </div>
         
     </div>
@@ -1455,7 +1653,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line176">line 176</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line182">line 182</a>
         </div>
         
     </div>
@@ -1526,7 +1724,7 @@
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line35">line 35</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line41">line 41</a>
         </div>
         
     </div>
@@ -1671,7 +1869,7 @@
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Jun 29 2014 20:58:07 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Jun 30 2014 12:15:54 GMT+0200 (W. Europe Daylight Time)
         </footer>
     </div>
 </div>
