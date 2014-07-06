@@ -31,11 +31,7 @@ gulp.task("compile-sass", function () {
 });
 
 gulp.task("jsdoc", function (cb) {
-    exec([
-        'node node_modules/jsdoc/jsdoc.js',
-        '-r node_modules/hammerjs/src',
-        '-t src/jsdoc-template',
-        '-d ./jsdoc'].join(' '), null, cb);
+    exec('node node_modules/jsdoc/jsdoc.js -c jsdoc.json', null, cb);
 });
 
 gulp.task("webpack", function (cb) {

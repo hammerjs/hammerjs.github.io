@@ -1,32 +1,56 @@
 doctype html
 html
+    block vars
+
     head
         title Hammer.js
         meta(name="viewport", content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1")
         link(rel="stylesheet", href="assets/css/index.css")
         link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600")
-    body
+    body(class=bodyClassName)
         .header
             .row
-                .medium-6.columns
-                    .logo Hammer.js 2.0
-                .medium-6.columns
-                    ul.inline-list
-                        li: a(href="api.html") Getting Started
-                        li: a(href="api.html") Documentation
+                .medium-4.columns
+                    a.logo(href="/") Hammer.js 2.0
+                .medium-8.columns
+                    ul.inline-list.right
+                        li: a(href="getting-started.html") Documentation
                         li: a(href="jsdoc/") API
+                        li: a(href="http://stackoverflow.com/questions/tagged/hammer.js") StackOverflow
                         li: a(href="https://github.com/EightMedia/hammer.js") GitHub
         block body
             .row
-                .column
+                .medium-3.columns
+                    .sidebar
+                        block sidebar
+                            h4 General
+                            ul.side-nav
+                                li: a(href="/getting-started.html") Getting Started
+                                li: a(href="/tips.html") Tips 'n Tricks
+                            h4 API
+                            ul.side-nav
+                                li: a(href="/hammer.html") Hammer
+                                li: a(href="/touch-action.html") Touch-action
+                                li: a(href="/recognize-with.html") Recognize With
+                                li: a(href="/require-failure.html") Require Failure
+                            h4 Recognizers
+                            ul.side-nav
+                                li: a(href="/recognizer-pan.html") Pan
+                                li: a(href="/recognizer-pinch.html") Pinch
+                                li: a(href="/recognizer-press.html") Press
+                                li: a(href="/recognizer-rotate.html") Rotate
+                                li: a(href="/recognizer-swipe.html") Swipe
+                                li: a(href="/recognizer-tap.html") Tap
+                .medium-9.columns
                     block content
 
         .footer
             .row
                 .column
                     hr
-                    a(href="//twitter.com/share",
-                        class="twitter-share-button",
-                        data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs") Tweet
-                    iframe(src="//ghbtns.com/github-btn.html?user=eightmedia&repo=hammer.js&type=watch&count=true"
-                        allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20")
+                    p
+                        a(href="//twitter.com/share",
+                            class="twitter-share-button",
+                            data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs") Tweet
+                        iframe(src="//ghbtns.com/github-btn.html?user=eightmedia&repo=hammer.js&type=watch&count=true"
+                            allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20")

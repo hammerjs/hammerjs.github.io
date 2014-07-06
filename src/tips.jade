@@ -1,0 +1,15 @@
+extends inclusion/base
+
+block content
+    :markdown
+        # Tips 'n Tricks
+
+        Some tips and tricks to make life a bit easier for you...
+
+        #### Try to avoid vertical pan/swipe
+        Vertical panning is used to scroll your page, and some browsers don't send events so Hammer isn't able to
+        recognize these gestures.
+
+        #### Test on a real device
+        Sometimes Hammer just needs some fine-tuning, like the swipe velocity or some other thresholds. Also,
+        for better performance your should try to keep you callbacks as simple as possible.

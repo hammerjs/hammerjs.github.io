@@ -1,0 +1,50 @@
+<!DOCTYPE html><html><head><title>Hammer.js</title><meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1"><link rel="stylesheet" href="assets/css/index.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600"></head><body><div class="header"><div class="row"><div class="medium-4 columns"><a href="/" class="logo">Hammer.js 2.0</a></div><div class="medium-8 columns"><ul class="inline-list right"><li><a href="getting-started.html">Documentation</a></li><li><a href="jsdoc/">API</a></li><li><a href="http://stackoverflow.com/questions/tagged/hammer.js">StackOverflow</a></li><li><a href="https://github.com/EightMedia/hammer.js">GitHub</a></li></ul></div></div></div><div class="row"><div class="medium-3 columns"><div class="sidebar"><h4>General</h4><ul class="side-nav"><li><a href="/getting-started.html">Getting Started</a></li><li><a href="/tips.html">Tips 'n Tricks</a></li></ul><h4>API</h4><ul class="side-nav"><li><a href="/hammer.html">Hammer</a></li><li><a href="/touch-action.html">Touch-action</a></li><li><a href="/recognize-with.html">Recognize With</a></li><li><a href="/require-failure.html">Require Failure</a></li></ul><h4>Recognizers</h4><ul class="side-nav"><li><a href="/recognizer-pan.html">Pan</a></li><li><a href="/recognizer-pinch.html">Pinch</a></li><li><a href="/recognizer-press.html">Press</a></li><li><a href="/recognizer-rotate.html">Rotate</a></li><li><a href="/recognizer-swipe.html">Swipe</a></li><li><a href="/recognizer-tap.html">Tap</a></li></ul></div></div><div class="medium-9 columns"><h1 id="the-touch-action-property">The Touch-action property</h1>
+<p>Chrome 35+, IE10+ and soon FireFox, support the <code>touch-action</code> property. This property tells the browser how to
+handle touches on an element. It improves the detection and experience of the gestures a lot, because it can prevent
+scrolling of the page without any JavaScript has to be executed, which can be too late in some cases.
+Hammer uses a fallback for this property when needed, so it is working with older browsers too.</p>
+<p>By default it sets a value based on the recognizer settings. You can overwrite this by giving the option <code>touchAction</code>
+to the Manager.</p>
+<p>When you set the touchAction to <code>auto</code> it doesnt prevent any defaults, and Hammer would probably break. You have to
+call <code>preventDefault</code> manually to fix this. You should only use this if you know what you&#39;re doing.</p>
+<h2 id="preferred-touch-action-values-per-gesture">Preferred touch-action values per gesture</h2>
+<p>If you <em>do</em> want to set your own value, then the table below should help you a bit...</p>
+<table>
+<thead>
+<tr>
+<th>Gesture</th>
+<th>Least restrictive touch-action value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>press</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>tap</td>
+<td>auto</td>
+</tr>
+<tr>
+<td>multitap</td>
+<td>manipulation</td>
+</tr>
+<tr>
+<td>vertical pan/swipe</td>
+<td>pan-x</td>
+</tr>
+<tr>
+<td>horizontal pan/swipe</td>
+<td>pan-y</td>
+</tr>
+<tr>
+<td>rotate</td>
+<td>pan-x pan-y</td>
+</tr>
+<tr>
+<td>pinch</td>
+<td>pan-x pan-y</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="footer"><div class="row"><div class="column"><hr><p><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></p></div></div></div></body></html>

@@ -1,0 +1,48 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "plugins": ["plugins/markdown"],
+    "source": {
+        "include": ["./node_modules/hammerjs/src"],
+        "exclude": [],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false,
+        "default": {
+			"outputSourceFiles" : true
+		},
+		"applicationName": "Hammer.js",
+		"disqus": "",
+		"googleAnalytics": "",
+		"openGraph": {
+			"title": "",
+			"type": "website",
+			"image": "",
+			"site_name": "",
+			"url": ""
+		},
+		"meta": {
+			"title": "Hammer.js API",
+			"description": "",
+			"keyword": ""
+		}
+	},
+	"markdown": {
+		"parser": "gfm",
+		"hardwrap": true,
+		"tags": ["examples"]
+	},
+    "opts": {
+        "template": "./src/jsdoc-template",
+        "encoding": "utf8",
+        "destination": "./jsdoc/",
+        "recurse": true,
+        "query": "value",
+        "private": true,
+        "lenient": true
+    }
+}

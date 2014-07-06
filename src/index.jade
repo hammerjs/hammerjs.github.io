@@ -1,16 +1,19 @@
 extends inclusion/base
 
+block vars
+    - bodyClassName = 'homepage';
+
 block body
-    .row
+    .row.splash
         .column
             .text-center
-                .splash Add touch gestures to your page.
-
-                a.button.large.success(
-                        href="http://github.com/EightMedia/hammer.js/tree/master/hammer.min.js")
-                    strong Hammer.min.js
-                    br
-                    small v#{version} &mdash; #{gzipped} gzipped
+                h1 Add touch gestures to your page.
+                p
+                    a.button.large.download(
+                            href="http://github.com/EightMedia/hammer.js/tree/master/hammer.min.js")
+                        strong Hammer.min.js
+                        br
+                        small v#{version} &mdash; #{gzipped} gzipped
 
             .try
                 .device

@@ -20,10 +20,10 @@
 // Since the typical default browser font-size is 16px, that makes the calculation for grid size.
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
-// $base-font-size: 100%;
+$base-font-size: 95%;
 
 // The $base-font-size is 100% while $base-line-height is 150%
-// $base-line-height: 150%;
+$base-line-height: 140%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
 // $include-html-classes: true;
@@ -62,10 +62,10 @@ $body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial,
 // We use these as default colors throughout
 $primary-color: #E63B34;
 $secondary-color: #bee2ea;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
-// $warning-color: #f08a24;
-// $info-color: #a0d3e8;
+$alert-color: #f04124;
+$success-color: #43AC6A;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
@@ -125,7 +125,7 @@ $secondary-color: #bee2ea;
 
 // We use these to control header font styles
 // $header-font-family: $body-font-family;
-// $header-font-weight: $font-weight-normal;
+$header-font-weight: 700;
 // $header-font-style: normal;
 // $header-font-color: #222;
 // $header-line-height: 1.4;
@@ -134,12 +134,12 @@ $secondary-color: #bee2ea;
 // $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
-// $h1-font-size: rem-calc(44);
-// $h2-font-size: rem-calc(37);
-// $h3-font-size: rem-calc(27);
-// $h4-font-size: rem-calc(23);
-// $h5-font-size: rem-calc(18);
-// $h6-font-size: 1rem;
+$h1-font-size: rem-calc(36);
+$h2-font-size: rem-calc(28);
+$h3-font-size: rem-calc(24);
+$h4-font-size: rem-calc(20);
+$h5-font-size: rem-calc(17);
+$h6-font-size: 1rem;
 
 // We use these to control header size reduction on small screens
 // $h1-font-reduction: rem-calc(10) !default;
@@ -165,16 +165,16 @@ $secondary-color: #bee2ea;
 // $paragraph-font-weight: $font-weight-normal;
 // $paragraph-font-size: 1rem;
 // $paragraph-line-height: 1.6;
-// $paragraph-margin-bottom: rem-calc(20);
+$paragraph-margin-bottom: rem-calc(20);
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;
 // $paragraph-aside-font-style: italic;
 // $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style <code> tags
-// $code-color: scale-color($alert-color, $lightness: -27%);
-// $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
-// $code-font-weight: $font-weight-bold;
+$code-color: scale-color($success-color, $lightness: -17%);
+$code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
+$code-font-weight: normal;
 
 // We use these to style anchors
 $anchor-text-decoration: underline;
@@ -186,7 +186,7 @@ $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: #ddd;
-// $hr-margin: rem-calc(20);
+$hr-margin: rem-calc(40);
 
 // We use these to style lists
 // $list-font-family: $paragraph-font-family;
@@ -952,12 +952,12 @@ $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%);
 // $include-html-nav-classes: $include-html-classes;
 
 // We use this to control padding.
-// $side-nav-padding: rem-calc(14 0);
+$side-nav-padding: 0;
 
 // We use these to control list styles.
 // $side-nav-list-type: none;
 // $side-nav-list-position: inside;
-// $side-nav-list-margin: rem-calc(0 0 7 0);
+$side-nav-list-margin: 0;
 
 // We use these to control link styles.
 // $side-nav-link-color: $primary-color;

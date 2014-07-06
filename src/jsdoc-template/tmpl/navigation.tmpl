@@ -9,7 +9,8 @@ var self = this;
     </div>
     <ul class="list">
     <?js
-    this.nav.forEach(function (item) {
+    var sorted = _.sortBy(this.nav, 'longname');
+    sorted.forEach(function (item) {
     ?>
         <li class="item" data-name="<?js= item.longname ?>">
             <span class="title">
