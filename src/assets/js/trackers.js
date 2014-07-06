@@ -1,14 +1,4 @@
-!function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (!d.getElementById(id)) {
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//platform.twitter.com/widgets.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }
-}(document, "script", "twitter-wjs");
-
-if(location.href.indexOf("eightmedia.github.io") > -1) {
+if(location.href.indexOf(".github.io") > -1) {
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-30289566-1']);
     _gaq.push(['_trackPageview']);
