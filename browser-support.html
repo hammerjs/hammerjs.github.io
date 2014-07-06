@@ -11,15 +11,158 @@
 </form>
 
 
-</div></div></div><div class="medium-9 columns"><h1 id="simultaneous-recognizing">Simultaneous recognizing</h1>
-<p>If you want to recognize two gestures simultaneously, you can use the the <code>recognizeWith()</code> method. The example
-below does this with the pinch and rotate recognizers, which will improve usability.</p>
-<pre><code class="lang-js">var pinch = new Hammer.Pinch();
-var rotate = new Hammer.Rotation();
-pinch.recognizeWith(rotate);
-</code></pre>
-<p>Now Hammer is able to run pinch and rotate the same time. You can also separate them with the <code>dropRecognizeWith()</code> method on
-the recognizer instance.</p>
+</div></div></div><div class="medium-9 columns"><h1 id="browser-device-support">Browser/device support</h1>
+<p>Don&#39;t worry if your browser or OS isn&#39;t listed, it might work anyway! IE8 and older aren&#39;t supported.</p>
+<table>
+<thead>
+<tr>
+<th>Browser</th>
+<th style="text-align:center">Pan</th>
+<th style="text-align:center">Pinch</th>
+<th style="text-align:center">Press</th>
+<th style="text-align:center">Rotate</th>
+<th style="text-align:center">Swipe</th>
+<th style="text-align:center">Tap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE11</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>IE10</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>IE9</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Chrome</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Windows Phone 8</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Android 2.3 - default browser</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Android 2.3 - FireFox</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Android 4 - default browser</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Android 4 - Chrome</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Android 4 - Opera</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>Android 4 - FireFox</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>iOS6</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>iOS7</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+<tr>
+<td>BlackBerry 10</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+<td style="text-align:center">♥</td>
+</tr>
+</tbody>
+</table>
 </div></div><div class="footer"><div class="row"><div class="column"><hr><p class="clearfix"><a href="http://eight.nl" class="right"><img src="/assets/img/eight.png" width="80"></a><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></p></div></div></div><script>!function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (!d.getElementById(id)) {
