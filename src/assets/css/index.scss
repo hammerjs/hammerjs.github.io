@@ -104,6 +104,10 @@ pre {
 .homepage {
   background: $red;
 
+  ::selection {
+    background: none;
+  }
+
   hr {
     opacity: 0;
   }
@@ -130,6 +134,7 @@ pre {
   .try {
     clear: both;
     padding: 10px 0;
+    user-select: none;
 
     .device {
       background: #222;
