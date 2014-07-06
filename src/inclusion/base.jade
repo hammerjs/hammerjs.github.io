@@ -67,7 +67,10 @@ html
                     hr
                     p.clearfix
                         a.right(href="http://eight.nl")
-                            img(src="/assets/img/eight.png", width=80)
+                            if bodyClassName == 'homepage'
+                                img(src="/assets/img/eight-white.png", width=80)
+                            else
+                                img(src="/assets/img/eight.png", width=80)
 
                         a(href="//twitter.com/share",
                             class="twitter-share-button",
