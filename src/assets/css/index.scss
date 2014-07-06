@@ -76,6 +76,30 @@ pre {
       padding: 3px 0;
     }
   }
+
+  .sponsor-me {
+    margin-top: 60px;
+    opacity: .3;
+    transition: .5s opacity;
+    margin-right: 15px;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    p {
+      font-size: 11px;
+      line-height: 15px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    form {
+      text-align: center;
+    }
+  }
 }
 
 .homepage {
