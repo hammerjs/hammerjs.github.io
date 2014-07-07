@@ -174,14 +174,27 @@ pre {
 
     .device {
       background: #222;
-      padding: 20px;
+      padding: 20px 20px 40px;
       position: relative;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(#000, .1);
       user-select: none;
     }
 
-    .device-button { display: none; }
+    .device-button {
+      content: "";
+      display: block;
+      overflow: hidden;
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      border: solid 1px #444;
+      border-radius: 100%;
+      cursor: pointer;
+      bottom: 10px;
+      left: 50%;
+      margin-left: -10px;
+    }
 
     .device-screen {
       background: $blue;
@@ -189,6 +202,14 @@ pre {
       position: relative;
       border-radius: 2px;
       overflow: hidden;
+    }
+
+    .device.hammertime {
+      .device-screen {
+        background: url(../img/hammer.gif) no-repeat 50%;
+        background-size: cover;
+        #hitarea { display: none; }
+      }
     }
 
     #hitarea {
@@ -220,27 +241,13 @@ pre {
         max-width: 700px;
       }
 
-      .device.hammertime {
-        .device-screen {
-          background: url(../img/hammer.gif) no-repeat;
-          background-size: cover;
-          #hitarea { display: none; }
-        }
-      }
-
       .device-button {
-        content: "";
-        display: block;
-        overflow: hidden;
-        height: 20px;
-        width: 20px;
-        position: absolute;
         right: 10px;
         top: 50%;
         margin-top: -10px;
-        border: solid 1px #444;
-        border-radius: 100%;
-        cursor: pointer;
+        bottom: auto;
+        margin-left: auto;
+        left: auto;
       }
     }
   }
