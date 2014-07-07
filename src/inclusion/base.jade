@@ -11,11 +11,13 @@ html
     body(class=bodyClassName)
         .header
             .row
-                .medium-5.columns
+                .medium-4.columns
                     a.logo(href="/") Hammer.js
-                .medium-7.columns
+                .medium-8.columns
                     ul.inline-list.main-nav
-                        li: a(href="getting-started.html") Docs
+                        li: a(href="getting-started.html")
+                            span.show-for-small-only Docs
+                            span.show-for-medium-up Documentation
                         li: a(href="http://stackoverflow.com/questions/tagged/hammer.js") StackOverflow
                         li: a(href="https://github.com/EightMedia/hammer.js") GitHub
         block body
