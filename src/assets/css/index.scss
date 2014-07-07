@@ -34,9 +34,11 @@ pre {
   h2 { font-size: 1.4em; }
   h3, h4, h5, h6 {
     font-size: 1.05em;
-    margin-bottom: 0;
+    margin-bottom: 5px;
     color: $red;
   }
+
+  h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px; }
 }
 
 .header {
@@ -58,10 +60,35 @@ pre {
     font-weight: bold;
     text-decoration: none;
   }
+
+  @media #{$medium-up} {
+    .main-nav {
+      float: right;
+    }
+  }
 }
 
+.toggle-sidebar {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: $red !important;
+}
+
+.sidebar { display: none; }
+.sidebar.show { display: block; }
+
+@media #{$medium-up} {
+  .toggle-sidebar { display: none; }
+  .sidebar {
+    display: block;
+    border-right: solid 1px #eee;
+  }
+}
+
+
 .sidebar {
-  border-right: solid 1px #eee;
+  margin-bottom: 30px;
 
   h4 {
     margin: 0;
@@ -78,7 +105,7 @@ pre {
   }
 
   .sponsor-me {
-    margin-top: 60px;
+    margin-top: 30px;
     opacity: .3;
     margin-right: 15px;
 
@@ -116,9 +143,10 @@ pre {
 .splash {
   color: #fff;
 
+
   h1 {
     text-align: center;
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 700;
     line-height: normal;
     padding: .7em 0;
@@ -126,9 +154,17 @@ pre {
     color: #fff;
   }
 
+  @media #{$medium-up} {
+    h1 { font-size: 3em; }
+  }
+
   .download {
     background: $yellow;
     color: #222;
+    font-size: 1.4em;
+    line-height: 1;
+    border-radius: 3px;
+    white-space: nowrap;
   }
 
   .try {

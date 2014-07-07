@@ -1,5 +1,6 @@
-var Hammer = require('../../../node_modules/hammerjs/hammer.js');
-
+/**
+ * kind of messy code, but good enough for now
+ */
 // polyfill
 var reqAnimationFrame = (function () {
     return window[Hammer.prefixed(window, 'requestAnimationFrame')] || function (callback) {

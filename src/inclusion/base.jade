@@ -11,17 +11,17 @@ html
     body(class=bodyClassName)
         .header
             .row
-                .medium-4.columns
-                    a.logo(href="/") Hammer.js 2.0
-                .medium-8.columns
-                    ul.inline-list.right
-                        li: a(href="getting-started.html") Documentation
-                        li: a(href="jsdoc/") API
+                .medium-5.columns
+                    a.logo(href="/") Hammer.js
+                .medium-7.columns
+                    ul.inline-list.main-nav
+                        li: a(href="getting-started.html") Docs
                         li: a(href="http://stackoverflow.com/questions/tagged/hammer.js") StackOverflow
                         li: a(href="https://github.com/EightMedia/hammer.js") GitHub
         block body
             .row
                 .medium-3.columns
+                    a.toggle-sidebar(href="#") Toggle navigation
                     .sidebar
                         block sidebar
                             h4 General
@@ -29,9 +29,10 @@ html
                                 li: a(href="/getting-started.html") Getting Started
                                 li: a(href="/tips.html") Tips 'n Tricks
                                 li: a(href="/browser-support.html") Browser support
-                            h4 API
+                            h4 Hammer
                             ul.side-nav
-                                li: a(href="/hammer.html") Hammer
+                                li: a(href="/api.html") API
+                                li: a(href="/jsdoc") JSDoc
                                 li: a(href="/touch-action.html") Touch-action
                                 li: a(href="/recognize-with.html") Recognize With
                                 li: a(href="/require-failure.html") Require Failure
@@ -80,13 +81,4 @@ html
                         iframe(src="//ghbtns.com/github-btn.html?user=eightmedia&repo=hammer.js&type=watch&count=true"
                             allowtransparency="true", frameborder="0", scrolling="0", width="110", height="20")
 
-        script.
-            !function (d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (!d.getElementById(id)) {
-                    js = d.createElement(s);
-                    js.id = id;
-                    js.src = "//platform.twitter.com/widgets.js";
-                    fjs.parentNode.insertBefore(js, fjs);
-                }
-            }(document, "script", "twitter-wjs");
+        script(src="assets/js/index.js")

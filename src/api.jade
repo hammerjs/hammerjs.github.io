@@ -8,6 +8,8 @@ block content
             - [Hammer.defaults](#hammer-defaults)
             - [Hammer.Manager](hammer-manager)
             - [Hammer.Recognizer](#hammer-recognizer)
+            - [Constants](#constants)
+            - [Utils](#utils)
 
             ## Hammer
             Creates a Manager instance with a default set of recognizers and returns the manager instance. The default set
@@ -86,3 +88,74 @@ block content
             ### .requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)
             Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
             recognizer, not on the other recognizer.
+
+            ---
+
+            ## Constants
+            All constants are defined at the `Hammer` object.
+
+            ### Directions
+            | Name              | Value         |
+            | -------------------|---------------|
+            | DIRECTION_NONE    | 1             |
+            | DIRECTION_LEFT    | 2             |
+            | DIRECTION_RIGHT   | 4             |
+            | DIRECTION_UP      | 8             |
+            | DIRECTION_DOWN    | 16            |
+            | DIRECTION_HORIZONTAL | 6          |
+            | DIRECTION_VERTICAL   | 24         |
+            | DIRECTION_ALL     | 30            |
+
+            ### Input Types
+            | Name              | Value         |
+            | -------------------|---------------|
+            | INPUT_TYPE_TOUCH | touch |
+            | INPUT_TYPE_PEN | pen |
+            | INPUT_TYPE_MOUSE | mouse |
+            | INPUT_TYPE_KINECT | kinect |
+
+            ### Input Events
+            | Name              | Value         |
+            | -------------------|---------------|
+            | INPUT_START       | 1             |
+            | INPUT_MOVE        | 2             |
+            | INPUT_END         |  4            |
+            | INPUT_CANCEL      | 8             |
+
+            ### Recognizer States
+            | Name              | Value         |
+            | -------------------|---------------|
+            | STATE_POSSIBLE | 1 |
+            | STATE_BEGAN | 2 |
+            | STATE_CHANGED | 4 |
+            | STATE_ENDED | 8 |
+            | STATE_RECOGNIZED | STATE_ENDED |
+            | STATE_CANCELLED | 16 |
+            | STATE_FAILED | 32 |
+
+            ---
+
+            ## Utils
+            ### Hammer.on(HTMLElement, types, handler)
+            Wrapper around `addEventListener` that accepts multiple event types.
+
+            ### Hammer.off(HTMLElement, types, handler)
+            Wrapper around `removeEventListener` that accepts multiple event types.
+
+            ### Hammer.each(obj, handler)
+            Iterate an object or array.
+
+            ### Hammer.merge(obj1, obj2)
+            Merge properties from obj2 into obj1. Properties won't be overwritten.
+
+            ### Hammer.extend(obj1, obj2)
+            Extend obj1 with the properties from obj2. Properties will be overwritten.
+
+            ### Hammer.inherit(child, base, properties)
+            Simple class inheritance.
+
+            ### Hammer.bindFn(fn, scope)
+            Crossbrowser alternative for `Function.bind`.
+
+            ### Hammer.prefixed(obj, name)
+            Get the (prefixed) property from the browser.
