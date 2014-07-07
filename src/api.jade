@@ -84,10 +84,12 @@ block content
             Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like
             combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
             connection only removes the link on the recognizer, not on the other recognizer.
+            - [Read more about recognizeWith](recognize-with.html)
 
             ### .requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)
             Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
             recognizer, not on the other recognizer.
+            - [Read more about requireFailure](require-failure.html)
 
             ---
 
@@ -151,11 +153,35 @@ block content
             ### Hammer.extend(obj1, obj2)
             Extend obj1 with the properties from obj2. Properties will be overwritten.
 
-            ### Hammer.inherit(child, base, properties)
+            ### Hammer.inherit(child, base, [properties])
             Simple class inheritance.
 
+            ````js
+            function Animal(name) {
+                this.name = name;
+            }
+
+            function Dog() {
+                Animal.apply(this, arguments);
+            }
+
+            Hammer.inherit(Dog, Animal, {
+                bark: function() {
+                    alert(this.name);
+                }
+            });
+
+            var spikey = new Dog('Spikey');
+            spikey.bark();
+            ````
+
             ### Hammer.bindFn(fn, scope)
-            Crossbrowser alternative for `Function.bind`.
+            Simple alternative for `Function.bind`.
 
             ### Hammer.prefixed(obj, name)
             Get the (prefixed) property from the browser.
+
+            ````js
+            var userSelect = Hammer.prefixed(document.body.style, 'userSelect');
+            console.log(userSelect); // webkitUserSelect on Chrome 35
+            ````

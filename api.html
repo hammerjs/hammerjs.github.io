@@ -72,9 +72,15 @@ which is a boolean value or a callback function to enable/disable the recognizer
 <p>Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like
 combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
 connection only removes the link on the recognizer, not on the other recognizer.</p>
+<ul>
+<li><a href="recognize-with.html">Read more about recognizeWith</a></li>
+</ul>
 <h3 id="-requirefailure-otherrecognizer-and-droprequirefailure-otherrecognizer-">.requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)</h3>
 <p>Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
 recognizer, not on the other recognizer.</p>
+<ul>
+<li><a href="require-failure.html">Read more about requireFailure</a></li>
+</ul>
 <hr>
 <h2 id="constants">Constants</h2>
 <p>All constants are defined at the <code>Hammer</code> object.</p>
@@ -226,10 +232,30 @@ recognizer, not on the other recognizer.</p>
 <p>Merge properties from obj2 into obj1. Properties won&#39;t be overwritten.</p>
 <h3 id="hammer-extend-obj1-obj2-">Hammer.extend(obj1, obj2)</h3>
 <p>Extend obj1 with the properties from obj2. Properties will be overwritten.</p>
-<h3 id="hammer-inherit-child-base-properties-">Hammer.inherit(child, base, properties)</h3>
+<h3 id="hammer-inherit-child-base-properties-">Hammer.inherit(child, base, [properties])</h3>
 <p>Simple class inheritance.</p>
+<pre><code class="lang-js">function Animal(name) {
+    this.name = name;
+}
+
+function Dog() {
+    Animal.apply(this, arguments);
+}
+
+Hammer.inherit(Dog, Animal, {
+    bark: function() {
+        alert(this.name);
+    }
+});
+
+var spikey = new Dog(&#39;Spikey&#39;);
+spikey.bark();
+</code></pre>
 <h3 id="hammer-bindfn-fn-scope-">Hammer.bindFn(fn, scope)</h3>
-<p>Crossbrowser alternative for <code>Function.bind</code>.</p>
+<p>Simple alternative for <code>Function.bind</code>.</p>
 <h3 id="hammer-prefixed-obj-name-">Hammer.prefixed(obj, name)</h3>
 <p>Get the (prefixed) property from the browser.</p>
+<pre><code class="lang-js">var userSelect = Hammer.prefixed(document.body.style, &#39;userSelect&#39;);
+console.log(userSelect); // webkitUserSelect on Chrome 35
+</code></pre>
 </div></div></div><div class="footer"><div class="row"><div class="column"><hr><p class="clearfix"><a href="http://eight.nl" class="right"><img src="/assets/img/eight.png" width="80"></a><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></p></div></div></div><script src="assets/js/index.js"></script></body></html>
