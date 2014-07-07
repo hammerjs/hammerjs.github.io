@@ -21,6 +21,8 @@ block content
             Just your element, and options. the options will be merged with Hammer.defaults. Also,
             the recognizer set as defined in `Hammer.defaults.easyRecognizers` will be added.
 
+            If you'll pass an empty `recognizer` option, no initial recognizers will be added.
+
             ---
 
             ## Hammer.defaults
@@ -55,6 +57,17 @@ block content
 
             ### constructor(HTMLElement, [options])
             Just your element, and options. the options will be merged with Hammer.defaults.
+
+            You can setup an initial recognizer set with the option `recognizers`. The Array should be structured
+            like this:
+            ````js
+            [
+                // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
+                [Hammer.Rotate],
+                [Hammer.Pinch, { enable: false }, ['rotate']],
+                [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
+            ]
+            ````
 
             ### .add(Recognizer), .get(Recognizer) and .remove(Recognizer)
             Add a new `Recognizer` instance to the Manager. The order of adding is also the order of the recognizers being

@@ -27,6 +27,7 @@ contains <code>tap</code>, <code>doubletap</code>, <code>pan</code>, <code>swipe
 <h3 id="contructor-htmlelement-options-">Contructor(HTMLElement, [options])</h3>
 <p>Just your element, and options. the options will be merged with Hammer.defaults. Also,
 the recognizer set as defined in <code>Hammer.defaults.easyRecognizers</code> will be added.</p>
+<p>If you&#39;ll pass an empty <code>recognizer</code> option, no initial recognizers will be added.</p>
 <hr>
 <h2 id="hammer-defaults">Hammer.defaults</h2>
 <p>The <code>touchAction</code> option accepts the <code>auto</code>, <code>pan-y</code>, <code>pan-x</code> and <code>none</code> values, just like the css property. By default
@@ -51,6 +52,15 @@ because they would make the element blocking.</p>
 event listeners, and sets the touch-action property for you on the element.</p>
 <h3 id="constructor-htmlelement-options-">constructor(HTMLElement, [options])</h3>
 <p>Just your element, and options. the options will be merged with Hammer.defaults.</p>
+<p>You can setup an initial recognizer set with the option <code>recognizers</code>. The Array should be structured
+like this:</p>
+<pre><code class="lang-js">[
+    // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
+    [Hammer.Rotate],
+    [Hammer.Pinch, { enable: false }, [&#39;rotate&#39;]],
+    [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
+]
+</code></pre>
 <h3 id="-add-recognizer-get-recognizer-and-remove-recognizer-">.add(Recognizer), .get(Recognizer) and .remove(Recognizer)</h3>
 <p>Add a new <code>Recognizer</code> instance to the Manager. The order of adding is also the order of the recognizers being
 executed. Just like the <code>get</code> method, it returns the added <code>Recognizer</code> instance.
