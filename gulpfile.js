@@ -45,15 +45,20 @@ gulp.task("webpack", function (cb) {
 });
 
 gulp.task("build-hammer", function (cb) {
+    console.log('this can take a while...');
     exec('npm install && grunt build', {
         cwd: 'node_modules/hammerjs/'
     }, function(err, stdout, stderr) {
         if (err || stderr) {
             new gutil.PluginError("build-hammer", err || stderr);
         } else {
+            console.log(stdout);
+
             fs.copySync('./node_modules/hammerjs/hammer.js', './dist/hammer.js');
             fs.copySync('./node_modules/hammerjs/hammer.min.js', './dist/hammer.min.js');
             fs.copySync('./node_modules/hammerjs/hammer.min.map', './dist/hammer.min.map');
+
+            console.log('Copied builded files to ./dist/');
         }
         cb();
     });
