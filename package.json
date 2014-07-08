@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "author": "J. Tangelder <jorik@eight.nl>",
   "scripts": {
-    "start": "gulp"
+    "postinstall": "bower install",
+    "start": "npm install && gulp build-hammer && gulp build-site && gulp default"
   },
   "devDependencies": {
     "gulp": "^3.6.0",
@@ -23,6 +24,7 @@
     "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",
     "pretty-bytes": "^0.1.0",
     "gzip-size": "^0.1.0",
-    "jsdoc": "^3.3.0-alpha9"
+    "jsdoc": "^3.3.0-alpha9",
+    "fs-extra": "^0.10.0"
   }
 }
