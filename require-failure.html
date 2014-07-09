@@ -22,9 +22,35 @@ var vertical = new Hammer.Pan({
     event: &#39;panv&#39;,
     direction: Hammer.DIRECTION_VERTICAL
 });
-verical.requireFailure(horizontal);
+vertical.requireFailure(horizontal);
+
+// An example can be found at the file `/tests/manual/nested.html`.
 </code></pre>
 <p>Removing the dependency could be done with the <code>dropRequireFailure()</code> method.</p>
-<h2 id="example">Example</h2>
-<p>An example can be found at the file <code>/tests/manual/nested.html</code>.</p>
+<h2 id="using-requirefailure-to-recognize-multiple-taps">Using requireFailure to recognize multiple taps</h2>
+<p>Because multiple gestures can be recognized simultaneously and a
+gesture can be recognized based on the failure of other gestures.
+Multiple taps on the same element can be easily recognized on this way:</p>
+<pre><code class="lang-js">var hammer = new Hammer(el, {});
+
+var tap = new Hammer.Tap();
+var doubleTap = new Hammer.Tap({event: &#39;doubleTap&#39;, taps: 2 });
+var tripleTap = new Hammer.Tap({event: &#39;tripleTap&#39;, taps: 3 });
+
+hammer.add(tripleTap);
+hammer.add(doubleTap);
+hammer.add(tap);
+
+tripleTap.recognizeWith(doubleTap)
+         .recognizeWith(tap);
+doubleTap.recognizeWith(tap);
+
+doubleTap.requireFailure(tripleTap);
+tap.requireFailure(tripleTap)
+   .requireFailure(doubleTap
+</code></pre>
+<p>When a tap gesture requires a failure to be recognized, its
+recognizer will wait a short period to check that the other gesture has
+been failed. In this case, you should not assume that its tap gesture event
+will be fired immediately.</p>
 </div></div><div class="footer"><div class="row"><div class="column"><hr><p class="clearfix"><a href="http://eight.nl" class="right"><img src="/assets/img/eight.png" width="80"></a><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></p></div></div></div><script src="dist/hammer.js"></script><script src="assets/js/index.js"></script></body></html>
