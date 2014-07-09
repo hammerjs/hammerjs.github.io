@@ -1,5 +1,6 @@
 var path = require('path');
 var exec = require('child_process').exec;
+var fs = require('fs-extra');
 
 var webpack = require("webpack");
 var webpackConfig = require("./webpack.config.js");
@@ -37,7 +38,27 @@ gulp.task("jsdoc", function (cb) {
 gulp.task("webpack", function (cb) {
     webpackCompiler.run(function (err, stats) {
         if (err) {
-            throw new gutil.PluginError("webpack:build-dev", err);
+            new gutil.PluginError("webpack:build-dev", err);
+        }
+        cb();
+    });
+});
+
+gulp.task("build-hammer", function (cb) {
+    console.log('this can take a while...');
+    exec('npm install && grunt build', {
+        cwd: 'node_modules/hammerjs/'
+    }, function(err, stdout, stderr) {
+        if (err || stderr) {
+            new gutil.PluginError("build-hammer", err || stderr);
+        } else {
+            console.log(stdout);
+
+            fs.copySync('./node_modules/hammerjs/hammer.js', './dist/hammer.js');
+            fs.copySync('./node_modules/hammerjs/hammer.min.js', './dist/hammer.min.js');
+            fs.copySync('./node_modules/hammerjs/hammer.min.map', './dist/hammer.min.map');
+
+            console.log('Copied builded files to ./dist/');
         }
         cb();
     });
@@ -67,4 +88,4 @@ gulp.task("watch", function () {
 });
 
 gulp.task("default", ["server", "watch"]);
-gulp.task("build", ["compile-sass", "webpack", "compile-jade", "jsdoc"]);
+gulp.task("build-site", ["webpack", "compile-sass", "compile-jade", "jsdoc"]);
