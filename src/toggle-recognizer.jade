@@ -7,11 +7,11 @@ block content
         which must setup through the `set` call or its constructor parameter.
 
         ````js
-        hammer.get('tap').set('enable', false);
+        hammer.get('tap').set({ enable: false });
 
         //Then you could enable it again when necessary
 
-        hammer.get('tap').set('enable', true);
+        hammer.get('tap').set({ enable: true });
         ````
 
         Instead of toggling the `enable` property each time on your app, you

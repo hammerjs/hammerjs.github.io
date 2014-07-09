@@ -22,8 +22,8 @@ block content
         multi-touch `pinch` and `rotate` recognizers. The pinch and rotate recognizers are disabled by default
         because they would make the element blocking, but you can enable them by calling
         `````
-        mc.get('pinch').set('enable', true);
-        mc.get('rotate').set('enable', true);
+        mc.get('pinch').set({ enable: true });
+        mc.get('rotate').set({ enable: true });
         ````
 
         Also the viewport meta tag is recommended, it gives more control back to the webpage by disableing the

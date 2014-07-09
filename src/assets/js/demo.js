@@ -18,8 +18,8 @@ var transform;
 
 var mc = new Hammer(el);
 
-mc.get('pinch').set('enable', true);
-mc.get('rotate').set('enable', true);
+mc.get('pinch').set({ enable: true });
+mc.get('rotate').set({ enable: true });
 
 mc.on("pan", onPan);
 mc.on("swipe", onSwipe);

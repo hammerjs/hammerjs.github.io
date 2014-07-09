@@ -69,7 +69,7 @@ block content
             ]
             ````
 
-            ### .set(option, value)
+            ### .set(options)
             Change an option on the manager instance. Using this method is recommended,
             because it will update the `touchAction` value if needed.
 
@@ -77,6 +77,8 @@ block content
             Add a new `Recognizer` instance to the Manager. The order of adding is also the order of the recognizers being
             executed. Just like the `get` method, it returns the added `Recognizer` instance.
             The `get` and `remove` methods takes the event name (from a recognizer) or a recognizer instance as an argument.
+
+            Add and remove also accept an array of recognizers.
 
             ### .on(events, handler) and .off(events, [handler])
             Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events seperated
@@ -97,19 +99,20 @@ block content
             ### constructor([options])
             Just set the options.
 
-            ### .set(option, value)
+            ### .set(options)
             Change an option on the recognizer instance. Using this method is recommended,
             because it will update the `touchAction` value if needed.
 
             ### .recognizeWith(otherRecognizer) and .dropRecognizeWith(otherRecognizer)
             Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like
             combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
-            connection only removes the link on the recognizer, not on the other recognizer.
+            connection only removes the link on the recognizer, not on the other recognizer. Both accept an
+            array of recognizers.
             - [Read more about recognizeWith](recognize-with.html)
 
             ### .requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)
             Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
-            recognizer, not on the other recognizer.
+            recognizer, not on the other recognizer. Both accept an array of recognizers.
             - [Read more about requireFailure](require-failure.html)
 
             ---

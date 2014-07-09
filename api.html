@@ -61,13 +61,14 @@ like this;</p>
     [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
 ]
 </code></pre>
-<h3 id="-set-name-value-">.set(name, value)</h3>
+<h3 id="-set-options-">.set(options)</h3>
 <p>Change an option on the manager instance. Using this method is recommended,
 because it will update the <code>touchAction</code> value if needed.</p>
 <h3 id="-add-recognizer-get-recognizer-and-remove-recognizer-">.add(Recognizer), .get(Recognizer) and .remove(Recognizer)</h3>
 <p>Add a new <code>Recognizer</code> instance to the Manager. The order of adding is also the order of the recognizers being
 executed. Just like the <code>get</code> method, it returns the added <code>Recognizer</code> instance.
 The <code>get</code> and <code>remove</code> methods takes the event name (from a recognizer) or a recognizer instance as an argument.</p>
+<p>Add and remove also accept an array of recognizers.</p>
 <h3 id="-on-events-handler-and-off-events-handler-">.on(events, handler) and .off(events, [handler])</h3>
 <p>Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events seperated
 by a space.</p>
@@ -81,19 +82,20 @@ by a space.</p>
 which is a boolean value or a callback function to enable/disable the recognizer on the fly.</p>
 <h3 id="constructor-options-">constructor([options])</h3>
 <p>Just set the options.</p>
-<h3 id="-set-name-value-">.set(name, value)</h3>
+<h3 id="-set-options-">.set(options)</h3>
 <p>Change an option on the recognizer instance. Using this method is recommended,
 because it will update the <code>touchAction</code> value if needed.</p>
 <h3 id="-recognizewith-otherrecognizer-and-droprecognizewith-otherrecognizer-">.recognizeWith(otherRecognizer) and .dropRecognizeWith(otherRecognizer)</h3>
 <p>Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like
 combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
-connection only removes the link on the recognizer, not on the other recognizer.</p>
+connection only removes the link on the recognizer, not on the other recognizer. Both accept an
+array of recognizers.</p>
 <ul>
 <li><a href="recognize-with.html">Read more about recognizeWith</a></li>
 </ul>
 <h3 id="-requirefailure-otherrecognizer-and-droprequirefailure-otherrecognizer-">.requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)</h3>
 <p>Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
-recognizer, not on the other recognizer.</p>
+recognizer, not on the other recognizer. Both accept an array of recognizers.</p>
 <ul>
 <li><a href="require-failure.html">Read more about requireFailure</a></li>
 </ul>
