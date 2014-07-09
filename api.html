@@ -26,7 +26,7 @@ contains <code>tap</code>, <code>doubletap</code>, <code>pan</code>, <code>swipe
 <p>You should only use this when you&#39;re fine with the default setup, or have set your own initial setup.</p>
 <h3 id="contructor-htmlelement-options-">Contructor(HTMLElement, [options])</h3>
 <p>Just your element, and options. the options will be merged with Hammer.defaults. Also,
-the recognizer set as defined in <code>Hammer.defaults.easyRecognizers</code> will be added.</p>
+the recognizer set as defined in <code>Hammer.defaults.preset</code> will be added.</p>
 <p>If you&#39;ll pass an empty <code>recognizer</code> option, no initial recognizers will be added.</p>
 <hr>
 <h2 id="hammer-defaults">Hammer.defaults</h2>
@@ -41,7 +41,7 @@ correct value for you, based on the recognizers.</p>
 <p>Acceps a boolean, or an function that should return a boolean which is.</p>
 <h3 id="cssprops-object-">cssProps (object...)</h3>
 <p>A collection of css properties that improve the handling of the input events.</p>
-<h3 id="easyrecognizers-array-">easyRecognizers (array...)</h3>
+<h3 id="preset-array-">preset (array...)</h3>
 <p>Default recognizer setup when calling <code>Hammer()</code>. When creating a new Manager these will be skipped.</p>
 <p>By default it adds a set of <code>tap</code>, <code>doubletap</code>, <code>press</code>, <em>horizontal</em> <code>pan</code> and <code>swipe</code>, and the
 multi-touch <code>pinch</code> and <code>rotate</code> recognizers. The pinch and rotate recognizers are disabled by default
@@ -53,7 +53,7 @@ event listeners, and sets the touch-action property for you on the element.</p>
 <h3 id="constructor-htmlelement-options-">constructor(HTMLElement, [options])</h3>
 <p>Just your element, and options. the options will be merged with Hammer.defaults.</p>
 <p>You can setup an initial recognizer set with the option <code>recognizers</code>. The Array should be structured
-like this:</p>
+like this;</p>
 <pre><code class="lang-js">[
     // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
     [Hammer.Rotate],
@@ -61,6 +61,9 @@ like this:</p>
     [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
 ]
 </code></pre>
+<h3 id="-set-name-value-">.set(name, value)</h3>
+<p>Change an option on the manager instance. Using this method is recommended,
+because it will update the <code>touchAction</code> value if needed.</p>
 <h3 id="-add-recognizer-get-recognizer-and-remove-recognizer-">.add(Recognizer), .get(Recognizer) and .remove(Recognizer)</h3>
 <p>Add a new <code>Recognizer</code> instance to the Manager. The order of adding is also the order of the recognizers being
 executed. Just like the <code>get</code> method, it returns the added <code>Recognizer</code> instance.
@@ -78,6 +81,9 @@ by a space.</p>
 which is a boolean value or a callback function to enable/disable the recognizer on the fly.</p>
 <h3 id="constructor-options-">constructor([options])</h3>
 <p>Just set the options.</p>
+<h3 id="-set-name-value-">.set(name, value)</h3>
+<p>Change an option on the recognizer instance. Using this method is recommended,
+because it will update the <code>touchAction</code> value if needed.</p>
 <h3 id="-recognizewith-otherrecognizer-and-droprecognizewith-otherrecognizer-">.recognizeWith(otherRecognizer) and .dropRecognizeWith(otherRecognizer)</h3>
 <p>Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like
 combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the

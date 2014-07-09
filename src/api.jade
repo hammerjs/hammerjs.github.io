@@ -19,7 +19,7 @@ block content
 
             ### Contructor(HTMLElement, [options])
             Just your element, and options. the options will be merged with Hammer.defaults. Also,
-            the recognizer set as defined in `Hammer.defaults.easyRecognizers` will be added.
+            the recognizer set as defined in `Hammer.defaults.preset` will be added.
 
             If you'll pass an empty `recognizer` option, no initial recognizers will be added.
 
@@ -42,7 +42,7 @@ block content
             ### cssProps (object...)
             A collection of css properties that improve the handling of the input events.
 
-            ### easyRecognizers (array...)
+            ### preset (array...)
             Default recognizer setup when calling `Hammer()`. When creating a new Manager these will be skipped.
 
             By default it adds a set of `tap`, `doubletap`, `press`, _horizontal_ `pan` and `swipe`, and the
@@ -59,7 +59,7 @@ block content
             Just your element, and options. the options will be merged with Hammer.defaults.
 
             You can setup an initial recognizer set with the option `recognizers`. The Array should be structured
-            like this:
+            like this;
             ````js
             [
                 // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
@@ -68,6 +68,10 @@ block content
                 [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
             ]
             ````
+
+            ### .set(name, value)
+            Change an option on the manager instance. Using this method is recommended,
+            because it will update the `touchAction` value if needed.
 
             ### .add(Recognizer), .get(Recognizer) and .remove(Recognizer)
             Add a new `Recognizer` instance to the Manager. The order of adding is also the order of the recognizers being
@@ -92,6 +96,10 @@ block content
 
             ### constructor([options])
             Just set the options.
+
+            ### .set(name, value)
+            Change an option on the recognizer instance. Using this method is recommended,
+            because it will update the `touchAction` value if needed.
 
             ### .recognizeWith(otherRecognizer) and .dropRecognizeWith(otherRecognizer)
             Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like

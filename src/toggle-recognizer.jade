@@ -3,7 +3,7 @@ block content
     :markdown
         # Toggle recognizers at runtime
 
-        A gesture can be enabled/disabled based on its `enable` property 
+        A gesture can be enabled/disabled based on its `enable` property
         which must setup through the `set` call or its constructor parameter.
 
         ````js
@@ -16,8 +16,8 @@ block content
 
         Instead of toggling the `enable` property each time on your app, you
         could delegate this responsability to a custom function which will be
-        checked with each new incoming touch event to decide if the event can be dispatched 
-        to the recognizer or not. This feature provides support to build complex gesture scenarios 
+        checked with each new incoming touch event to decide if the event can be dispatched
+        to the recognizer or not. This feature provides support to build complex gesture scenarios
         based on App/UI logic.
 
         ````js
@@ -35,3 +35,5 @@ block content
         }
         mc.add(new Hammer.Tap({enable: canEnable}));
         ````
+
+        The `Manager.enable` option also works this way.
