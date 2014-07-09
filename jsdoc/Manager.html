@@ -161,9 +161,9 @@
             
                 <li data-name="Hammer.defaults.domEvents"><a href="Hammer.defaults.html#domEvents">domEvents</a></li>
             
-                <li data-name="Hammer.defaults.easyRecognizers"><a href="Hammer.defaults.html#easyRecognizers">easyRecognizers</a></li>
-            
                 <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
+            
+                <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#preset">preset</a></li>
             
                 <li data-name="Hammer.defaults.touchAction"><a href="Hammer.defaults.html#touchAction">touchAction</a></li>
             
@@ -1105,12 +1105,12 @@
     <div class="nameContainer">
         <h4 class="name" id="add">
             
-            add<span class="signature">(recognizer)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Recognizer.html">Recognizer</a>}</span>
+            add<span class="signature">(recognizer)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Recognizer.html">Recognizer</a>|<a href="Manager.html">Manager</a>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line130">line 130</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line131">line 131</a>
         </div>
         
     </div>
@@ -1232,7 +1232,7 @@ existing recognizers with the same event name will be removed</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line220">line 220</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line231">line 231</a>
         </div>
         
     </div>
@@ -1304,7 +1304,7 @@ it doesn't unbind dom events, that is the user own responsibility</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line194">line 194</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line205">line 205</a>
         </div>
         
     </div>
@@ -1443,7 +1443,7 @@ it doesn't unbind dom events, that is the user own responsibility</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line110">line 110</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line111">line 111</a>
         </div>
         
     </div>
@@ -1567,7 +1567,7 @@ it doesn't unbind dom events, that is the user own responsibility</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line177">line 177</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line188">line 188</a>
         </div>
         
     </div>
@@ -1723,7 +1723,7 @@ it doesn't unbind dom events, that is the user own responsibility</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line162">line 162</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line173">line 173</a>
         </div>
         
     </div>
@@ -1867,7 +1867,7 @@ it doesn't unbind dom events, that is the user own responsibility</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line58">line 58</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line59">line 59</a>
         </div>
         
     </div>
@@ -1980,12 +1980,12 @@ it walks through all the recognizers and tries to detect the gesture that is bei
     <div class="nameContainer">
         <h4 class="name" id="remove">
             
-            remove<span class="signature">(recognizer)</span>
+            remove<span class="signature">(recognizer)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Manager.html">Manager</a>}</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line148">line 148</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line154">line 154</a>
         </div>
         
     </div>
@@ -2091,6 +2091,11 @@ it walks through all the recognizers and tries to detect the gesture that is bei
     
     
     
+
+
+    
+    
+    
 </dd>
 
         
@@ -2099,7 +2104,7 @@ it walks through all the recognizers and tries to detect the gesture that is bei
     <div class="nameContainer">
         <h4 class="name" id="set">
             
-            set<span class="signature">(option, val)</span>
+            set<span class="signature">(options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Manager.html">Manager</a>}</span>
         </h4>
     
         
@@ -2146,36 +2151,13 @@ it walks through all the recognizers and tries to detect the gesture that is bei
 	
         <tr>
             
-                <td class="name"><code>option</code></td>
+                <td class="name"><code>options</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                </td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>val</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
+<span class="param-type">Object</span>
 
 
             
@@ -2230,6 +2212,11 @@ it walks through all the recognizers and tries to detect the gesture that is bei
     
     
     
+
+
+    
+    
+    
 </dd>
 
         
@@ -2243,7 +2230,7 @@ it walks through all the recognizers and tries to detect the gesture that is bei
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line48">line 48</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line49">line 49</a>
         </div>
         
     </div>
@@ -2374,7 +2361,7 @@ When forced, the recognizer cycle is stopped immediately.</p>
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Jul 08 2014 20:10:14 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Jul 09 2014 21:41:50 GMT+0200 (W. Europe Daylight Time)
         </footer>
     </div>
 </div>

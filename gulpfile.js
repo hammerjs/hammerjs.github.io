@@ -54,6 +54,10 @@ gulp.task("build-hammer", function (cb) {
         } else {
             console.log(stdout);
 
+            fs.unlinkSync('./dist/hammer.js');
+            fs.unlinkSync('./dist/hammer.min.js');
+            fs.unlinkSync('./dist/hammer.min.map');
+
             fs.copySync('./node_modules/hammerjs/hammer.js', './dist/hammer.js');
             fs.copySync('./node_modules/hammerjs/hammer.min.js', './dist/hammer.min.js');
             fs.copySync('./node_modules/hammerjs/hammer.min.map', './dist/hammer.min.map');

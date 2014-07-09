@@ -20,6 +20,14 @@ function setTimeoutScope(fn, timeout, context) {
     return setTimeout(bindFn(fn, context), timeout);
 }
 
+function invokeArrayArg(arg, fn, context) {
+    if (Array.isArray(arg)) {
+        each(arg, context[fn], context);
+        return true;
+    }
+    return false;
+}
+
 /**
  * walk objects and arrays
  * @param {Object} obj
@@ -126,7 +134,7 @@ function bindFn(fn, context) {
  */
 function boolOrFn(val, args) {
     if (typeof val == TYPE_FUNCTION) {
-        return val.apply(args ? args[0] || window : window, args);
+        return val.apply(args ? args[0] || undefined : undefined, args);
     }
     return val;
 }
@@ -969,7 +977,7 @@ TouchAction.prototype = {
         var actions = [];
 
         each(this.manager.recognizers, function(recognizer) {
-            if (boolOrFn(recognizer.options.enable, recognizer)) {
+            if (boolOrFn(recognizer.options.enable, [recognizer])) {
                 actions = actions.concat(recognizer.getTouchAction());
             }
         });
@@ -1110,11 +1118,11 @@ Recognizer.prototype = {
 
     /**
      * set options
-     * @param {String} option
-     * @param {*} val
+     * @param {Object} options
+     * @return {Recognizer}
      */
-    set: function(option, val) {
-        this.options[option] = val;
+    set: function(options) {
+        extend(this.options, options);
 
         // also update the touchAction, in case something changed about the directions/enabled state
         this.manager && this.manager.touchAction.update();
@@ -1127,6 +1135,10 @@ Recognizer.prototype = {
      * @returns {Recognizer} this
      */
     recognizeWith: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'recognizeWith', this)) {
+            return this;
+        }
+
         var simultaneous = this.simultaneous;
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
         if (!simultaneous[otherRecognizer.id]) {
@@ -1142,6 +1154,10 @@ Recognizer.prototype = {
      * @returns {Recognizer} this
      */
     dropRecognizeWith: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'dropRecognizeWith', this)) {
+            return this;
+        }
+
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
         delete this.simultaneous[otherRecognizer.id];
         return this;
@@ -1153,6 +1169,10 @@ Recognizer.prototype = {
      * @returns {Recognizer} this
      */
     requireFailure: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'requireFailure', this)) {
+            return this;
+        }
+
         var requireFail = this.requireFail;
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
         if (inArray(requireFail, otherRecognizer) === -1) {
@@ -1168,6 +1188,10 @@ Recognizer.prototype = {
      * @returns {Recognizer} this
      */
     dropRequireFailure: function(otherRecognizer) {
+        if (invokeArrayArg(otherRecognizer, 'dropRequireFailure', this)) {
+            return this;
+        }
+
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
         var index = inArray(this.requireFail, otherRecognizer);
         if (index > -1) {
@@ -1790,14 +1814,14 @@ inherit(TapRecognizer, Recognizer, {
  */
 function Hammer(element, options) {
     options = options || {};
-    options.recognizers = ifUndefined(options.recognizers, Hammer.defaults.easyRecognizers);
+    options.recognizers = ifUndefined(options.recognizers, Hammer.defaults.preset);
     return new Manager(element, options);
 }
 
 /**
  * @const {string}
  */
-Hammer.VERSION = '2.0.0-dev';
+Hammer.VERSION = '2.0.0dev';
 
 /**
  * default settings
@@ -1831,7 +1855,7 @@ Hammer.defaults = {
      * When creating a new Manager these will be skipped.
      * @type {Array}
      */
-    easyRecognizers: [
+    preset: [
         // RecognizerClass, options, [recognizeWith, ...], [requireFailure, ...]
         [RotateRecognizer, { enable: false }],
         [PinchRecognizer, { enable: false }, ['rotate']],
@@ -1930,11 +1954,12 @@ function Manager(element, options) {
 Manager.prototype = {
     /**
      * set options
-     * @param {String} option
-     * @param {*} val
+     * @param {Object} options
+     * @returns {Manager}
      */
-    set: function(option, val) {
-        this.options[option] = val;
+    set: function(options) {
+        extend(this.options, options);
+        return this;
     },
 
     /**
@@ -2023,9 +2048,13 @@ Manager.prototype = {
      * add a recognizer to the manager
      * existing recognizers with the same event name will be removed
      * @param {Recognizer} recognizer
-     * @returns {Recognizer}
+     * @returns {Recognizer|Manager}
      */
     add: function(recognizer) {
+        if (invokeArrayArg(recognizer, 'add', this)) {
+            return this;
+        }
+
         // remove existing
         var existing = this.get(recognizer.options.event);
         if (existing) {
@@ -2042,13 +2071,19 @@ Manager.prototype = {
     /**
      * remove a recognizer by name or instance
      * @param {Recognizer|String} recognizer
+     * @returns {Manager}
      */
     remove: function(recognizer) {
+        if (invokeArrayArg(recognizer, 'remove', this)) {
+            return this;
+        }
+
         var recognizers = this.recognizers;
         recognizer = this.get(recognizer);
         recognizers.splice(inArray(recognizers, recognizer), 1);
 
         this.touchAction.update();
+        return this;
     },
 
     /**

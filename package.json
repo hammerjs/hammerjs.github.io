@@ -4,7 +4,7 @@
   "author": "J. Tangelder <jorik@eight.nl>",
   "scripts": {
     "postinstall": "bower install",
-    "start": "npm install && gulp build-hammer && gulp build-site && gulp default"
+    "start": "make build && gulp default"
   },
   "devDependencies": {
     "gulp": "^3.6.0",
@@ -20,7 +20,6 @@
     "marked": "^0.3.2",
     "script-loader": "^0.5.2",
     "webpack": "^1.1.9",
-    "hammerjs": "git://github.com/eightmedia/hammer.js#2.0.x",
     "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",
     "pretty-bytes": "^0.1.0",
     "gzip-size": "^0.1.0",

@@ -37,17 +37,13 @@ var tap = new Hammer.Tap();
 var doubleTap = new Hammer.Tap({event: &#39;doubleTap&#39;, taps: 2 });
 var tripleTap = new Hammer.Tap({event: &#39;tripleTap&#39;, taps: 3 });
 
-hammer.add(tripleTap);
-hammer.add(doubleTap);
-hammer.add(tap);
+hammer.add([tripleTap, doubleTap, tap]);
 
-tripleTap.recognizeWith(doubleTap)
-         .recognizeWith(tap);
+tripleTap.recognizeWith([doubleTap, tap]);
 doubleTap.recognizeWith(tap);
 
 doubleTap.requireFailure(tripleTap);
-tap.requireFailure(tripleTap)
-   .requireFailure(doubleTap
+tap.requireFailure([tripleTap, doubleTap]);
 </code></pre>
 <p>When a tap gesture requires a failure to be recognized, its
 recognizer will wait a short period to check that the other gesture has

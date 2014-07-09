@@ -14,11 +14,11 @@
 </div></div></div><div class="medium-9 columns"><h1 id="toggle-recognizers-at-runtime">Toggle recognizers at runtime</h1>
 <p>A gesture can be enabled/disabled based on its <code>enable</code> property
 which must setup through the <code>set</code> call or its constructor parameter.</p>
-<pre><code class="lang-js">hammer.get(&#39;tap&#39;).set(&#39;enable&#39;, false);
+<pre><code class="lang-js">hammer.get(&#39;tap&#39;).set({ enable: false });
 
 //Then you could enable it again when necessary
 
-hammer.get(&#39;tap&#39;).set(&#39;enable&#39;, true);
+hammer.get(&#39;tap&#39;).set({ enable: true });
 </code></pre>
 <p>Instead of toggling the <code>enable</code> property each time on your app, you
 could delegate this responsability to a custom function which will be

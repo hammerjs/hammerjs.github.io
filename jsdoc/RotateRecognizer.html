@@ -161,9 +161,9 @@
             
                 <li data-name="Hammer.defaults.domEvents"><a href="Hammer.defaults.html#domEvents">domEvents</a></li>
             
-                <li data-name="Hammer.defaults.easyRecognizers"><a href="Hammer.defaults.html#easyRecognizers">easyRecognizers</a></li>
-            
                 <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
+            
+                <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#preset">preset</a></li>
             
                 <li data-name="Hammer.defaults.touchAction"><a href="Hammer.defaults.html#touchAction">touchAction</a></li>
             
@@ -1091,7 +1091,7 @@ Recognized when two or more pointer are moving in a circular motion.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line177">line 177</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line193">line 193</a>
         </div>
         
     </div>
@@ -1169,7 +1169,7 @@ Recognized when two or more pointer are moving in a circular motion.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line145">line 145</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line161">line 161</a>
         </div>
         
     </div>
@@ -1292,7 +1292,7 @@ Recognized when two or more pointer are moving in a circular motion.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line97">line 97</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line101">line 101</a>
         </div>
         
     </div>
@@ -1415,7 +1415,7 @@ Recognized when two or more pointer are moving in a circular motion.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line123">line 123</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line135">line 135</a>
         </div>
         
     </div>
@@ -1538,7 +1538,7 @@ Recognized when two or more pointer are moving in a circular motion.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line154">line 154</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line170">line 170</a>
         </div>
         
     </div>
@@ -1657,7 +1657,7 @@ that all the needed recognizers has failed before emitting.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line230">line 230</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line246">line 246</a>
         </div>
         
     </div>
@@ -1735,7 +1735,7 @@ that all the needed recognizers has failed before emitting.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line136">line 136</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line152">line 152</a>
         </div>
         
     </div>
@@ -1813,7 +1813,7 @@ that all the needed recognizers has failed before emitting.</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line223">line 223</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line239">line 239</a>
         </div>
         
     </div>
@@ -1937,7 +1937,7 @@ the actual recognizing happens in this method</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line190">line 190</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line206">line 206</a>
         </div>
         
     </div>
@@ -2178,7 +2178,7 @@ the actual recognizing happens in this method</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line108">line 108</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line116">line 116</a>
         </div>
         
     </div>
@@ -2301,7 +2301,7 @@ the actual recognizing happens in this method</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line237">line 237</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line253">line 253</a>
         </div>
         
     </div>
@@ -2370,7 +2370,7 @@ like when another is being recognized or it is disabled</p>
             
                 <span class="inherited"><a href="Recognizer.html#set">inherited</a></span>
             
-            set<span class="signature">(option, val)</span>
+            set<span class="signature">(options)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{<a href="Recognizer.html">Recognizer</a>}</span>
         </h4>
     
         
@@ -2417,36 +2417,13 @@ like when another is being recognized or it is disabled</p>
 	
         <tr>
             
-                <td class="name"><code>option</code></td>
+                <td class="name"><code>options</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                </td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>val</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">*</span>
+<span class="param-type">Object</span>
 
 
             
@@ -2501,6 +2478,11 @@ like when another is being recognized or it is disabled</p>
     
     
     
+
+
+    
+    
+    
 </dd>
 
         
@@ -2516,7 +2498,7 @@ like when another is being recognized or it is disabled</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line165">line 165</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line181">line 181</a>
         </div>
         
     </div>
@@ -2640,7 +2622,7 @@ otherwise, setup the state to FAILED.</p>
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Jul 08 2014 20:10:14 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Jul 09 2014 21:41:51 GMT+0200 (W. Europe Daylight Time)
         </footer>
     </div>
 </div>

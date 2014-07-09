@@ -6,7 +6,7 @@ var prettyBytes = require('pretty-bytes');
 module.exports = {
     version: (function() {
         return JSON.parse(
-            fs.readFileSync('./node_modules/hammerjs/package.json', {encoding:'utf8'})
+            fs.readFileSync('./hammerjs/package.json', {encoding:'utf8'})
         ).version;
     })(),
 
