@@ -125,6 +125,95 @@
             </ul>
         </li>
     
+        <li class="item" data-name="Hammer">
+            <span class="title">
+                <a href="Hammer.html">Hammer</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Hammer.VERSION"><a href="Hammer.html#VERSION">VERSION</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Hammer.defaults">
+            <span class="title">
+                <a href="Hammer.defaults.html">Hammer.defaults</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Hammer.defaults.domEvents"><a href="Hammer.defaults.html#domEvents">domEvents</a></li>
+            
+                <li data-name="Hammer.defaults.easyRecognizers"><a href="Hammer.defaults.html#easyRecognizers">easyRecognizers</a></li>
+            
+                <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
+            
+                <li data-name="Hammer.defaults.touchAction"><a href="Hammer.defaults.html#touchAction">touchAction</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
+        <li class="item" data-name="Hammer.defaults.cssProps">
+            <span class="title">
+                <a href="Hammer.defaults.cssProps.html">Hammer.defaults.cssProps</a>
+                
+                <span class="static">static</span>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            <span class="subtitle">Members</span>
+            
+                <li data-name="Hammer.defaults.cssProps.contentZooming"><a href="Hammer.defaults.cssProps.html#contentZooming">contentZooming</a></li>
+            
+                <li data-name="Hammer.defaults.cssProps.tapHighlightColor"><a href="Hammer.defaults.cssProps.html#tapHighlightColor">tapHighlightColor</a></li>
+            
+                <li data-name="Hammer.defaults.cssProps.touchCallout"><a href="Hammer.defaults.cssProps.html#touchCallout">touchCallout</a></li>
+            
+                <li data-name="Hammer.defaults.cssProps.touchSelect"><a href="Hammer.defaults.cssProps.html#touchSelect">touchSelect</a></li>
+            
+                <li data-name="Hammer.defaults.cssProps.userDrag"><a href="Hammer.defaults.cssProps.html#userDrag">userDrag</a></li>
+            
+                <li data-name="Hammer.defaults.cssProps.userSelect"><a href="Hammer.defaults.cssProps.html#userSelect">userSelect</a></li>
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="Input">
             <span class="title">
                 <a href="Input.html">Input</a>
@@ -862,7 +951,6 @@ inherit(TapRecognizer, Recognizer, {
         event: 'tap',
         pointers: 1,
         taps: 1,
-        delay: 300,
         interval: 300, // max time between the multi-tap taps
         time: 250, // max time of the pointer to be down (like finger on the screen)
         threshold: 2, // a minimal movement is ok, but keep it low
@@ -874,7 +962,6 @@ inherit(TapRecognizer, Recognizer, {
     },
 
     process: function(input) {
-        var self = this;
         var options = this.options;
 
         var validPointers = input.pointers.length === options.pointers;
@@ -884,54 +971,54 @@ inherit(TapRecognizer, Recognizer, {
         this.reset();
 
         if ((input.eventType &amp; INPUT_START) &amp;&amp; (this.count === 0)) {
-            return this._setupBeganState();
+            return this._failTimeout();
         }
 
         // we only allow little movement
         // and we've reached an end event, so a tap is possible
         if (validMovement &amp;&amp; validTouchTime &amp;&amp; validPointers) {
-            if (input.eventType &amp; INPUT_END) {
-                var validInterval = this.pTime ? (input.timeStamp - this.pTime &lt; options.interval) : true;
-                var validMultiTap = !this.pCenter || getDistance(this.pCenter, input.center) &lt; options.posThreshold;
-
-                this.pTime = input.timeStamp;
-                this.pCenter = input.center;
-
-                if (!validMultiTap || !validInterval) {
-                    this.count = 1;
-                } else {
-                    this.count += 1;
-                }
-
-                this._input = input;
-
-                // if tap count matches we have recognized it,
-                // else it has began recognizing...
-                var tapCount = this.count % options.taps;
-                if (tapCount === 0) {
-                    if (!this.hasRequireFailures()) {
-                        return STATE_RECOGNIZED;
-                    } else {
-                        this._timer = setTimeout(function() {
-                            self.state = STATE_RECOGNIZED;
-                            self.tryEmit();
-                        }, options.delay);
-                        return STATE_BEGAN;
-                    }
-                }
+            if (input.eventType != INPUT_END) {
+                return this._failTimeout();
             }
 
-            return this._setupBeganState();
+            var validInterval = this.pTime ? (input.timeStamp - this.pTime &lt; options.interval) : true;
+            var validMultiTap = !this.pCenter || getDistance(this.pCenter, input.center) &lt; options.posThreshold;
+
+            this.pTime = input.timeStamp;
+            this.pCenter = input.center;
+
+            if (!validMultiTap || !validInterval) {
+                this.count = 1;
+            } else {
+                this.count += 1;
+            }
+
+            this._input = input;
+
+            // if tap count matches we have recognized it,
+            // else it has began recognizing...
+            var tapCount = this.count % options.taps;
+            if (tapCount === 0) {
+                // no failing requirements, immediately trigger the tap event
+                // or wait as long as the multitap interval to trigger
+                if (!this.hasRequireFailures()) {
+                    return STATE_RECOGNIZED;
+                } else {
+                    this._timer = setTimeoutScope(function() {
+                        this.state = STATE_RECOGNIZED;
+                        this.tryEmit();
+                    }, options.interval, this);
+                    return STATE_BEGAN;
+                }
+            }
         }
         return STATE_FAILED;
     },
 
-    _setupBeganState: function() {
-        var self = this;
-        this._timer = setTimeout(function() {
-            self.state = STATE_FAILED;
-        }, this.options.delay);
-
+    _failTimeout: function() {
+        this._timer = setTimeoutScope(function() {
+            this.state = STATE_FAILED;
+        }, this.options.interval, this);
         return STATE_FAILED;
     },
 
@@ -957,7 +1044,7 @@ inherit(TapRecognizer, Recognizer, {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Jul 06 2014 22:12:36 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Tue Jul 08 2014 20:10:13 GMT+0200 (W. Europe Daylight Time)
         </footer>
     </div>
 </div>

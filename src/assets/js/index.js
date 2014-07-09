@@ -1,5 +1,3 @@
-window.Hammer = require('../../../node_modules/hammerjs/hammer.js');
-
 var toggle = document.querySelector(".toggle-sidebar");
 var target = document.querySelector(".sidebar");
 if(toggle && target) {

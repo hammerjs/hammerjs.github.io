@@ -1,28 +1,18 @@
-var marked = require('marked');
-var gzipSize = require('gzip-size');
 var fs = require('fs');
+var gzipSize = require('gzip-size');
 var prettyBytes = require('pretty-bytes');
 
-marked.setOptions({
-    gfm: true,
-    tables: true
-});
-
-
-function readHammerFileSync(path) {
-    return fs.readFileSync(__dirname +'/../node_modules/hammerjs/'+ path, {encoding:'utf8'});
-}
 
 module.exports = {
-    readme: (function() {
-        return marked(readHammerFileSync('README.md'));
-    })(),
-
     version: (function() {
-        return JSON.parse(readHammerFileSync('package.json')).version;
+        return JSON.parse(
+            fs.readFileSync('./node_modules/hammerjs/package.json', {encoding:'utf8'})
+        ).version;
     })(),
 
     gzipped: (function() {
-        return prettyBytes(gzipSize.sync(readHammerFileSync('hammer.min.js')));
+        return prettyBytes(gzipSize.sync(
+            fs.readFileSync('./dist/hammer.min.js', {encoding:'utf8'})
+        ));
     })()
 };
