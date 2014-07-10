@@ -19,13 +19,12 @@ $yellow: #ffdd00;
 @import "foundation";
 @import "highlight";
 
-code {
-}
-
 pre {
+  font-size: 13px;
+  line-height: 18px;
   padding: 15px;
   margin-bottom: $paragraph-margin-bottom;
-  line-height: 1.3;
+  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
   @extend .hljs;
 }
 

@@ -46,7 +46,7 @@ $base-line-height: 140%;
 
 // We use these to control various global styles
 // $body-bg: #fff;
-// $body-font-color: #222;
+$body-font-color: #333;
 $body-font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
@@ -172,7 +172,7 @@ $paragraph-margin-bottom: rem-calc(20);
 // $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style <code> tags
-$code-color: scale-color($success-color, $lightness: -17%);
+$code-color: #333;
 $code-font-family: Consolas, 'Liberation Mono', Courier, monospace;
 $code-font-weight: normal;
 
