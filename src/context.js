@@ -6,23 +6,21 @@ var highlight = require('highlight.js')
 
 
 marked.setOptions({
-  highlight: function (code, lang) {
-      console.log(code, lang);
-    return highlight.highlightAuto(code, [lang]).value;
-  }
+    highlight: function (code, lang) {
+        return highlight.highlightAuto(code, [lang]).value;
+    }
 });
 
-
 module.exports = {
-    version: (function() {
+    version: (function () {
         return JSON.parse(
-            fs.readFileSync('./node_modules/hammerjs/package.json', {encoding:'utf8'})
+            fs.readFileSync('./node_modules/hammerjs/package.json', {encoding: 'utf8'})
         ).version;
     })(),
 
-    gzipped: (function() {
+    gzipped: (function () {
         return prettyBytes(gzipSize.sync(
-            fs.readFileSync('./dist/hammer.min.js', {encoding:'utf8'})
+            fs.readFileSync('./dist/hammer.min.js', {encoding: 'utf8'})
         ));
     })()
 };

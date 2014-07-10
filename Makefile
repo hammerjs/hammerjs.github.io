@@ -1,14 +1,9 @@
 build:
 	npm install
-	git clone git://github.com/eightmedia/hammer.js hammerjs
-	cd hammerjs && \
-		git checkout "2.0.x" && \
+	cd node_modules/hammerjs && \
 		npm install && \
-		grunt build && \
-		mv hammer.js ../dist/hammer.js && \
-		mv hammer.min.js ../dist/hammer.min.js && \
-		mv hammer.min.map ../dist/hammer.min.map
+		grunt concat string-replace uglify:min && \
+		mv hammer.js ../../dist/hammer.js && \
+		mv hammer.min.js ../../dist/hammer.min.js && \
+		mv hammer.min.map ../../dist/hammer.min.map
 	gulp build-site
-	rm -rf hammerjs
-
-.PHONY: build

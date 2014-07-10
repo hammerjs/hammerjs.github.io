@@ -1821,7 +1821,7 @@ function Hammer(element, options) {
 /**
  * @const {string}
  */
-Hammer.VERSION = '2.0.0dev';
+Hammer.VERSION = '2.0.0-dev';
 
 /**
  * default settings
