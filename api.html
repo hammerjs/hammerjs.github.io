@@ -55,9 +55,9 @@ event listeners, and sets the touch-action property for you on the element.</p>
 <p>You can setup an initial recognizer set with the option <code>recognizers</code>. The Array should be structured
 like this;</p>
 <pre><code class="lang-js">[
-    // RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
+    <span class="hljs-comment">// RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]</span>
     [Hammer.Rotate],
-    [Hammer.Pinch, { enable: false }, [&#39;rotate&#39;]],
+    [Hammer.Pinch, { enable: <span class="hljs-literal">false</span> }, [<span class="hljs-string">'rotate'</span>]],
     [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
 ]
 </code></pre>
@@ -225,28 +225,28 @@ recognizer, not on the other recognizer. Both accept an array of recognizers.</p
 <p>Extend obj1 with the properties from obj2. Properties will be overwritten.</p>
 <h3 id="hammer-inherit-child-base-properties-">Hammer.inherit(child, base, [properties])</h3>
 <p>Simple class inheritance.</p>
-<pre><code class="lang-js">function Animal(name) {
-    this.name = name;
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Animal</span><span class="hljs-params">(name)</span> </span>{
+    <span class="hljs-keyword">this</span>.name = name;
 }
 
-function Dog() {
-    Animal.apply(this, arguments);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Dog</span><span class="hljs-params">()</span> </span>{
+    Animal.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
 }
 
 Hammer.inherit(Dog, Animal, {
-    bark: function() {
-        alert(this.name);
+    bark: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        alert(<span class="hljs-keyword">this</span>.name);
     }
 });
 
-var dog = new Dog(&#39;Spaikie&#39;);
+<span class="hljs-keyword">var</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'Spaikie'</span>);
 dog.bark();
 </code></pre>
 <h3 id="hammer-bindfn-fn-scope-">Hammer.bindFn(fn, scope)</h3>
 <p>Simple alternative for <code>Function.bind</code>.</p>
 <h3 id="hammer-prefixed-obj-name-">Hammer.prefixed(obj, name)</h3>
 <p>Get the (prefixed) property from the browser.</p>
-<pre><code class="lang-js">var userSelect = Hammer.prefixed(document.body.style, &#39;userSelect&#39;);
-console.log(userSelect); // webkitUserSelect on Chrome 35
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> userSelect = Hammer.prefixed(<span class="hljs-built_in">document</span>.body.style, <span class="hljs-string">'userSelect'</span>);
+<span class="hljs-built_in">console</span>.log(userSelect); <span class="hljs-comment">// webkitUserSelect on Chrome 35</span>
 </code></pre>
 </div></div></div><div class="footer"><div class="row"><div class="column"><hr><p class="clearfix"><a href="http://eight.nl" class="right"><img src="/assets/img/eight.png" width="80"></a><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=eightmedia&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></p></div></div></div><script src="dist/hammer.js"></script><script src="assets/js/index.js"></script></body></html>

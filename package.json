@@ -7,6 +7,7 @@
     "start": "make build && gulp default"
   },
   "devDependencies": {
+    "fs-extra": "^0.10.0",
     "gulp": "^3.6.0",
     "gulp-autoprefixer": "^0.0.7",
     "gulp-changed": "^0.3.0",
@@ -17,13 +18,14 @@
     "gulp-sass": "^0.7.1",
     "gulp-uglify": "~0.2.1",
     "gulp-util": "^2.2.14",
-    "marked": "^0.3.2",
-    "script-loader": "^0.5.2",
-    "webpack": "^1.1.9",
-    "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",
-    "pretty-bytes": "^0.1.0",
     "gzip-size": "^0.1.0",
+    "highlight.js": "^8.1.0",
+    "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",
+    "hammerjs": "git://github.com/eightmedia/hammer.js#2.0.x",
     "jsdoc": "^3.3.0-alpha9",
-    "fs-extra": "^0.10.0"
+    "marked": "^0.3.2",
+    "pretty-bytes": "^0.1.0",
+    "script-loader": "^0.5.2",
+    "webpack": "^1.1.9"
   }
 }

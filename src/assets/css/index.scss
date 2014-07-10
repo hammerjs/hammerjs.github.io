@@ -17,17 +17,16 @@ $yellow: #ffdd00;
 @import "settings";
 @import "foundation/scss/normalize";
 @import "foundation";
+@import "highlight";
 
 code {
-  font-weight: bold;
 }
 
 pre {
-  background: #f9f9f9;
   padding: 15px;
   margin-bottom: $paragraph-margin-bottom;
   line-height: 1.3;
-  code { font-weight: normal; }
+  @extend .hljs;
 }
 
 .long-content {
@@ -252,3 +251,5 @@ pre {
     }
   }
 }
+
+

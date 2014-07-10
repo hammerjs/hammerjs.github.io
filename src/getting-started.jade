@@ -12,7 +12,7 @@ block content
         - [Browse the source on GitHub](https://github.com/EightMedia/hammer.js/tree/master/src)
 
         It's easy to use, just include the library and create a new instance.
-        ````
+        ````js
         var hammertime = new Hammer(element, options);
         hammertime.on('pan', function(ev) {
             console.log(ev);
@@ -22,21 +22,21 @@ block content
         By default it adds a set of `tap`, `doubletap`, `press`, _horizontal_ `pan` and `swipe`, and the
         multi-touch `pinch` and `rotate` recognizers. The pinch and rotate recognizers are disabled by default
         because they would make the element blocking, but you can enable them by calling
-        `````
+        ````js
         mc.get('pinch').set({ enable: true });
         mc.get('rotate').set({ enable: true });
         ````
 
         Also the viewport meta tag is recommended, it gives more control back to the webpage by disableing the
         doubletap/pinch zoom. More recent browsers that support the touch-action property don't require this.
-        ````
+        ````html
         <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
         ````
 
         ### More control
         You can setup your own set of recognizers for your instance. This requires a bit more code, but it gives you more
         control about the gestures that are being recognized.
-        ````
+        ````js
         var myOptions = { };
         var mc = new Hammer.Manager(myElement, myOptions);
             mc.add(new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }));
