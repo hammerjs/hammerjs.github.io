@@ -13,7 +13,8 @@
 
 </div></div></div><div class="medium-9 columns"><h1 id="require-failure-of-an-other-recognizer">Require failure of an other recognizer</h1>
 <p>With the method <code>requireFailure()</code> you can let a recognizer require the failure of an other recognizer before recognizing.
-This could become useful when you want to nest two gestures, like pan-horizontal and pan-vertical.</p>
+This could become useful when you want to nest two gestures, like pan-horizontal and pan-vertical.
+Removing the dependency could be done with the <code>dropRequireFailure()</code> method.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> horizontal = <span class="hljs-keyword">new</span> Hammer.Pan({
     event: <span class="hljs-string">'panh'</span>,
     direction: Hammer.DIRECTION_HORIZONTAL
@@ -23,10 +24,8 @@ This could become useful when you want to nest two gestures, like pan-horizontal
     direction: Hammer.DIRECTION_VERTICAL
 });
 vertical.requireFailure(horizontal);
-
-<span class="hljs-comment">// An example can be found at the file `/tests/manual/nested.html`.</span>
 </code></pre>
-<p>Removing the dependency could be done with the <code>dropRequireFailure()</code> method.</p>
+<p><strong><a href="https://cdn.rawgit.com/hammerjs/hammer.js/master/tests/manual/nested.html">View an example implementation.</a></strong></p>
 <h2 id="using-requirefailure-to-recognize-multiple-taps">Using requireFailure to recognize multiple taps</h2>
 <p>Because multiple gestures can be recognized simultaneously and a
 gesture can be recognized based on the failure of other gestures.
