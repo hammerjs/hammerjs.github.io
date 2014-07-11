@@ -20,6 +20,15 @@ function setTimeoutScope(fn, timeout, context) {
     return setTimeout(bindFn(fn, context), timeout);
 }
 
+/**
+ * if the argument is an array, we want to execute the fn on each entry
+ * if it aint an array we don't want to do a thing.
+ * this is used by all the methods that accept a single and array argument.
+ * @param {*|Array} arg
+ * @param {String} fn
+ * @param {Object} [context]
+ * @returns {Boolean}
+ */
 function invokeArrayArg(arg, fn, context) {
     if (Array.isArray(arg)) {
         each(arg, context[fn], context);
@@ -384,7 +393,6 @@ function createInputInstance(manager) {
  * @param {Object} input
  */
 function inputHandler(manager, eventType, input) {
-
     var pointersLen = input.pointers.length;
     var changedPointersLen = input.changedPointers.length;
     var isFirst = (eventType & INPUT_START && (pointersLen - changedPointersLen === 0));
@@ -403,6 +411,7 @@ function inputHandler(manager, eventType, input) {
     // compute scale, rotation etc
     computeInputData(manager, input);
 
+    // emit secret event
     manager.emit('hammer.input', input);
 
     manager.recognize(input);
@@ -1826,7 +1835,7 @@ function Hammer(element, options) {
 /**
  * @const {string}
  */
-Hammer.VERSION = '2.0.0-dev';
+Hammer.VERSION = '2.0.0';
 
 /**
  * default settings
