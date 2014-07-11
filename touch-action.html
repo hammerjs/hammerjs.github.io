@@ -14,8 +14,9 @@
 </div></div></div><div class="medium-9 columns"><h1 id="the-touch-action-property">The Touch-action property</h1>
 <p>Chrome 35+, IE10+ and soon FireFox, support the <code>touch-action</code> property. This property tells the browser how to
 handle touches on an element. It improves the detection and experience of the gestures a lot, because it can prevent
-scrolling of the page without any JavaScript has to be executed, which can be too late in some cases.
-Hammer uses a fallback for this property when needed, so it is working with older browsers too.</p>
+scrolling of the page without any JavaScript has to be executed, which can be too late in some cases.</p>
+<p>Hammer uses a javascript fallback for this property when needed, so it is working with non-supporting browsers
+too. Still, on some (unpopular) devices the fallback might not work as good as the native support.</p>
 <p>By default it sets a value based on the recognizer settings. You can overwrite this by giving the option <code>touchAction</code>
 to the Manager.</p>
 <p>When you set the touchAction to <code>auto</code> it doesnt prevent any defaults, and Hammer would probably break. You have to
