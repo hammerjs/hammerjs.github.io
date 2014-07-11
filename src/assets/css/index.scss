@@ -30,15 +30,15 @@ code {
 pre {
   font-size: 13px;
   line-height: 18px;
-  padding: 15px;
+  padding: 7px 10px;
   margin-bottom: $paragraph-margin-bottom;
   font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 
   code {
+    padding: 0;
     background: none;
     border: none;
     font-size: inherit;
-    padding: auto;
     border-radius: none;
   }
   @extend .hljs;
