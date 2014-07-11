@@ -1,20 +1,21 @@
 extends inclusion/base
 
 block content
-    :markdown
-        # Tips 'n Tricks
+    .long-content
+        :markdown
+            # Tips 'n Tricks
 
-        #### Try to avoid vertical pan/swipe
-        Vertical panning is used to scroll your page, and some (older) browsers don't send events so Hammer isn't
-        able to recognize these gestures. An option would be to provide an alternative way to do the same action.
+            ## Try to avoid vertical pan/swipe
+            Vertical panning is used to scroll your page, and some (older) browsers don't send events so Hammer isn't
+            able to recognize these gestures. An option would be to provide an alternative way to do the same action.
 
-        #### Test on a real device
-        Sometimes Hammer just needs some fine-tuning, like the swipe velocity or some other thresholds. Also,
-        for better performance your should try to keep you callbacks as simple as possible.
+            ## Test on a real device
+            Sometimes Hammer just needs some fine-tuning, like the swipe velocity or some other thresholds. Also,
+            for better performance your should try to keep you callbacks as simple as possible.
 
-        #### Disable tap highlight on Windows Phone
-        IE10 and IE11 on Windows Phone have a small tap highlight when you tap an element. Adding this meta tag
-        removes this.
-        ````html
-        <meta name="msapplication-tap-highlight" content="no" />
-        ````
+            ## Remove tap highlight on Windows Phone
+            IE10 and IE11 on Windows Phone have a small tap highlight when you tap an element. Adding this meta tag
+            removes this.
+            ````html
+            <meta name="msapplication-tap-highlight" content="no" />
+            ````
