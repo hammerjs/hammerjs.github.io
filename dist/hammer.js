@@ -384,10 +384,11 @@ function createInputInstance(manager) {
  * @param {Object} input
  */
 function inputHandler(manager, eventType, input) {
+
     var pointersLen = input.pointers.length;
     var changedPointersLen = input.changedPointers.length;
     var isFirst = (eventType & INPUT_START && (pointersLen - changedPointersLen === 0));
-    var isFinal = (eventType & INPUT_END && (pointersLen - changedPointersLen === 0));
+    var isFinal = (eventType & (INPUT_END | INPUT_CANCEL) && (pointersLen - changedPointersLen === 0));
 
     input.isFirst = isFirst;
     input.isFinal = isFinal;
@@ -401,6 +402,8 @@ function inputHandler(manager, eventType, input) {
 
     // compute scale, rotation etc
     computeInputData(manager, input);
+
+    manager.emit('hammer.input', input);
 
     manager.recognize(input);
 }
@@ -715,13 +718,13 @@ var IE10_POINTER_TYPE_ENUM = {
     5: INPUT_TYPE_KINECT // see https://twitter.com/jacobrossi/status/480596438489890816
 };
 
-var POINTER_ELEMENT_EVENTS = 'pointerdown pointermove pointerup pointercancel';
-var POINTER_WINDOW_EVENTS = 'pointerout';
+var POINTER_ELEMENT_EVENTS = 'pointerdown';
+var POINTER_WINDOW_EVENTS = 'pointermove pointerout pointerup pointercancel';
 
 // IE10 has prefixed support, and case-sensitive
 if (window.MSPointerEvent) {
-    POINTER_ELEMENT_EVENTS = 'MSPointerDown MSPointerMove MSPointerUp MSPointerCancel';
-    POINTER_WINDOW_EVENTS = 'MSPointerOut';
+    POINTER_ELEMENT_EVENTS = 'MSPointerDown';
+    POINTER_WINDOW_EVENTS = 'MSPointerMove MSPointerOut MSPointerUp MSPointerCancel';
 }
 
 /**
@@ -958,7 +961,7 @@ TouchAction.prototype = {
         if (NATIVE_TOUCH_ACTION) {
             this.manager.element.style[PREFIXED_TOUCH_ACTION] = value;
         }
-        this.actions = value.toLowerCase();
+        this.actions = value.toLowerCase().trim();
     },
 
     /**
@@ -973,16 +976,13 @@ TouchAction.prototype = {
      * @returns {String} value
      */
     compute: function() {
-        var value;
         var actions = [];
-
         each(this.manager.recognizers, function(recognizer) {
             if (boolOrFn(recognizer.options.enable, [recognizer])) {
                 actions = actions.concat(recognizer.getTouchAction());
             }
         });
-        value = uniqueArray(actions).join(' ');
-        return cleanTouchActions(value);
+        return cleanTouchActions(actions.join(' '));
     },
 
     /**
@@ -1036,15 +1036,20 @@ function cleanTouchActions(actions) {
     if (inStr(actions, TOUCH_ACTION_NONE)) {
         return TOUCH_ACTION_NONE;
     }
+
+    var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X);
+    var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y);
+
     // pan-x and pan-y can be combined
-    if (inStr(actions, TOUCH_ACTION_PAN_X) || inStr(actions, TOUCH_ACTION_PAN_Y)) {
-        return actions.replace(/[\-\w]+/g, function(action) {
-            if (/^pan\-/.test(action)) {
-                return action;
-            }
-            return '';
-        });
+    if (hasPanX && hasPanY) {
+        return TOUCH_ACTION_PAN_X + ' ' + TOUCH_ACTION_PAN_Y;
     }
+
+    // pan-x OR pan-y
+    if (hasPanX || hasPanY) {
+        return hasPanX ? TOUCH_ACTION_PAN_X : TOUCH_ACTION_PAN_Y;
+    }
+
     // manipulation
     if (inStr(actions, TOUCH_ACTION_MANIPULATION)) {
         return TOUCH_ACTION_MANIPULATION;
@@ -1525,7 +1530,7 @@ inherit(PinchRecognizer, AttrRecognizer, {
     },
 
     getTouchAction: function() {
-        return [TOUCH_ACTION_PAN_X, TOUCH_ACTION_PAN_Y];
+        return [TOUCH_ACTION_NONE];
     },
 
     attrTest: function(input) {
@@ -1946,8 +1951,8 @@ function Manager(element, options) {
 
     each(options.recognizers, function(item) {
         var recognizer = this.add(new (item[0])(item[1]));
-        item[2] && each(item[2], recognizer.recognizeWith, recognizer);
-        item[3] && each(item[3], recognizer.requireFailure, recognizer);
+        item[2] && recognizer.recognizeWith(item[2]);
+        item[3] && recognizer.requireFailure(item[2]);
     }, this);
 }
 
