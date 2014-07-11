@@ -44,9 +44,9 @@ doubletap/pinch zoom. More recent browsers that support the touch-action propert
 control about the gestures that are being recognized.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> myOptions = { };
 <span class="hljs-keyword">var</span> mc = <span class="hljs-keyword">new</span> Hammer.Manager(myElement, myOptions);
-    mc.add(<span class="hljs-keyword">new</span> Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: <span class="hljs-number">0</span> }));
-    mc.add(<span class="hljs-keyword">new</span> Hammer.Tap({ event: <span class="hljs-string">'quadrupletap'</span>, taps: <span class="hljs-number">4</span> }));
-    mc.on(<span class="hljs-string">"pan"</span>, handlePan);
+mc.add(<span class="hljs-keyword">new</span> Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: <span class="hljs-number">0</span> }));
+mc.add(<span class="hljs-keyword">new</span> Hammer.Tap({ event: <span class="hljs-string">'quadrupletap'</span>, taps: <span class="hljs-number">4</span> }));
+mc.on(<span class="hljs-string">"pan"</span>, handlePan);
 mc.on(<span class="hljs-string">"quadrupletap"</span>, handleTaps);
 </code></pre>
 <p>The example above creates an instance containing a <code>pan</code> and a <code>quadrupletap</code> gesture. The recognizer instances you

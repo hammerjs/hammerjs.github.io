@@ -44,9 +44,9 @@ block content
         ````js
         var myOptions = { };
         var mc = new Hammer.Manager(myElement, myOptions);
-            mc.add(new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }));
-            mc.add(new Hammer.Tap({ event: 'quadrupletap', taps: 4 }));
-            mc.on("pan", handlePan);
+        mc.add(new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }));
+        mc.add(new Hammer.Tap({ event: 'quadrupletap', taps: 4 }));
+        mc.on("pan", handlePan);
         mc.on("quadrupletap", handleTaps);
         ````
         The example above creates an instance containing a `pan` and a `quadrupletap` gesture. The recognizer instances you
