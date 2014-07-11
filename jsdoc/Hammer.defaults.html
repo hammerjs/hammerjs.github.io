@@ -920,7 +920,7 @@
 </div>
 
     <div class="main">
-        <h1 class="page-title" data-filename="MouseInput.html">Class: MouseInput</h1>
+        <h1 class="page-title" data-filename="Hammer.defaults.html">Namespace: defaults</h1>
         
 
 
@@ -929,7 +929,9 @@
     
 <header>
     <h2>
-    MouseInput
+        <span class="ancestors"><a href="Hammer.html">Hammer</a>.</span>
+    
+    defaults
     </h2>
     
 </header>  
@@ -940,37 +942,10 @@
     
     
         
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="MouseInput">
-            
-            new MouseInput<span class="signature">()</span>
-        </h4>
-    
+            <div class="description"><p>default settings</p></div>
         
-        <div class="tag-source">
-            <a href="mouse.js.html">input/mouse.js</a>, <a href="mouse.js.html#line16">line 16</a>
-        </div>
         
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>Mouse events input</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-    
-    
+        
 <dl class="details">
     
         
@@ -995,76 +970,46 @@
     
 </dl>
 
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
+        
+        
     
     </div>
     
     
-        <h3 class="subsection-title">Extends</h3>
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Namespaces</h3>
         
-        <ul>
-            <li><a href="Input.html">Input</a></li>
-        </ul>
+        <dl>
+            <dt><a href="namespaces.html#Hammer.defaults.cssProps"><a href="Hammer.defaults.cssProps.html">cssProps</a></a></dt>
+            <dd></dd>
+        </dl>
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
         
         <dl>
             
 <dt>
-    <div class="nameContainer inherited">
-        <h4 class="name" id="destroy">
-            
-                <span class="inherited"><a href="Input.html#destroy">inherited</a></span>
-            
-            destroy<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line66">line 66</a>
-        </div>
-        
+    <div class="nameContainer">
+        <h4 class="name" id="domEvents"><span class="type-signature static">static</span>Hammer.defaults.domEvents<span class="type-signature type boolean">Boolean</span> </h4>
     </div>
-
+    
     
 </dt>
 <dd>
     
-    
     <div class="description">
-        <p>unbind the events</p>
+        <p>set if DOM events are being triggered.
+But this is slower and unused by simple implementations, so disabled by default.</p>
     </div>
-    
-
-    
-    
-    
-    
     
     
     
@@ -1084,6 +1029,9 @@
     
     
     
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>false</li></ul></dd>
+    
     
     
     
@@ -1092,16 +1040,6 @@
     
 </dl>
 
-    
-    
-
-    
-
-    
-    
-    
-    
-    
     
     
 </dd>
@@ -1109,35 +1047,62 @@
         
             
 <dt>
-    <div class="nameContainer inherited">
-        <h4 class="name" id="handler">
-            
-                <span class="inherited"><a href="Input.html#handler">inherited</a></span>
-            
-            <span class="type-signature ">abstract</span>handler<span class="signature">()</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line61">line 61</a>
-        </div>
-        
+    <div class="nameContainer">
+        <h4 class="name" id="enable"><span class="type-signature static">static</span>Hammer.defaults.enable<span class="type-signature type boolean">Boolean</span> </h4>
     </div>
-
+    
     
 </dt>
 <dd>
     
     
-    <div class="description">
-        <p>should handle the inputEvent data and trigger the callback</p>
-    </div>
+    
+<dl class="details">
+    
+        
+    
+    
     
 
     
     
     
     
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>true</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="preset"><span class="type-signature static">static</span>Hammer.defaults.preset<span class="type-signature type array">Array</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Default recognizer setup when calling <code>Hammer()</code>
+When creating a new Manager these will be skipped.</p>
+    </div>
     
     
     
@@ -1167,19 +1132,60 @@
 
     
     
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="touchAction"><span class="type-signature static">static</span>Hammer.defaults.touchAction<span class="type-signature type string">String</span> </h4>
+    </div>
+    
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>The value for the touchAction property/fallback.
+When set to <code>compute</code> it will magically set the correct value based on the added recognizers.</p>
+    </div>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
 
     
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy"><li>compute</li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
-    
-    
-    
-    
-    
     
     
 </dd>
 
         </dl>
+    
+    
     
     
     
