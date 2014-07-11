@@ -24,7 +24,7 @@ Hammer doesn&#39;t have any dependencies, and it&#39;s small, only <strong>3.7 k
 <hr>
 <h3 id="usage">Usage</h3>
 <p>It&#39;s easy to use, just include the library and create a new instance.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> hammertime = <span class="hljs-keyword">new</span> Hammer(element, options);
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> hammertime = <span class="hljs-keyword">new</span> Hammer(myElement, myOptions);
 hammertime.on(<span class="hljs-string">'pan'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ev)</span> </span>{
     <span class="hljs-built_in">console</span>.log(ev);
 });
@@ -42,10 +42,11 @@ doubletap/pinch zoom. More recent browsers that support the touch-action propert
 <h3 id="more-control">More control</h3>
 <p>You can setup your own set of recognizers for your instance. This requires a bit more code, but it gives you more
 control about the gestures that are being recognized.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> myOptions = { };
-<span class="hljs-keyword">var</span> mc = <span class="hljs-keyword">new</span> Hammer.Manager(myElement, myOptions);
-mc.add(<span class="hljs-keyword">new</span> Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: <span class="hljs-number">0</span> }));
-mc.add(<span class="hljs-keyword">new</span> Hammer.Tap({ event: <span class="hljs-string">'quadrupletap'</span>, taps: <span class="hljs-number">4</span> }));
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> mc = <span class="hljs-keyword">new</span> Hammer.Manager(myElement, myOptions);
+
+mc.add( <span class="hljs-keyword">new</span> Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: <span class="hljs-number">0</span> }) );
+mc.add( <span class="hljs-keyword">new</span> Hammer.Tap({ event: <span class="hljs-string">'quadrupletap'</span>, taps: <span class="hljs-number">4</span> }) );
+
 mc.on(<span class="hljs-string">"pan"</span>, handlePan);
 mc.on(<span class="hljs-string">"quadrupletap"</span>, handleTaps);
 </code></pre>

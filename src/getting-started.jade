@@ -18,7 +18,7 @@ block content
 
         It's easy to use, just include the library and create a new instance.
         ````js
-        var hammertime = new Hammer(element, options);
+        var hammertime = new Hammer(myElement, myOptions);
         hammertime.on('pan', function(ev) {
             console.log(ev);
         });
@@ -42,10 +42,11 @@ block content
         You can setup your own set of recognizers for your instance. This requires a bit more code, but it gives you more
         control about the gestures that are being recognized.
         ````js
-        var myOptions = { };
         var mc = new Hammer.Manager(myElement, myOptions);
-        mc.add(new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }));
-        mc.add(new Hammer.Tap({ event: 'quadrupletap', taps: 4 }));
+
+        mc.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
+        mc.add( new Hammer.Tap({ event: 'quadrupletap', taps: 4 }) );
+
         mc.on("pan", handlePan);
         mc.on("quadrupletap", handleTaps);
         ````
