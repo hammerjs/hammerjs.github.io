@@ -33,8 +33,7 @@ the recognizer set as defined in <code>Hammer.defaults.preset</code> will be add
 </code></pre>
 <hr>
 <h2 id="hammer-defaults">Hammer.defaults</h2>
-<p>The <code>touchAction</code> option accepts the <code>auto</code>, <code>pan-y</code>, <code>pan-x</code> and <code>none</code> values, just like the css property. By default
-it is set to <code>compute</code>, which computes the correct touchAction property based on the added recognizers.</p>
+<p>The defaults when creating an instance that are merged being with your options.</p>
 <h3 id="touchaction-compute-">touchAction: &#39;compute&#39;</h3>
 <p>Accepts the <code>compute</code>, <code>auto</code>, <code>pan-y</code>, <code>pan-x</code> and <code>none</code> values. The default option will choose the
 correct value for you, based on the recognizers.</p>
@@ -43,7 +42,8 @@ correct value for you, based on the recognizers.</p>
 <h3 id="enable-true">enable: true</h3>
 <p>Acceps a boolean, or an function that should return a boolean which is.</p>
 <h3 id="cssprops-">cssProps: {....}</h3>
-<p>A collection of css properties that improve the handling of the input events.</p>
+<p>A collection of css properties that improve the handling of the input events. For details <a href="/jsdoc/Hammer.defaults.cssProps.html">take a look at
+the JSDoc.</a></p>
 <h3 id="preset-">preset: [....]</h3>
 <p>Default recognizer setup when calling <code>Hammer()</code>. When creating a new Manager these will be skipped.</p>
 <p>By default it adds a set of <code>tap</code>, <code>doubletap</code>, <code>press</code>, <em>horizontal</em> <code>pan</code> and <code>swipe</code>, and the

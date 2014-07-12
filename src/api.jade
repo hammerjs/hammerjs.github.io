@@ -30,8 +30,7 @@ block content
             ---
 
             ## Hammer.defaults
-            The `touchAction` option accepts the `auto`, `pan-y`, `pan-x` and `none` values, just like the css property. By default
-            it is set to `compute`, which computes the correct touchAction property based on the added recognizers.
+            The defaults when creating an instance that are merged being with your options.
 
             ### touchAction: 'compute'
             Accepts the `compute`, `auto`, `pan-y`, `pan-x` and `none` values. The default option will choose the
@@ -44,7 +43,8 @@ block content
             Acceps a boolean, or an function that should return a boolean which is.
 
             ### cssProps: {....}
-            A collection of css properties that improve the handling of the input events.
+            A collection of css properties that improve the handling of the input events. For details [take a look at
+            the JSDoc.](/jsdoc/Hammer.defaults.cssProps.html)
 
             ### preset: [....]
             Default recognizer setup when calling `Hammer()`. When creating a new Manager these will be skipped.
