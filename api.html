@@ -28,20 +28,23 @@ contains <code>tap</code>, <code>doubletap</code>, <code>pan</code>, <code>swipe
 <p>Just your element, and options. the options will be merged with Hammer.defaults. Also,
 the recognizer set as defined in <code>Hammer.defaults.preset</code> will be added.</p>
 <p>If you&#39;ll pass an empty <code>recognizer</code> option, no initial recognizers will be added.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> myElement = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'hitarea'</span>);
+<span class="hljs-keyword">var</span> mc = <span class="hljs-keyword">new</span> Hammer(myElement);
+</code></pre>
 <hr>
 <h2 id="hammer-defaults">Hammer.defaults</h2>
 <p>The <code>touchAction</code> option accepts the <code>auto</code>, <code>pan-y</code>, <code>pan-x</code> and <code>none</code> values, just like the css property. By default
 it is set to <code>compute</code>, which computes the correct touchAction property based on the added recognizers.</p>
-<h3 id="touchaction-compute-">touchAction (compute)</h3>
+<h3 id="touchaction-compute-">touchAction: &#39;compute&#39;</h3>
 <p>Accepts the <code>compute</code>, <code>auto</code>, <code>pan-y</code>, <code>pan-x</code> and <code>none</code> values. The default option will choose the
 correct value for you, based on the recognizers.</p>
-<h3 id="domevents-false-">domEvents (false)</h3>
+<h3 id="domevents-false">domEvents: false</h3>
 <p>Let Hammer also fire DOM events. This is a bit slower, so disabled by default.</p>
-<h3 id="enable-true-">enable (true)</h3>
+<h3 id="enable-true">enable: true</h3>
 <p>Acceps a boolean, or an function that should return a boolean which is.</p>
-<h3 id="cssprops-object-">cssProps (object...)</h3>
+<h3 id="cssprops-">cssProps: {....}</h3>
 <p>A collection of css properties that improve the handling of the input events.</p>
-<h3 id="preset-array-">preset (array...)</h3>
+<h3 id="preset-">preset: [....]</h3>
 <p>Default recognizer setup when calling <code>Hammer()</code>. When creating a new Manager these will be skipped.</p>
 <p>By default it adds a set of <code>tap</code>, <code>doubletap</code>, <code>press</code>, <em>horizontal</em> <code>pan</code> and <code>swipe</code>, and the
 multi-touch <code>pinch</code> and <code>rotate</code> recognizers. The pinch and rotate recognizers are disabled by default
@@ -52,26 +55,46 @@ because they would make the element blocking.</p>
 event listeners, and sets the touch-action property for you on the element.</p>
 <h3 id="constructor-htmlelement-options-">constructor(HTMLElement, [options])</h3>
 <p>Just your element, and options. the options will be merged with Hammer.defaults.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> mc = <span class="hljs-keyword">new</span> Hammer.Manager(myElement);
+</code></pre>
 <p>You can setup an initial recognizer set with the option <code>recognizers</code>. The Array should be structured
 like this;</p>
-<pre><code class="lang-js">[
-    <span class="hljs-comment">// RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]</span>
-    [Hammer.Rotate],
-    [Hammer.Pinch, { enable: <span class="hljs-literal">false</span> }, [<span class="hljs-string">'rotate'</span>]],
-    [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
-]
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> mc = <span class="hljs-keyword">new</span> Hammer.Manager(myElement, {
+    recognizers: [
+        <span class="hljs-comment">// RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]</span>
+        [Hammer.Rotate],
+        [Hammer.Pinch, { enable: <span class="hljs-literal">false</span> }, [<span class="hljs-string">'rotate'</span>]],
+        [Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
+    ]
+});
 </code></pre>
 <h3 id="-set-options-">.set(options)</h3>
 <p>Change an option on the manager instance. Using this method is recommended,
 because it will update the <code>touchAction</code> value if needed.</p>
-<h3 id="-add-recognizer-get-recognizer-and-remove-recognizer-">.add(Recognizer), .get(Recognizer) and .remove(Recognizer)</h3>
+<pre><code class="lang-js">mc.set({ enable: <span class="hljs-literal">true</span> });
+</code></pre>
+<h3 id="-add-recognizer-get-string-and-remove-recognizer-">.add(Recognizer), .get(string) and .remove(Recognizer)</h3>
 <p>Add a new <code>Recognizer</code> instance to the Manager. The order of adding is also the order of the recognizers being
 executed. Just like the <code>get</code> method, it returns the added <code>Recognizer</code> instance.
 The <code>get</code> and <code>remove</code> methods takes the event name (from a recognizer) or a recognizer instance as an argument.</p>
 <p>Add and remove also accept an array of recognizers.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// add the recognizer and returns it, so you can chain the recognizer's methods</span>
+mc.add(myPinchRecognizer);
+
+<span class="hljs-comment">// adds all recognizers in the array</span>
+mc.add([mySecondRecogizner, myThirdRecognizer]);
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">// both return instance of myPinchRecognizer</span>
+mc.get(<span class="hljs-string">'pinch'</span>);
+mc.get(myPinchRecognizer);
+</code></pre>
 <h3 id="-on-events-handler-and-off-events-handler-">.on(events, handler) and .off(events, [handler])</h3>
 <p>Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events seperated
 by a space.</p>
+<pre><code class="lang-js">mc.on(<span class="hljs-string">"pinch"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ev)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(ev.scale);
+});
+</code></pre>
 <h3 id="-stop-force-">.stop([force])</h3>
 <p>Stop recognizing for the current input session. When forced, the recognizer cycle is stopped immediately.</p>
 <h3 id="-destroy-">.destroy()</h3>
@@ -82,6 +105,9 @@ by a space.</p>
 which is a boolean value or a callback function to enable/disable the recognizer on the fly.</p>
 <h3 id="constructor-options-">constructor([options])</h3>
 <p>Just set the options.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> pinch = <span class="hljs-keyword">new</span> Hammer.Pinch();
+mc.add(pinch); <span class="hljs-comment">// add it to the Manager instance</span>
+</code></pre>
 <h3 id="-set-options-">.set(options)</h3>
 <p>Change an option on the recognizer instance. Using this method is recommended,
 because it will update the <code>touchAction</code> value if needed.</p>
@@ -101,8 +127,12 @@ recognizer, not on the other recognizer. Both accept an array of recognizers.</p
 </ul>
 <hr>
 <h2 id="constants">Constants</h2>
-<p>All constants are defined at the <code>Hammer</code> object.</p>
+<p>All constants are defined at the <code>Hammer</code> object. Since it are binary flags,
+you can use bitwise operators on it. MDN has some excellent
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators">documentation</a>
+about this.</p>
 <h3 id="directions">Directions</h3>
+<p>Used for setting the direction of a recognizer, and for reading the value of an event.</p>
 <table>
 <thead>
 <tr>
@@ -146,6 +176,7 @@ recognizer, not on the other recognizer. Both accept an array of recognizers.</p
 </tbody>
 </table>
 <h3 id="input-events">Input Events</h3>
+<p>Hammer maps all types of input (mousedown, mousemove, touchmove, pointercancel) to these contants.</p>
 <table>
 <thead>
 <tr>
@@ -173,6 +204,7 @@ recognizer, not on the other recognizer. Both accept an array of recognizers.</p
 </tbody>
 </table>
 <h3 id="recognizer-states">Recognizer States</h3>
+<p>Used internally by the recognizers to define its state.</p>
 <table>
 <thead>
 <tr>
@@ -213,16 +245,57 @@ recognizer, not on the other recognizer. Both accept an array of recognizers.</p
 </table>
 <hr>
 <h2 id="utils">Utils</h2>
-<h3 id="hammer-on-htmlelement-types-handler-">Hammer.on(HTMLElement, types, handler)</h3>
+<h3 id="hammer-on-element-types-handler-">Hammer.on(element, types, handler)</h3>
 <p>Wrapper around <code>addEventListener</code> that accepts multiple event types.</p>
-<h3 id="hammer-off-htmlelement-types-handler-">Hammer.off(HTMLElement, types, handler)</h3>
-<p>Wrapper around <code>removeEventListener</code> that accepts multiple event types.</p>
+<pre><code class="lang-js">Hammer.on(<span class="hljs-built_in">window</span>, <span class="hljs-string">"load resize scroll"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ev)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(ev.type);
+});
+</code></pre>
+<h3 id="hammer-off-element-types-handler-">Hammer.off(element, types, handler)</h3>
+<p>Like <code>Hammer.on</code>, this is a wrapper around <code>removeEventListener</code> that accepts multiple event types.</p>
 <h3 id="hammer-each-obj-handler-">Hammer.each(obj, handler)</h3>
-<p>Iterate an object or array.</p>
+<p>Iterate an array or an object&#39;s own properties.</p>
+<pre><code class="lang-js">Hammer.each([<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item, index, src)</span> </span>{
+});
+
+Hammer.each({a:<span class="hljs-number">10</span>, b:<span class="hljs-number">20</span>, c:<span class="hljs-number">30</span>}, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item, key, src)</span> </span>{
+});
+</code></pre>
 <h3 id="hammer-merge-obj1-obj2-">Hammer.merge(obj1, obj2)</h3>
 <p>Merge properties from obj2 into obj1. Properties won&#39;t be overwritten.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> options = {
+    b: <span class="hljs-literal">false</span>
+};
+
+<span class="hljs-keyword">var</span> defaults = {
+    a: <span class="hljs-literal">true</span>,
+    b: <span class="hljs-literal">true</span>,
+    c: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+};
+Hammer.merge(options, defaults);
+
+<span class="hljs-comment">// options.a == true</span>
+<span class="hljs-comment">// options.b == false</span>
+<span class="hljs-comment">// options.c == [1,2,3]</span>
+</code></pre>
 <h3 id="hammer-extend-obj1-obj2-">Hammer.extend(obj1, obj2)</h3>
 <p>Extend obj1 with the properties from obj2. Properties will be overwritten.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> obj1 = {
+    a: <span class="hljs-literal">true</span>,
+    b: <span class="hljs-literal">false</span>,
+    c: [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]
+};
+
+<span class="hljs-keyword">var</span> obj2 = {
+    b: <span class="hljs-literal">true</span>,
+    c: [<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>]
+};
+Hammer.extend(obj1, obj2);
+
+<span class="hljs-comment">// obj1.a == true</span>
+<span class="hljs-comment">// obj1.b == true</span>
+<span class="hljs-comment">// obj1.c == [4,5,6]</span>
+</code></pre>
 <h3 id="hammer-inherit-child-base-properties-">Hammer.inherit(child, base, [properties])</h3>
 <p>Simple class inheritance.</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Animal</span><span class="hljs-params">(name)</span> </span>{
@@ -244,9 +317,20 @@ dog.bark();
 </code></pre>
 <h3 id="hammer-bindfn-fn-scope-">Hammer.bindFn(fn, scope)</h3>
 <p>Simple alternative for <code>Function.bind</code>.</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span><span class="hljs-params">(ev)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span> === myContext); <span class="hljs-comment">// is true</span>
+}
+
+<span class="hljs-keyword">var</span> myContext = {
+    a: <span class="hljs-literal">true</span>,
+    b: <span class="hljs-literal">false</span>
+};
+
+<span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'load'</span>, Hammer.bindFn(myFunction, myContext), <span class="hljs-literal">false</span>);
+</code></pre>
 <h3 id="hammer-prefixed-obj-name-">Hammer.prefixed(obj, name)</h3>
 <p>Get the (prefixed) property from the browser.</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> userSelect = Hammer.prefixed(<span class="hljs-built_in">document</span>.body.style, <span class="hljs-string">'userSelect'</span>);
-<span class="hljs-built_in">console</span>.log(userSelect); <span class="hljs-comment">// webkitUserSelect on Chrome 35</span>
+<pre><code class="lang-js">Hammer.prefixed(<span class="hljs-built_in">document</span>.body.style, <span class="hljs-string">'userSelect'</span>);
+<span class="hljs-comment">// returns "webkitUserSelect" on Chrome 35</span>
 </code></pre>
 </div></div></div><div class="footer"><div class="row"><div class="column"><hr><p class="clearfix"><a href="http://eight.nl" class="right"><img src="/assets/img/eight.png" width="80"></a><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=hammerjs&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></p></div></div></div><script src="dist/hammer.js"></script><script src="assets/js/index.js"></script></body></html>
