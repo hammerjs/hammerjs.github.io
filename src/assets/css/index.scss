@@ -27,6 +27,17 @@ code {
   border-radius: 3px;
 }
 
+blockquote {
+  padding: 10px 15px;
+  border: solid 1px #ddd;
+  font-size: 90%;
+
+  p { font-size: 1em; }
+
+  :first-child { margin-top: 0; }
+  :last-child { margin-bottom: 0; }
+}
+
 pre {
   font-size: 13px;
   line-height: 18px;
