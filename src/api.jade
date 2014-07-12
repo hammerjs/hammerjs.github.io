@@ -86,24 +86,27 @@ block content
             mc.set({ enable: true });
             ````
 
-            ### .add(Recognizer), .get(string) and .remove(Recognizer)
+            ### .get(string), .add(Recognizer) and .remove(Recognizer)
             Add a new `Recognizer` instance to the Manager. The order of adding is also the order of the recognizers being
             executed. Just like the `get` method, it returns the added `Recognizer` instance.
             The `get` and `remove` methods takes the event name (from a recognizer) or a recognizer instance as an argument.
 
             Add and remove also accept an array of recognizers.
             ````js
-            // add the recognizer and returns it, so you can chain the recognizer's methods
-            mc.add(myPinchRecognizer);
+            // both return instance of myPinchRecognizer
+            mc.get('pinch');
+            mc.get(myPinchRecognizer);
+            ````
 
-            // adds all recognizers in the array
+            ````js
+            mc.add(myPinchRecognizer); // returns the recognizer
             mc.add([mySecondRecogizner, myThirdRecognizer]);
             ````
 
             ````js
-            // both return instance of myPinchRecognizer
-            mc.get('pinch');
-            mc.get(myPinchRecognizer);
+            mc.remove(myPinchRecognizer);
+            mc.remove('rotate');
+            mc.remove([myPinchRecognizer, 'rotate']);
             ````
 
             ### .on(events, handler) and .off(events, [handler])
@@ -142,11 +145,19 @@ block content
             combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
             connection only removes the link on the recognizer, not on the other recognizer. Both accept an
             array of recognizers.
+
+            If the recognizer is added to a manager, then this method also accepts the other recognizer's event name
+            as a string.
+
             - [Read more about recognizeWith](recognize-with.html)
 
             ### .requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)
             Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
             recognizer, not on the other recognizer. Both accept an array of recognizers.
+
+            If the recognizer is added to a manager, then this method also accepts the other recognizer's event name
+            as a string.
+
             - [Read more about requireFailure](require-failure.html)
 
             ---

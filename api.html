@@ -73,20 +73,21 @@ like this;</p>
 because it will update the <code>touchAction</code> value if needed.</p>
 <pre><code class="lang-js">mc.set({ enable: <span class="hljs-literal">true</span> });
 </code></pre>
-<h3 id="-add-recognizer-get-string-and-remove-recognizer-">.add(Recognizer), .get(string) and .remove(Recognizer)</h3>
+<h3 id="-get-string-add-recognizer-and-remove-recognizer-">.get(string), .add(Recognizer) and .remove(Recognizer)</h3>
 <p>Add a new <code>Recognizer</code> instance to the Manager. The order of adding is also the order of the recognizers being
 executed. Just like the <code>get</code> method, it returns the added <code>Recognizer</code> instance.
 The <code>get</code> and <code>remove</code> methods takes the event name (from a recognizer) or a recognizer instance as an argument.</p>
 <p>Add and remove also accept an array of recognizers.</p>
-<pre><code class="lang-js"><span class="hljs-comment">// add the recognizer and returns it, so you can chain the recognizer's methods</span>
-mc.add(myPinchRecognizer);
-
-<span class="hljs-comment">// adds all recognizers in the array</span>
-mc.add([mySecondRecogizner, myThirdRecognizer]);
-</code></pre>
 <pre><code class="lang-js"><span class="hljs-comment">// both return instance of myPinchRecognizer</span>
 mc.get(<span class="hljs-string">'pinch'</span>);
 mc.get(myPinchRecognizer);
+</code></pre>
+<pre><code class="lang-js">mc.add(myPinchRecognizer); <span class="hljs-comment">// returns the recognizer</span>
+mc.add([mySecondRecogizner, myThirdRecognizer]);
+</code></pre>
+<pre><code class="lang-js">mc.remove(myPinchRecognizer);
+mc.remove(<span class="hljs-string">'rotate'</span>);
+mc.remove([myPinchRecognizer, <span class="hljs-string">'rotate'</span>]);
 </code></pre>
 <h3 id="-on-events-handler-and-off-events-handler-">.on(events, handler) and .off(events, [handler])</h3>
 <p>Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events seperated
@@ -116,12 +117,16 @@ because it will update the <code>touchAction</code> value if needed.</p>
 combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
 connection only removes the link on the recognizer, not on the other recognizer. Both accept an
 array of recognizers.</p>
+<p>If the recognizer is added to a manager, then this method also accepts the other recognizer&#39;s event name
+as a string.</p>
 <ul>
 <li><a href="recognize-with.html">Read more about recognizeWith</a></li>
 </ul>
 <h3 id="-requirefailure-otherrecognizer-and-droprequirefailure-otherrecognizer-">.requireFailure(otherRecognizer) and .dropRequireFailure(otherRecognizer)</h3>
 <p>Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
 recognizer, not on the other recognizer. Both accept an array of recognizers.</p>
+<p>If the recognizer is added to a manager, then this method also accepts the other recognizer&#39;s event name
+as a string.</p>
 <ul>
 <li><a href="require-failure.html">Read more about requireFailure</a></li>
 </ul>
