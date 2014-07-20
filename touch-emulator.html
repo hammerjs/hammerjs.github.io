@@ -11,13 +11,18 @@
 </form>
 
 
-</div></div></div><div class="medium-9 columns"><h1 id="jquery-plugin">jQuery plugin</h1>
-<p>A small jQuery plugin is available, and is just a small wrapper around the <code>Hammer()</code> class.
-It also extends the <code>Manager.emit</code> method by triggering jQuery events.</p>
-<pre><code class="lang-js">$(element).hammer(options).bind(<span class="hljs-string">"pan"</span>, myPanHandler);
+</div></div></div><div class="medium-9 columns"><h1 id="emulate-touch-on-a-desktop">Emulate touch on a desktop</h1>
+<p>A debug tool is available to emulate touch support in the browser. It fires real touch events as
+<a href="http://www.w3.org/TR/touch-events">specified by W3C</a>. When pressing the <code>shift</code> key,
+you can also use multi-touch events like pinch and rotate.</p>
+<h3 id="usage">Usage</h3>
+<p>Using it is simple. Just include the javascript file, and call the <code>Emulator()</code> function before
+any other libraries that does something with the touch input.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"../../touch-emulator.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript"> TouchEmulator(); </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
-<p>The Hammer instance is stored at <code>$element.data(&quot;hammer&quot;)</code>.</p>
+<p>Download the script from the repo, or just run <code>bower install hammer-touchemulator</code>.</p>
 <ul>
-<li><a href="https://github.com/hammerjs/jquery.hammer.js">Get the plugin at GitHub</a></li>
+<li><a href="https://github.com/hammerjs/touchemulator">GitHub.com/hammerjs/touchemulator</a></li>
 </ul>
 </div></div><div class="footer"><div class="row"><div class="column"><hr><p class="clearfix"><a href="http://eight.nl" class="right"><img src="/assets/img/eight.png" width="80"></a><a href="//twitter.com/share" data-text="Stop, hammertime! Touch gestures for your webapp #touch #javascript #hammerjs" class="twitter-share-button">Tweet</a><iframe src="//ghbtns.com/github-btn.html?user=hammerjs&amp;repo=hammer.js&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></p></div></div></div><script src="dist/hammer.js"></script><script src="assets/js/index.js"></script></body></html>
