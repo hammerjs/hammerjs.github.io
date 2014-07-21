@@ -30,10 +30,16 @@ block content
 
         By default it adds a set of `tap`, `doubletap`, `press`, _horizontal_ `pan` and `swipe`, and the
         multi-touch `pinch` and `rotate` recognizers. The pinch and rotate recognizers are disabled by default
-        because they would make the element blocking, but you can enable them by calling
+        because they would make the element blocking, but you can enable them by calling:
         ````js
         hammertime.get('pinch').set({ enable: true });
         hammertime.get('rotate').set({ enable: true });
+        ````
+
+        Enabling vertical or all directions for the `pan` and `swipe` recognizers:
+        ````js
+        hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+        hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
         ````
 
         Also the viewport meta tag is recommended, it gives more control back to the webpage by disableing the

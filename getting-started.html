@@ -36,9 +36,13 @@ hammertime.on(<span class="hljs-string">'pan'</span>, <span class="hljs-function
 </code></pre>
 <p>By default it adds a set of <code>tap</code>, <code>doubletap</code>, <code>press</code>, <em>horizontal</em> <code>pan</code> and <code>swipe</code>, and the
 multi-touch <code>pinch</code> and <code>rotate</code> recognizers. The pinch and rotate recognizers are disabled by default
-because they would make the element blocking, but you can enable them by calling</p>
+because they would make the element blocking, but you can enable them by calling:</p>
 <pre><code class="lang-js">hammertime.get(<span class="hljs-string">'pinch'</span>).set({ enable: <span class="hljs-literal">true</span> });
 hammertime.get(<span class="hljs-string">'rotate'</span>).set({ enable: <span class="hljs-literal">true</span> });
+</code></pre>
+<p>Enabling vertical or all directions for the <code>pan</code> and <code>swipe</code> recognizers:</p>
+<pre><code class="lang-js">hammertime.get(<span class="hljs-string">'pan'</span>).set({ direction: Hammer.DIRECTION_ALL });
+hammertime.get(<span class="hljs-string">'swipe'</span>).set({ direction: Hammer.DIRECTION_VERTICAL });
 </code></pre>
 <p>Also the viewport meta tag is recommended, it gives more control back to the webpage by disableing the
 doubletap/pinch zoom. More recent browsers that support the touch-action property don&#39;t require this.</p>
