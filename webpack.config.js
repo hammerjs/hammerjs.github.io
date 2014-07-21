@@ -5,17 +5,13 @@ module.exports = {
     entry: {
         index: './src/assets/js/index.js'
     },
-    devtool: 'source-map',
     output: {
         path: "./assets/js/",
-        publicPath: "/assets/js/",
+        publicPath: "/",
         filename: "[name].js"
     },
     resolve: {
         modulesDirectories: ["./node_modules", "./bower_components"],
         extensions: ["", ".js"]
-    },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin()
-    ]
+    }
 };
