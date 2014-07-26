@@ -1,6 +1,6 @@
 /**
- * kind of messy code, but good enough for now
- */
+* kind of messy code, but good enough for now
+*/
 // polyfill
 var reqAnimationFrame = (function () {
     return window[Hammer.prefixed(window, 'requestAnimationFrame')] || function (callback) {
@@ -8,41 +8,54 @@ var reqAnimationFrame = (function () {
     };
 })();
 
+var screen = document.querySelector(".device-screen");
 var el = document.querySelector("#hitarea");
 
-var startX = Math.round((el.parentNode.offsetWidth - el.offsetWidth) / 2);
-var startY = Math.round((el.parentNode.offsetHeight - el.offsetHeight) / 2);
+var START_X = Math.round((screen.offsetWidth - el.offsetWidth) / 2);
+var START_Y = Math.round((screen.offsetHeight - el.offsetHeight) / 2);
 
 var ticking = false;
 var transform;
+var timer;
 
-var mc = new Hammer(el);
+var mc = new Hammer.Manager(el);
 
-mc.get('pinch').set({ enable: true });
-mc.get('rotate').set({ enable: true });
+mc.add(new Hammer.Pan({ threshold: 0, pointers: 0 }));
 
-mc.on("pan", onPan);
+mc.add(new Hammer.Swipe()).recognizeWith(mc.get('pan'));
+mc.add(new Hammer.Rotate({ threshold: 0 })).recognizeWith(mc.get('pan'));
+mc.add(new Hammer.Pinch({ threshold: 0 })).recognizeWith([mc.get('pan'), mc.get('rotate')]);
+
+mc.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+mc.add(new Hammer.Tap());
+
+mc.on("panstart panmove", onPan);
+mc.on("rotatestart rotatemove", onRotate);
+mc.on("pinchstart pinchmove", onPinch);
 mc.on("swipe", onSwipe);
-mc.on("rotate", onRotate);
-mc.on("pinch", onPinch);
 mc.on("tap", onTap);
 mc.on("doubletap", onDoubleTap);
-mc.on("hold", onHold);
 
-mc.on("panstart rotatestart pinchstart", resetElementStart);
-mc.on("panend rotateend pinchend pancancel rotatecancel pinchcancel", resetElementEnd);
+mc.on("hammer.input", function(ev) {
+    if(ev.isFinal) {
+        resetElement();
+    }
+});
 
-function resetElementStart() {
-    el.className = '';
+function logEvent(ev) {
+    el.innerText = ev.type;
 }
 
-function resetElementEnd() {
-    transform = {
-        translate: { x: startX, y: startY },
-        scale: 1,
-        rotate: 0
-    };
+function resetElement() {
     el.className = 'animate';
+    transform = {
+        translate: { x: START_X, y: START_Y },
+        scale: 1,
+        angle: 0,
+        rx: 0,
+        ry: 0,
+        rz: 0
+    };
     requestElementUpdate();
 }
 
@@ -50,74 +63,104 @@ function updateElementTransform() {
     var value = [
         'translate3d(' + transform.translate.x + 'px, ' + transform.translate.y + 'px, 0)',
         'scale(' + transform.scale + ', ' + transform.scale + ')',
-        'rotate(' + transform.rotate + 'deg)'];
-    el.style.webkitTransform = el.style.transform = value.join(" ");
+        'rotate3d('+ transform.rx +','+ transform.ry +','+ transform.rz +','+  transform.angle + 'deg)'
+    ];
+
+    value = value.join(" ");
+    el.style.webkitTransform = value;
+    el.style.mozTransform = value;
+    el.style.transform = value;
     ticking = false;
 }
 
 function requestElementUpdate() {
     if(!ticking) {
-        ticking = true;
         reqAnimationFrame(updateElementTransform);
+        ticking = true;
     }
 }
 
 function onPan(ev) {
+    el.className = '';
     transform.translate = {
-        x: startX + ev.deltaX,
-        y: startY + ev.deltaY
+        x: START_X + ev.deltaX,
+        y: START_Y + ev.deltaY
     };
+
+    logEvent(ev);
+    requestElementUpdate();
+}
+
+var initScale = 1;
+function onPinch(ev) {
+    if(ev.type == 'pinchstart') {
+        initScale = transform.scale || 1;
+    }
+
+    el.className = '';
+    transform.scale = initScale * ev.scale;
+
+    logEvent(ev);
+    requestElementUpdate();
+}
+
+var initAngle = 0;
+function onRotate(ev) {
+    if(ev.type == 'rotatestart') {
+        initAngle = transform.angle || 0;
+    }
+
+    el.className = '';
+    transform.rz = 1;
+    transform.angle = initAngle + ev.rotation;
+
+    logEvent(ev);
     requestElementUpdate();
 }
 
 function onSwipe(ev) {
-    transform.translate = {
-        x: startX + (ev.deltaX * 1.2),
-        y: startY + (ev.deltaY * 1.2)
-    };
-    transform.scale = 1.2;
-    requestElementUpdate();
+    var angle = 50;
+    transform.ry = (ev.direction & Hammer.DIRECTION_HORIZONTAL) ? 1 : 0;
+    transform.rx = (ev.direction & Hammer.DIRECTION_VERTICAL) ? 1 : 0;
+    transform.angle = (ev.direction & (Hammer.DIRECTION_RIGHT | Hammer.DIRECTION_UP)) ? angle : -angle;
 
-    setTimeout(function () {
-        resetElementEnd();
-    }, 400);
-}
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+        resetElement();
+    }, 300);
 
-function onPinch(ev) {
-    transform.scale = ev.scale;
-    requestElementUpdate();
-}
-
-function onRotate(ev) {
-    transform.rotate = ev.rotation;
+    logEvent(ev);
     requestElementUpdate();
 }
 
 function onTap(ev) {
-    transform.scale = .9;
-    requestElementUpdate();
+    transform.rx = 1;
+    transform.angle = 25;
 
-    setTimeout(function () {
-        transform.scale = 1;
-        requestElementUpdate();
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+        resetElement();
     }, 200);
+
+    logEvent(ev);
+    requestElementUpdate();
 }
 
 function onDoubleTap(ev) {
-    transform.rotate = !transform.rotate ? 360 : 0;
+    transform.rx = 1;
+    transform.angle = 80;
+
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+        resetElement();
+    }, 500);
+
+    logEvent(ev);
     requestElementUpdate();
 }
 
-function onHold(ev) {
-    el.style.background = '#fd0';
-    setTimeout(function () {
-        el.style.background = 'white';
-        requestElementUpdate();
-    }, 500);
-}
-
-resetElementEnd();
+resetElement();
 
 document.querySelector(".device-button").addEventListener("click", function(){
-    document.querySelector(".device").classList.toggle('hammertime');
+document.querySelector(".device").classList.toggle('hammertime');
 }, false);

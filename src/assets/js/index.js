@@ -1,3 +1,6 @@
+var emulator = require('../../../bower_components/hammer-touchemulator/touch-emulator.js');
+emulator();
+
 var toggle = document.querySelector(".toggle-sidebar");
 var target = document.querySelector(".sidebar");
 if(toggle && target) {
@@ -11,9 +14,10 @@ if(toggle && target) {
     });
 }
 
-
-if(document.querySelector("#hitarea")) {
-    require('./demo.js');
-}
+window.addEventListener("load", function() {
+    if(document.querySelector("#hitarea")) {
+        require('./demo.js');
+    }
+});
 
 require('./externals.js');
