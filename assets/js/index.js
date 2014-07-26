@@ -57,11 +57,9 @@
 	    });
 	}
 
-	window.addEventListener("load", function() {
-	    if(document.querySelector("#hitarea")) {
-	        __webpack_require__(1);
-	    }
-	});
+	if(document.querySelector("#hitarea")) {
+	    __webpack_require__(1);
+	}
 
 	__webpack_require__(2);
 

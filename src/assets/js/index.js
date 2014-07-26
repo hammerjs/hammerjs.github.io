@@ -11,10 +11,8 @@ if(toggle && target) {
     });
 }
 
-window.addEventListener("load", function() {
-    if(document.querySelector("#hitarea")) {
-        require('./demo.js');
-    }
-});
+if(document.querySelector("#hitarea")) {
+    require('./demo.js');
+}
 
 require('./externals.js');
