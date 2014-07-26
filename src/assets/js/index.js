@@ -1,6 +1,3 @@
-var emulator = require('../../../bower_components/hammer-touchemulator/touch-emulator.js');
-emulator();
-
 var toggle = document.querySelector(".toggle-sidebar");
 var target = document.querySelector(".sidebar");
 if(toggle && target) {
