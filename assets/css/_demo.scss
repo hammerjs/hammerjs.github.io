@@ -1,0 +1,89 @@
+.try {
+  clear: both;
+  padding: 10px 0;
+  user-select: none;
+
+  .device {
+    background: #222;
+    padding: 20px 20px 40px;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(#000, .1);
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .device-button {
+    content: "";
+    display: block;
+    overflow: hidden;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    border: solid 1px #444;
+    border-radius: 100%;
+    cursor: pointer;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -10px;
+  }
+
+  .device-screen {
+    background: $blue;
+    height: 350px;
+    position: relative;
+    border-radius: 2px;
+    perspective: 500px;
+  }
+
+  .device-screen-wrapper {
+    overflow: hidden;
+  }
+
+  .device.hammertime {
+    .device-screen {
+      background: url(../img/hammer.gif) no-repeat 50%;
+      background-size: cover;
+      #hitarea { display: none; }
+    }
+  }
+
+  #hitarea {
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+
+    -ms-touch-select: none; /* Windows Phone grippers are always off. */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    &.animate {
+      transition: all .3s;
+    }
+  }
+}
+
+@media screen and (min-width:700px) {
+  .try {
+    .device {
+      border-radius: 20px;
+      padding: 40px;
+      margin: 0 auto;
+      position: relative;
+      max-width: 700px;
+    }
+
+    .device-button {
+      right: 10px;
+      top: 50%;
+      margin-top: -10px;
+      bottom: auto;
+      margin-left: auto;
+      left: auto;
+    }
+  }
+}

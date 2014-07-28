@@ -1,0 +1,18 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// Behold, here are all the Foundation components.
+@import
+  "../../bower_components/foundation/scss/foundation/components/grid",
+  "../../bower_components/foundation/scss/foundation/components/buttons",
+  "../../bower_components/foundation/scss/foundation/components/clearing",
+  "../../bower_components/foundation/scss/foundation/components/inline-lists",
+  "../../bower_components/foundation/scss/foundation/components/panels",
+  "../../bower_components/foundation/scss/foundation/components/side-nav",
+  "../../bower_components/foundation/scss/foundation/components/tables",
+  "../../bower_components/foundation/scss/foundation/components/type",
+  "../../bower_components/foundation/scss/foundation/components/visibility";

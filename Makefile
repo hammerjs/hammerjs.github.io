@@ -7,5 +7,5 @@ build:
 		mv hammer.min.js ../../dist/hammer.min.js && \
 		mv hammer.min.map ../../dist/hammer.min.map
 	node scripts/generate-data.js
-	node scripts/gulpfile.js build
+	node node_modules/jsdoc/jsdoc.js -c jsdoc.json
 	jekyll build

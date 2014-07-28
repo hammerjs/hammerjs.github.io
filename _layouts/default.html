@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    {% include head.html %}
+    <body>
+        {% include header.html %}
+        <div class="row">
+            <div class="medium-3 columns">
+                {% include sidebar.html %}
+            </div>
+            <div class="medium-9 columns">
+                {{ content }}
+
+                <p class="edit-this-page">
+                        <a href="https://github.com/hammerjs/hammerjs.github.io/edit/master/{{page.path}}">
+                            Edit this page on GitHub</a>
+                </p>
+            </div>
+        </div>
+        {% include footer.html %}
+    </body>
+</html>

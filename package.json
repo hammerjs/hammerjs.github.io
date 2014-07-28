@@ -1,16 +1,17 @@
 {
-  "name": "hammerjs.github.io",
-  "version": "0.0.1",
-  "author": "J. Tangelder <j.tangelder@gmail.com>",
-  "scripts": {
-    "postinstall": "bower install",
-    "start": "make build"
-  },
-  "devDependencies": {
-    "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",
-    "hammerjs": "git://github.com/hammerjs/hammer.js#master",
-    "jsdoc": "^3.3.0-alpha9",
-    "marked": "^0.3.2",
-    "pretty-bytes": "^0.1.0"
-  }
+    "name": "hammerjs.github.io",
+    "version": "0.0.1",
+    "author": "J. Tangelder <j.tangelder@gmail.com>",
+    "scripts": {
+        "postinstall": "bower install",
+        "start": "make build"
+    },
+    "devDependencies": {
+        "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",
+        "hammerjs": "git://github.com/hammerjs/hammer.js#master",
+        "jsdoc": "^3.3.0-alpha9",
+        "marked": "^0.3.2",
+        "pretty-bytes": "^0.1.0",
+        "gzip-size": "^0.1.0"
+    }
 }
