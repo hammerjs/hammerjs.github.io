@@ -1,4 +1,5 @@
 ---
+layout: default
 title: Press recognizer
 ---
 

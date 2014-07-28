@@ -8,4 +8,13 @@ build:
 		mv hammer.min.map ../../dist/hammer.min.map
 	node scripts/generate-data.js
 	node node_modules/jsdoc/jsdoc.js -c jsdoc.json
-	jekyll build
+	bundle exec jekyll build
+
+jekyll:
+	bundle exec jekyll build --watch
+
+serve:
+	bundle exec jekyll serve
+
+sass:
+	node-sass assets/css/index.scss assets/css/index.css  --output-style=compressed
