@@ -5,12 +5,12 @@ title: API
 
 # General API
 
-- [Hammer](#hammer)
-- [Hammer.defaults](#hammer-defaults)
-- [Hammer.Manager](hammer-manager)
-- [Hammer.Recognizer](#hammer-recognizer)
-- [Constants](#constants)
-- [Utils](#utils)
+- [Hammer](#toc_1)
+- [Hammer.defaults](#toc_3)
+- [Hammer.Manager](#toc_9)
+- [Hammer.Recognizer](#toc_16)
+- [Constants](#toc_21)
+- [Utils](#toc_25)
 
 ## Hammer
 Creates a Manager instance with a default set of recognizers and returns the manager instance. The default set
