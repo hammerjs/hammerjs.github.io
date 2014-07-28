@@ -113,7 +113,7 @@
 	});
 
 	function logEvent(ev) {
-	    el.innerText = ev.type;
+	    //el.innerText = ev.type;
 	}
 
 	function resetElement() {
