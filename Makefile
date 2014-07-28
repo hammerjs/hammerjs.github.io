@@ -11,7 +11,7 @@ build:
 	bundle exec jekyll build
 
 jekyll:
-	bundle exec jekyll build --watch
+	bundle exec jekyll build
 
 serve:
 	bundle exec jekyll serve

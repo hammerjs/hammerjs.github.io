@@ -16,3 +16,7 @@ sass:
 
 redcarpet:
   extensions: ["no_intra_emphasis", "fenced_code_blocks", "autolink", "tables", "with_toc_data"]
+
+hammer:
+  version: "2.0.2"
+  gzipped: "3.79 kB"
