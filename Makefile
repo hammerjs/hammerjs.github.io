@@ -6,4 +6,6 @@ build:
 		mv hammer.js ../../dist/hammer.js && \
 		mv hammer.min.js ../../dist/hammer.min.js && \
 		mv hammer.min.map ../../dist/hammer.min.map
-	gulp build-site
+	node scripts/generate-data.js
+	node scripts/gulpfile.js build
+	jekyll build
