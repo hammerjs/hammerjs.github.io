@@ -7,5 +7,6 @@ title: Examples
 
 Some example implementations to get you started.
 
-- [Basic Hammer implementation](http://codepen.io/jtangelder/pen/lgELw)
-- [Basic Hammer with vertical Pan recognizer](http://codepen.io/jtangelder/pen/ABFnd)
+- [Basic implementation](http://codepen.io/jtangelder/pen/lgELw)
+- [Hammer with vertical Pan recognizer](http://codepen.io/jtangelder/pen/ABFnd)
+- [RecognizeWith implementation with a Quadruple tap recognizer](http://codepen.io/jtangelder/pen/qeCAs)
