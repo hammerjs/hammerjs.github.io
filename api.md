@@ -157,7 +157,7 @@ array of recognizers.
 If the recognizer is added to a manager, then this method also accepts the other recognizer's event name
 as a string.
 
-- [Read more about recognizeWith](recognize-with.html)
+- [Read more about recognizeWith](/recognize-with)
 
 ### requireFailure(otherRecognizer) and dropRequireFailure(otherRecognizer)
 Run the recognizer only when the other recognizer fails. Dropping the connection only removes the link on the
@@ -166,7 +166,7 @@ recognizer, not on the other recognizer. Both accept an array of recognizers.
 If the recognizer is added to a manager, then this method also accepts the other recognizer's event name
 as a string.
 
-- [Read more about requireFailure](require-failure.html)
+- [Read more about requireFailure](/require-failure)
 
 ---
 
