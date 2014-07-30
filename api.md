@@ -176,6 +176,27 @@ A *secret* event is being triggered by Hammer, `hammer.input`. It is being emitt
 
 ---
 
+### Event object
+All events that Hammer triggers all receive an event object containing the following properties.
+
+| Name			| Value |
+|-----------------------|-------|
+| type		        | name of the event |
+| deltaX		| movement of the X axis |
+| deltaY		| movement of the Y axis |
+| distance 		| distance moved |
+| angle			| angle moved |
+| velocityX		| velocity on the X axis |
+| velocityY		| velocity on the Y axis |
+| velocity		| highest velocity value |
+| direction		| direction moved |
+| offsetDirection	| direction moved from it's starting point |
+| center		| center position for multi-touch, or just the single pointer |
+| srcEvent		| source event object, like Touchstart or Mousemove |
+| target		| target that received the event |
+
+---
+
 ## Constants
 All constants are defined at the `Hammer` object. Since it are binary flags,
 you can use bitwise operators on it. MDN has some excellent
