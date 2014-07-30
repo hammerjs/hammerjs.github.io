@@ -173,7 +173,7 @@ as a string.
 ---
 
 ## Hammer.input event
-A *secret* event is being triggered by Hammer, `hammer.input`. It is being emitted on every input that is being received, and enabled you to things with the raw input. 
+A *secret* event is being triggered by Hammer, `hammer.input`. It is being emitted on every input that is being received, and enabled you to things with the raw input. Small, but powerful feature.
 
 ````js
 hammertime.on("hammer.input", function(ev) {
