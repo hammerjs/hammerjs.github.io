@@ -10,8 +10,9 @@ title: API
 - [Hammer.Manager](#toc_9)
 - [Hammer.Recognizer](#toc_16)
 - [Hammer.input event](#toc_21)
-- [Constants](#toc_22)
-- [Utils](#toc_26)
+- [Event object](#toc_22)
+- [Constants](#toc_23)
+- [Utils](#toc_27)
 
 ## Hammer
 Creates a Manager instance with a default set of recognizers and returns the manager instance. The default set
@@ -176,7 +177,7 @@ A *secret* event is being triggered by Hammer, `hammer.input`. It is being emitt
 
 ---
 
-### Event object
+## Event object
 All events that Hammer triggers all receive an event object containing the following properties.
 
 | Name			| Value |
