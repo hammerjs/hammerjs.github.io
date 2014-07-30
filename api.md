@@ -182,19 +182,29 @@ All events that Hammer triggers all receive an event object containing the follo
 
 | Name			| Value |
 |-----------------------|-------|
-| type		        | name of the event |
-| deltaX		| movement of the X axis |
-| deltaY		| movement of the Y axis |
-| distance 		| distance moved |
-| angle			| angle moved |
-| velocityX		| velocity on the X axis |
-| velocityY		| velocity on the Y axis |
-| velocity		| highest velocity value |
-| direction		| direction moved |
-| offsetDirection	| direction moved from it's starting point |
-| center		| center position for multi-touch, or just the single pointer |
-| srcEvent		| source event object, like Touchstart or Mousemove |
-| target		| target that received the event |
+| type		        | Name of the event. Like `panstart`. |
+| deltaX		| Movement of the X axis. |
+| deltaY		| Movement of the Y axis. |
+| deltaTime		| Total time in ms since the first input. |
+| distance 		| Distance moved. |
+| angle			| Angle moved. |
+| velocityX		| Velocity on the X axis, in px/ms. |
+| velocityY		| Velocity on the Y axis, in px/ms |
+| velocity		| Highest velocityX/Y value. |
+| direction		| Direction moved. Matches the `DIRECTION` constants. |
+| offsetDirection	| Direction moved from it's starting point. Matches the `DIRECTION` constants. |
+| scale			| Scaling that has been done when multi-touch. 1 on a single touch. |
+| rotation		| Rotation that has been done when multi-touch. 1 on a single touch. |
+| center		| Center position for multi-touch, or just the single pointer. |
+| srcEvent		| Source event object, type `TouchEvent`, `MouseEvent` or `PointerEvent`. |
+| target		| Target that received the event. |
+| pointerType		| Primary pointer type, could be `touch`, `mouse`, `pen` or `kinect`. |
+| eventType		| Event type, matches the `INPUT` constants. |
+| isFirst		| `true` when the first input. |
+| isFinal		| `true` when the final (last) input. |
+| pointers		| Array with all pointers, including the ended pointers (`touchend`, `mouseup`). |
+| changedPointers	| Array with all new/moved/lost pointers. |
+| preventDefault	| Reference to the `srcEvent.preventDefault()` method. Only for experts! |
 
 ---
 
