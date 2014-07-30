@@ -31,17 +31,17 @@ Multiple taps on the same element can be easily recognized on this way:
 ````js
 var hammer = new Hammer(el, {});
 
-var tap = new Hammer.Tap();
-var doubleTap = new Hammer.Tap({event: 'doubleTap', taps: 2 });
-var tripleTap = new Hammer.Tap({event: 'tripleTap', taps: 3 });
+var singleTap = new Hammer.Tap({ event: 'singletap' });
+var doubleTap = new Hammer.Tap({event: 'doubletap', taps: 2 });
+var tripleTap = new Hammer.Tap({event: 'tripletap', taps: 3 });
 
-hammer.add([tripleTap, doubleTap, tap]);
+hammer.add([tripleTap, doubleTap, singleTap]);
 
-tripleTap.recognizeWith([doubleTap, tap]);
-doubleTap.recognizeWith(tap);
+tripleTap.recognizeWith([doubleTap, singleTap]);
+doubleTap.recognizeWith(singleTap);
 
 doubleTap.requireFailure(tripleTap);
-tap.requireFailure([tripleTap, doubleTap]);
+singleTap.requireFailure([tripleTap, doubleTap]);
 ````
 
 When a tap gesture requires a failure to be recognized, its
