@@ -138,24 +138,6 @@ h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px;
       padding: 3px 0;
     }
   }
-
-  .sponsor-me {
-    margin-top: 30px;
-    margin-right: 15px;
-
-    p {
-      font-size: 11px;
-      line-height: 15px;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    form {
-      text-align: center;
-    }
-  }
 }
 
 .homepage {
@@ -201,3 +183,7 @@ h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px;
 }
 
 
+.small-text {
+  font-size: 12px;
+  line-height: 16px;
+}

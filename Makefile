@@ -12,6 +12,7 @@ build:
 
 jekyll:
 	bundle exec jekyll build
+	make sass
 
 serve:
 	bundle exec jekyll serve
