@@ -140,6 +140,21 @@ h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px;
   }
 }
 
+.sponsor-me {
+  opacity: .5;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  p {
+    font-size: 11px;
+    line-height: 15px;
+  }
+
+  form { text-align: center; }
+}
+
 .homepage {
   background: $red;
 
