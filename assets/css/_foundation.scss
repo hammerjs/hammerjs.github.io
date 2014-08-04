@@ -6,13 +6,12 @@
 @charset "UTF-8";
 
 // Behold, here are all the Foundation components.
-@import
-  "../../bower_components/foundation/scss/foundation/components/grid",
-  "../../bower_components/foundation/scss/foundation/components/buttons",
-  "../../bower_components/foundation/scss/foundation/components/clearing",
-  "../../bower_components/foundation/scss/foundation/components/inline-lists",
-  "../../bower_components/foundation/scss/foundation/components/panels",
-  "../../bower_components/foundation/scss/foundation/components/side-nav",
-  "../../bower_components/foundation/scss/foundation/components/tables",
-  "../../bower_components/foundation/scss/foundation/components/type",
-  "../../bower_components/foundation/scss/foundation/components/visibility";
+@import "foundation/components/_grid",
+"foundation/components/_buttons",
+"foundation/components/_clearing",
+"foundation/components/_inline-lists",
+"foundation/components/_panels",
+"foundation/components/_side-nav",
+"foundation/components/_tables",
+"foundation/components/_type",
+"foundation/components/_visibility";
