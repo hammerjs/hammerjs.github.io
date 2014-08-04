@@ -5,10 +5,10 @@ title: Getting Started
 
 # Getting Started
 Hammer is a open-source library that can recognize gestures made by touch, mouse and pointerEvents.
-It doesn't have any dependencies, and it's small, only __{{site.hammer.gzipped}} minified + gzipped__!
+It doesn't have any dependencies, and it's small, only __{{site.data.hammer.gzipped}} minified + gzipped__!
 
-- [Minified code (v{{site.hammer.version}})](/dist/hammer.min.js)
-- [Uncompressed code (v{{site.hammer.version}})](/dist/hammer.js)
+- [Minified code (v{{site.data.hammer.version}})](/dist/hammer.min.js)
+- [Uncompressed code (v{{site.data.hammer.version}})](/dist/hammer.js)
 - [Browse the source on GitHub](https://github.com/hammerjs/hammer.js/tree/master/)
 - Looking for the 1.1 version? [You can find it here.](https://github.com/hammerjs/hammer.js/tree/1.1.x)
 
