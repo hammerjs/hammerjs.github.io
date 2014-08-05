@@ -38,7 +38,8 @@ The prevented mouse events:
 `mousedown`, `mouseenter`, `mouseleave`, `mousemove`, `mouseout`, `mouseover` and `mouseup`.
 
 ## Web platform tests
-The script has been tested with the w3c web platform tests and passes all tests,  except these;
+The script has been tested with the w3c web platform tests and passes all tests, except these;
+
 - *assert_true: event is a TouchEvent event expected true got false*
   - We trigger an event of the type `Event`
 - *assert_equals: touch list is of type TouchList expected "[object TouchList]" but got "[object Array]"*
