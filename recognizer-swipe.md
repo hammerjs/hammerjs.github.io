@@ -10,7 +10,7 @@ Recognized when the pointer is moving fast (velocity), with enough distance in t
 |-----------|----------|-------------------|
 | event     | swipe    | Name of the event. |
 | pointers  | 1        | Required pointers. |
-| distance  | 10       | Minimal distance required before recognizing. |
+| threshold | 10       | Minimal distance required before recognizing. |
 | direction | DIRECTION_ALL | Direction of the panning. |
 | velocity  | 0.65     | Minimal velocity required before recognizing, unit is in px per ms. |
 
