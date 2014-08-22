@@ -41,7 +41,7 @@ Accepts the `compute`, `auto`, `pan-y`, `pan-x` and `none` values. The default o
 correct value for you, based on the recognizers.
 
 ### domEvents: false
-Let Hammer also fire DOM events. This is a bit slower, so disabled by default.
+Let Hammer also fire DOM events. This is a bit slower, so disabled by default. Recommended to set to `true` if you want to play with event delegation.
 
 ### enable: true
 Acceps a boolean, or an function that should return a boolean which is.
