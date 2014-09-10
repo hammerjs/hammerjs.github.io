@@ -171,6 +171,8 @@
             
                 <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
             
+                <li data-name="Hammer.defaults.inputClass"><a href="Hammer.defaults.html#inputClass">inputClass</a></li>
+            
                 <li data-name="Hammer.defaults.inputTarget"><a href="Hammer.defaults.html#inputTarget">inputTarget</a></li>
             
                 <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#preset">preset</a></li>
@@ -243,6 +245,8 @@
             
                 <li data-name="Input#handler"><a href="Input.html#handler">handler</a></li>
             
+                <li data-name="Input#init"><a href="Input.html#init">init</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -308,6 +312,8 @@
                 <li data-name="MouseInput#destroy"><a href="MouseInput.html#destroy">destroy</a></li>
             
                 <li data-name="MouseInput#handler"><a href="MouseInput.html#handler">handler</a></li>
+            
+                <li data-name="MouseInput#init"><a href="MouseInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -502,6 +508,8 @@
                 <li data-name="PointerEventInput#destroy"><a href="PointerEventInput.html#destroy">destroy</a></li>
             
                 <li data-name="PointerEventInput#handler"><a href="PointerEventInput.html#handler">handler</a></li>
+            
+                <li data-name="PointerEventInput#init"><a href="PointerEventInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -887,6 +895,8 @@
             
                 <li data-name="TouchInput#handler"><a href="TouchInput.html#handler">handler</a></li>
             
+                <li data-name="TouchInput#init"><a href="TouchInput.html#init">init</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -911,6 +921,8 @@
                 <li data-name="TouchMouseInput#destroy"><a href="TouchMouseInput.html#destroy">destroy</a></li>
             
                 <li data-name="TouchMouseInput#handler"><a href="TouchMouseInput.html#handler">handler</a></li>
+            
+                <li data-name="TouchMouseInput#init"><a href="TouchMouseInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -973,7 +985,7 @@ function invokeArrayArg(arg, fn, context) {
  * @param {Object} context
  */
 function each(obj, iterator, context) {
-    var i, len;
+    var i;
 
     if (!obj) {
         return;
@@ -982,8 +994,10 @@ function each(obj, iterator, context) {
     if (obj.forEach) {
         obj.forEach(iterator, context);
     } else if (obj.length !== undefined) {
-        for (i = 0, len = obj.length; i &lt; len; i++) {
+        i = 0;
+        while (i &lt; obj.length) {
             iterator.call(context, obj[i], i, obj);
+            i++;
         }
     } else {
         for (i in obj) {
@@ -1002,10 +1016,12 @@ function each(obj, iterator, context) {
  */
 function extend(dest, src, merge) {
     var keys = Object.keys(src);
-    for (var i = 0, len = keys.length; i &lt; len; i++) {
+    var i = 0;
+    while (i &lt; keys.length) {
         if (!merge || (merge &amp;&amp; dest[keys[i]] === undefined)) {
             dest[keys[i]] = src[keys[i]];
         }
+        i++;
     }
     return dest;
 }
@@ -1078,25 +1094,25 @@ function ifUndefined(val1, val2) {
 
 /**
  * addEventListener with multiple events at once
- * @param {HTMLElement} element
+ * @param {EventTarget} target
  * @param {String} types
  * @param {Function} handler
  */
-function addEventListeners(element, types, handler) {
+function addEventListeners(target, types, handler) {
     each(splitStr(types), function(type) {
-        element.addEventListener(type, handler, false);
+        target.addEventListener(type, handler, false);
     });
 }
 
 /**
  * removeEventListener with multiple events at once
- * @param {HTMLElement} element
+ * @param {EventTarget} target
  * @param {String} types
  * @param {Function} handler
  */
-function removeEventListeners(element, types, handler) {
+function removeEventListeners(target, types, handler) {
     each(splitStr(types), function(type) {
-        element.removeEventListener(type, handler, false);
+        target.removeEventListener(type, handler, false);
     });
 }
 
@@ -1147,10 +1163,12 @@ function inArray(src, find, findByKey) {
     if (src.indexOf &amp;&amp; !findByKey) {
         return src.indexOf(find);
     } else {
-        for (var i = 0, len = src.length; i &lt; len; i++) {
+        var i = 0;
+        while (i &lt; src.length) {
             if ((findByKey &amp;&amp; src[i][findByKey] == find) || (!findByKey &amp;&amp; src[i] === find)) {
                 return i;
             }
+            i++;
         }
         return -1;
     }
@@ -1175,12 +1193,15 @@ function toArray(obj) {
 function uniqueArray(src, key, sort) {
     var results = [];
     var values = [];
-    for (var i = 0, len = src.length; i &lt; len; i++) {
+    var i = 0;
+
+    while (i &lt; src.length) {
         var val = key ? src[i][key] : src[i];
         if (inArray(values, val) &lt; 0) {
             results.push(src[i]);
         }
         values[i] = val;
+        i++;
     }
 
     if (sort) {
@@ -1206,13 +1227,15 @@ function prefixed(obj, property) {
     var prefix, prop;
     var camelProp = property[0].toUpperCase() + property.slice(1);
 
-    for (var i = 0, len = VENDOR_PREFIXES.length; i &lt; len; i++) {
+    var i = 0;
+    while (i &lt; VENDOR_PREFIXES.length) {
         prefix = VENDOR_PREFIXES[i];
         prop = (prefix) ? prefix + camelProp : property;
 
         if (prop in obj) {
             return prop;
         }
+        i++;
     }
     return undefined;
 }
@@ -1225,6 +1248,16 @@ var _uniqueId = 1;
 function uniqueId() {
     return _uniqueId++;
 }
+
+/**
+ * get the window object of an element
+ * @param {HTMLElement} element
+ * @returns {DocumentView|Window}
+ */
+function getWindowForElement(element) {
+    var doc = element.ownerDocument;
+    return (doc.defaultView || doc.parentWindow);
+}
 </code></pre>
         </article>
     </section>
@@ -1236,7 +1269,7 @@ function uniqueId() {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Jul 28 2014 14:46:13 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Sep 10 2014 09:14:11 GMT+0200 (CEST)
         </footer>
     </div>
 </div>

@@ -171,6 +171,8 @@
             
                 <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
             
+                <li data-name="Hammer.defaults.inputClass"><a href="Hammer.defaults.html#inputClass">inputClass</a></li>
+            
                 <li data-name="Hammer.defaults.inputTarget"><a href="Hammer.defaults.html#inputTarget">inputTarget</a></li>
             
                 <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#preset">preset</a></li>
@@ -243,6 +245,8 @@
             
                 <li data-name="Input#handler"><a href="Input.html#handler">handler</a></li>
             
+                <li data-name="Input#init"><a href="Input.html#init">init</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -308,6 +312,8 @@
                 <li data-name="MouseInput#destroy"><a href="MouseInput.html#destroy">destroy</a></li>
             
                 <li data-name="MouseInput#handler"><a href="MouseInput.html#handler">handler</a></li>
+            
+                <li data-name="MouseInput#init"><a href="MouseInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -502,6 +508,8 @@
                 <li data-name="PointerEventInput#destroy"><a href="PointerEventInput.html#destroy">destroy</a></li>
             
                 <li data-name="PointerEventInput#handler"><a href="PointerEventInput.html#handler">handler</a></li>
+            
+                <li data-name="PointerEventInput#init"><a href="PointerEventInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -887,6 +895,8 @@
             
                 <li data-name="TouchInput#handler"><a href="TouchInput.html#handler">handler</a></li>
             
+                <li data-name="TouchInput#init"><a href="TouchInput.html#init">init</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -911,6 +921,8 @@
                 <li data-name="TouchMouseInput#destroy"><a href="TouchMouseInput.html#destroy">destroy</a></li>
             
                 <li data-name="TouchMouseInput#handler"><a href="TouchMouseInput.html#handler">handler</a></li>
+            
+                <li data-name="TouchMouseInput#init"><a href="TouchMouseInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -982,9 +994,8 @@ function Input(manager, callback) {
         }
     };
 
-    this.evEl &amp;&amp; addEventListeners(this.element, this.evEl, this.domHandler);
-    this.evTarget &amp;&amp; addEventListeners(this.target, this.evTarget, this.domHandler);
-    this.evWin &amp;&amp; addEventListeners(window, this.evWin, this.domHandler);
+    this.init();
+
 }
 
 Input.prototype = {
@@ -995,23 +1006,37 @@ Input.prototype = {
     handler: function() { },
 
     /**
+     * bind the events
+     */
+    init: function() {
+        this.evEl &amp;&amp; addEventListeners(this.element, this.evEl, this.domHandler);
+        this.evTarget &amp;&amp; addEventListeners(this.target, this.evTarget, this.domHandler);
+        this.evWin &amp;&amp; addEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
+    },
+
+    /**
      * unbind the events
      */
     destroy: function() {
         this.evEl &amp;&amp; removeEventListeners(this.element, this.evEl, this.domHandler);
         this.evTarget &amp;&amp; removeEventListeners(this.target, this.evTarget, this.domHandler);
-        this.evWin &amp;&amp; removeEventListeners(window, this.evWin, this.domHandler);
+        this.evWin &amp;&amp; removeEventListeners(getWindowForElement(this.element), this.evWin, this.domHandler);
     }
 };
 
 /**
  * create new input type manager
+ * called by the Manager constructor
  * @param {Hammer} manager
  * @returns {Input}
  */
 function createInputInstance(manager) {
     var Type;
-    if (SUPPORT_POINTER_EVENTS) {
+    var inputClass = manager.options.inputClass;
+
+    if (inputClass) {
+        Type = inputClass;
+    } else if (SUPPORT_POINTER_EVENTS) {
         Type = PointerEventInput;
     } else if (SUPPORT_ONLY_TOUCH) {
         Type = TouchInput;
@@ -1171,11 +1196,13 @@ function simpleCloneInputData(input) {
     // make a simple copy of the pointers because we will get a reference if we don't
     // we only need clientXY for the calculations
     var pointers = [];
-    for (var i = 0; i &lt; input.pointers.length; i++) {
+    var i = 0;
+    while (i &lt; input.pointers.length) {
         pointers[i] = {
             clientX: round(input.pointers[i].clientX),
             clientY: round(input.pointers[i].clientY)
         };
+        i++;
     }
 
     return {
@@ -1203,10 +1230,13 @@ function getCenter(pointers) {
         };
     }
 
-    var x = 0, y = 0;
-    for (var i = 0; i &lt; pointersLength; i++) {
+    var x = 0,
+        y = 0,
+        i = 0;
+    while (i &lt; pointersLength) {
         x += pointers[i].clientX;
         y += pointers[i].clientY;
+        i++;
     }
 
     return {
@@ -1310,7 +1340,7 @@ function getScale(start, end) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Jul 28 2014 14:46:13 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Sep 10 2014 09:14:11 GMT+0200 (CEST)
         </footer>
     </div>
 </div>

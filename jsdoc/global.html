@@ -171,6 +171,8 @@
             
                 <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
             
+                <li data-name="Hammer.defaults.inputClass"><a href="Hammer.defaults.html#inputClass">inputClass</a></li>
+            
                 <li data-name="Hammer.defaults.inputTarget"><a href="Hammer.defaults.html#inputTarget">inputTarget</a></li>
             
                 <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#preset">preset</a></li>
@@ -243,6 +245,8 @@
             
                 <li data-name="Input#handler"><a href="Input.html#handler">handler</a></li>
             
+                <li data-name="Input#init"><a href="Input.html#init">init</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -308,6 +312,8 @@
                 <li data-name="MouseInput#destroy"><a href="MouseInput.html#destroy">destroy</a></li>
             
                 <li data-name="MouseInput#handler"><a href="MouseInput.html#handler">handler</a></li>
+            
+                <li data-name="MouseInput#init"><a href="MouseInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -502,6 +508,8 @@
                 <li data-name="PointerEventInput#destroy"><a href="PointerEventInput.html#destroy">destroy</a></li>
             
                 <li data-name="PointerEventInput#handler"><a href="PointerEventInput.html#handler">handler</a></li>
+            
+                <li data-name="PointerEventInput#init"><a href="PointerEventInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -887,6 +895,8 @@
             
                 <li data-name="TouchInput#handler"><a href="TouchInput.html#handler">handler</a></li>
             
+                <li data-name="TouchInput#init"><a href="TouchInput.html#init">init</a></li>
+            
             </ul>
             <ul class="events itemMembers">
             
@@ -911,6 +921,8 @@
                 <li data-name="TouchMouseInput#destroy"><a href="TouchMouseInput.html#destroy">destroy</a></li>
             
                 <li data-name="TouchMouseInput#handler"><a href="TouchMouseInput.html#handler">handler</a></li>
+            
+                <li data-name="TouchMouseInput#init"><a href="TouchMouseInput.html#init">init</a></li>
             
             </ul>
             <ul class="events itemMembers">
@@ -1108,12 +1120,12 @@ POSSIBLE to give it another change on the next cycle.</p>
     <div class="nameContainer">
         <h4 class="name" id="addEventListeners">
             
-            addEventListeners<span class="signature">(element, types, handler)</span>
+            addEventListeners<span class="signature">(target, types, handler)</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line154">line 154</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line158">line 158</a>
         </div>
         
     </div>
@@ -1155,13 +1167,13 @@ POSSIBLE to give it another change on the next cycle.</p>
 	
         <tr>
             
-                <td class="name"><code>element</code></td>
+                <td class="name"><code>target</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">HTMLElement</span>
+<span class="param-type">EventTarget</span>
 
 
             
@@ -1275,7 +1287,7 @@ POSSIBLE to give it another change on the next cycle.</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line118">line 118</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line122">line 122</a>
         </div>
         
     </div>
@@ -1419,7 +1431,7 @@ POSSIBLE to give it another change on the next cycle.</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line131">line 131</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line135">line 135</a>
         </div>
         
     </div>
@@ -1700,7 +1712,7 @@ this first item in args will be used as the context</p>
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line133">line 133</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line146">line 146</a>
         </div>
         
     </div>
@@ -1839,7 +1851,7 @@ this first item in args will be used as the context</p>
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line204">line 204</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line217">line 217</a>
         </div>
         
     </div>
@@ -1978,7 +1990,7 @@ this first item in args will be used as the context</p>
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line81">line 81</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line90">line 90</a>
         </div>
         
     </div>
@@ -1989,7 +2001,8 @@ this first item in args will be used as the context</p>
     
     
     <div class="description">
-        <p>create new input type manager</p>
+        <p>create new input type manager
+called by the Manager constructor</p>
     </div>
     
 
@@ -2170,7 +2183,7 @@ this first item in args will be used as the context</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line295">line 295</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line297">line 297</a>
         </div>
         
     </div>
@@ -2453,7 +2466,7 @@ this first item in args will be used as the context</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line72">line 72</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line74">line 74</a>
         </div>
         
     </div>
@@ -2638,7 +2651,7 @@ means that properties in dest will be overwritten by the ones in src.</p>
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line342">line 342</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line360">line 360</a>
         </div>
         
     </div>
@@ -2822,7 +2835,7 @@ means that properties in dest will be overwritten by the ones in src.</p>
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line264">line 264</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line279">line 279</a>
         </div>
         
     </div>
@@ -2947,7 +2960,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line307">line 307</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line325">line 325</a>
         </div>
         
     </div>
@@ -3091,7 +3104,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line325">line 325</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line343">line 343</a>
         </div>
         
     </div>
@@ -3275,7 +3288,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line314">line 314</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line316">line 316</a>
         </div>
         
     </div>
@@ -3422,7 +3435,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line357">line 357</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line375">line 375</a>
         </div>
         
     </div>
@@ -3566,7 +3579,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line368">line 368</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line386">line 386</a>
         </div>
         
     </div>
@@ -3858,7 +3871,7 @@ changed]
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line294">line 294</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line312">line 312</a>
         </div>
         
     </div>
@@ -4022,6 +4035,243 @@ changed]
             
 <dt>
     <div class="nameContainer">
+        <h4 class="name" id="getWindowForElement">
+            
+            getWindowForElement<span class="signature">(element)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{DocumentView|Window}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line314">line 314</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>get the window object of an element</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">HTMLElement</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="handler">
+            
+            handler<span class="signature">(ev)</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="touch.js.html">input/touch.js</a>, <a href="touch.js.html#line27">line 27</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>handle touch events</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>ev</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
         <h4 class="name" id="handler">
             
             handler<span class="signature">(ev)</span>
@@ -4145,7 +4395,7 @@ changed]
     
         
         <div class="tag-source">
-            <a href="touch.js.html">input/touch.js</a>, <a href="touch.js.html#line27">line 27</a>
+            <a href="mouse.js.html">input/mouse.js</a>, <a href="mouse.js.html#line30">line 30</a>
         </div>
         
     </div>
@@ -4156,7 +4406,7 @@ changed]
     
     
     <div class="description">
-        <p>handle touch events</p>
+        <p>handle mouse events</p>
     </div>
     
 
@@ -4416,122 +4666,6 @@ changed]
             
 <dt>
     <div class="nameContainer">
-        <h4 class="name" id="handler">
-            
-            handler<span class="signature">(ev)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="mouse.js.html">input/mouse.js</a>, <a href="mouse.js.html#line30">line 30</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>handle mouse events</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>ev</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
         <h4 class="name" id="hasParent">
             
             hasParent<span class="signature">(node, parent)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{Boolean}</span>
@@ -4539,7 +4673,7 @@ changed]
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line172">line 172</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line176">line 176</a>
         </div>
         
     </div>
@@ -4683,7 +4817,7 @@ changed]
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line144">line 144</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line148">line 148</a>
         </div>
         
     </div>
@@ -4827,7 +4961,7 @@ changed]
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line215">line 215</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line219">line 219</a>
         </div>
         
     </div>
@@ -5015,7 +5149,7 @@ when not found, or the index
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line99">line 99</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line103">line 103</a>
         </div>
         
     </div>
@@ -5194,7 +5328,7 @@ when not found, or the index
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line101">line 101</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line114">line 114</a>
         </div>
         
     </div>
@@ -5356,7 +5490,7 @@ when not found, or the index
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line195">line 195</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line199">line 199</a>
         </div>
         
     </div>
@@ -5689,7 +5823,7 @@ this is used by all the methods that accept a single and array argument.</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line89">line 89</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line93">line 93</a>
         </div>
         
     </div>
@@ -5834,7 +5968,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line274">line 274</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line283">line 283</a>
         </div>
         
     </div>
@@ -5973,12 +6107,12 @@ means that properties that exist in dest will not be overwritten by src</p>
     <div class="nameContainer">
         <h4 class="name" id="removeEventListeners">
             
-            removeEventListeners<span class="signature">(element, types, handler)</span>
+            removeEventListeners<span class="signature">(target, types, handler)</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line166">line 166</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line170">line 170</a>
         </div>
         
     </div>
@@ -6020,13 +6154,13 @@ means that properties that exist in dest will not be overwritten by src</p>
 	
         <tr>
             
-                <td class="name"><code>element</code></td>
+                <td class="name"><code>target</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">HTMLElement</span>
+<span class="param-type">EventTarget</span>
 
 
             
@@ -6307,7 +6441,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line239">line 239</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line252">line 252</a>
         </div>
         
     </div>
@@ -6428,7 +6562,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line204">line 204</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line208">line 208</a>
         </div>
         
     </div>
@@ -6549,7 +6683,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line277">line 277</a>
+            <a href="recognizer.js.html">recognizer.js</a>, <a href="recognizer.js.html#line279">line 279</a>
         </div>
         
     </div>
@@ -6670,7 +6804,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line233">line 233</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line239">line 239</a>
         </div>
         
     </div>
@@ -6791,7 +6925,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line248">line 248</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line263">line 263</a>
         </div>
         
     </div>
@@ -6930,7 +7064,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line260">line 260</a>
+            <a href="manager.js.html">manager.js</a>, <a href="manager.js.html#line275">line 275</a>
         </div>
         
     </div>
@@ -7069,7 +7203,7 @@ means that properties that exist in dest will not be overwritten by src</p>
     
         
         <div class="tag-source">
-            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line244">line 244</a>
+            <a href="utils.js.html">utils.js</a>, <a href="utils.js.html#line250">line 250</a>
         </div>
         
     </div>
@@ -7277,7 +7411,7 @@ means that properties that exist in dest will not be overwritten by src</p>
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Mon Jul 28 2014 14:46:13 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Sep 10 2014 09:14:12 GMT+0200 (CEST)
         </footer>
     </div>
 </div>
