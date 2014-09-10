@@ -1,4 +1,4 @@
 hammerjs.github.io
 ==================
 
-Website
+To release a new version of Hammer.js just run `make release`.

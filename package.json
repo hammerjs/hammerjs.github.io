@@ -3,8 +3,7 @@
     "version": "0.0.1",
     "author": "J. Tangelder <j.tangelder@gmail.com>",
     "scripts": {
-        "postinstall": "bower install",
-        "start": "make build"
+        "start": "make release"
     },
     "devDependencies": {
         "jaguarjs-jsdoc": "git://github.com/davidshimjs/jaguarjs-jsdoc#master",

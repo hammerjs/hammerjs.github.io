@@ -1,4 +1,4 @@
-build:
+release:
 	npm install
 	cd node_modules/hammerjs && \
 		npm install && \
@@ -8,7 +8,6 @@ build:
 		mv hammer.min.map ../../dist/hammer.min.map
 	node scripts/generate-data.js
 	node node_modules/jsdoc/jsdoc.js -c jsdoc.json
-	bundle exec jekyll build
 
 jekyll:
 	bundle exec jekyll build
