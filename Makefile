@@ -7,6 +7,7 @@ release:
 		mv hammer.min.js ../../dist/hammer.min.js && \
 		mv hammer.min.map ../../dist/hammer.min.map
 	node scripts/generate-data.js
+	node scripts/generate-changelog.js
 	node node_modules/jsdoc/jsdoc.js -c jsdoc.json
 
 jekyll:
