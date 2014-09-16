@@ -9,7 +9,7 @@ It doesn't have any dependencies, and it's small, only __{{site.data.hammer.gzip
 
 - [Minified code (v{{site.data.hammer.version}})](/dist/hammer.min.js)
 - [Uncompressed code (v{{site.data.hammer.version}})](/dist/hammer.js)
-- [Changelog](https://github.com/hammerjs/hammer.js/blob/master/CHANGELOG.md)
+- [Changelog](/changelog)
 - [Browse the source on GitHub](https://github.com/hammerjs/hammer.js/tree/master/)
 - Looking for the 1.1 version? [You can find it here.](https://github.com/hammerjs/hammer.js/tree/1.1.x)
 
