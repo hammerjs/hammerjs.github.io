@@ -74,7 +74,7 @@ See the pages about the [`recognizeWith`](/recognize-with) and [`requireFailure`
 more details.
 
 ### Notes
-It's recommended to listen to [this loop](http://soundcloud.com/eightmedia/hammerhammerhammer) while using hammer.js.
+Built at Eight Media in Arnhem, The Netherlands. It's recommended to listen to [this loop](http://soundcloud.com/eightmedia/hammerhammerhammer) while using hammer.js.
 Follow [@jorikdelaporik](https://twitter.com/jorikdelaporik) for tweets about this library.
 
 Special thanks to [Pepe Cano](https://github.com/ppcano) for his contributions.
