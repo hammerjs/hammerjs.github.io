@@ -718,6 +718,33 @@
             </ul>
         </li>
     
+        <li class="item" data-name="SingleTouchInput">
+            <span class="title">
+                <a href="SingleTouchInput.html">SingleTouchInput</a>
+                
+            </span>
+            <ul class="members itemMembers">
+            
+            </ul>
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li data-name="SingleTouchInput#destroy"><a href="SingleTouchInput.html#destroy">destroy</a></li>
+            
+                <li data-name="SingleTouchInput#handler"><a href="SingleTouchInput.html#handler">handler</a></li>
+            
+                <li data-name="SingleTouchInput#init"><a href="SingleTouchInput.html#init">init</a></li>
+            
+            </ul>
+            <ul class="events itemMembers">
+            
+            </ul>
+        </li>
+    
         <li class="item" data-name="SwipeRecognizer">
             <span class="title">
                 <a href="SwipeRecognizer.html">SwipeRecognizer</a>
@@ -2651,7 +2678,7 @@ means that properties in dest will be overwritten by the ones in src.</p>
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line360">line 360</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line358">line 358</a>
         </div>
         
     </div>
@@ -2960,7 +2987,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line325">line 325</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line323">line 323</a>
         </div>
         
     </div>
@@ -3104,7 +3131,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line343">line 343</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line341">line 341</a>
         </div>
         
     </div>
@@ -3435,7 +3462,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line375">line 375</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line373">line 373</a>
         </div>
         
     </div>
@@ -3579,7 +3606,7 @@ contains <code>x</code> and <code>y</code> properties
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line386">line 386</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line384">line 384</a>
         </div>
         
     </div>
@@ -3724,7 +3751,7 @@ no scale is 1, and goes down to 0 when pinched together, and bigger when pinched
     
         
         <div class="tag-source">
-            <a href="touch.js.html">input/touch.js</a>, <a href="touch.js.html#line49">line 49</a>
+            <a href="touch.js.html">input/touch.js</a>, <a href="touch.js.html#line45">line 45</a>
         </div>
         
     </div>
@@ -3871,7 +3898,7 @@ changed]
     
         
         <div class="tag-source">
-            <a href="input.js.html">input.js</a>, <a href="input.js.html#line312">line 312</a>
+            <a href="input.js.html">input.js</a>, <a href="input.js.html#line310">line 310</a>
         </div>
         
     </div>
@@ -4158,12 +4185,12 @@ changed]
     <div class="nameContainer">
         <h4 class="name" id="handler">
             
-            handler<span class="signature">(ev)</span>
+            handler<span class="signature">(manager, inputEvent, inputData)</span>
         </h4>
     
         
         <div class="tag-source">
-            <a href="touch.js.html">input/touch.js</a>, <a href="touch.js.html#line27">line 27</a>
+            <a href="touchmouse.js.html">input/touchmouse.js</a>, <a href="touchmouse.js.html#line25">line 25</a>
         </div>
         
     </div>
@@ -4174,7 +4201,7 @@ changed]
     
     
     <div class="description">
-        <p>handle touch events</p>
+        <p>handle mouse and touch events</p>
     </div>
     
 
@@ -4205,7 +4232,53 @@ changed]
 	
         <tr>
             
-                <td class="name"><code>ev</code></td>
+                <td class="name"><code>manager</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Hammer.html">Hammer</a></span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inputEvent</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>inputData</code></td>
             
             
             <td class="type">
@@ -4438,168 +4511,6 @@ changed]
         <tr>
             
                 <td class="name"><code>ev</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                </td>
-        </tr>
-	
-	
-	</tbody>
-</table>
-    
-    
-    
-<dl class="details">
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-</dd>
-
-        
-            
-<dt>
-    <div class="nameContainer">
-        <h4 class="name" id="handler">
-            
-            handler<span class="signature">(manager, inputEvent, inputData)</span>
-        </h4>
-    
-        
-        <div class="tag-source">
-            <a href="touchmouse.js.html">input/touchmouse.js</a>, <a href="touchmouse.js.html#line25">line 25</a>
-        </div>
-        
-    </div>
-
-    
-</dt>
-<dd>
-    
-    
-    <div class="description">
-        <p>handle mouse and touch events</p>
-    </div>
-    
-
-    
-    
-    
-    
-    
-        
-
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>manager</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Hammer.html">Hammer</a></span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                </td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>inputEvent</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-            
-            
-            
-            <td class="description last">
-                
-                </td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>inputData</code></td>
             
             
             <td class="type">
@@ -5951,6 +5862,153 @@ means that properties that exist in dest will not be overwritten by src</p>
     
     
 
+
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <div class="nameContainer">
+        <h4 class="name" id="normalizeSingleTouches">
+            
+            normalizeSingleTouches<span class="signature">(ev, type)</span><span class="glyphicon glyphicon-circle-arrow-right"></span><span class="type-signature returnType">{undefined|Array}</span>
+        </h4>
+    
+        
+        <div class="tag-source">
+            <a href="singletouch.js.html">input/singletouch.js</a>, <a href="singletouch.js.html#line59">line 59</a>
+        </div>
+        
+    </div>
+
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+        <h5>This:</h5>
+        <ul><li>{<a href="TouchInput.html">TouchInput</a>}</li></ul>
+    
+    
+    
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>ev</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                </td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+            
+            
+            
+            <td class="description last">
+                
+                <p>flag</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<h5>Returns:</h5>
+changed]
+<br />
 
     
     
@@ -7411,7 +7469,7 @@ means that properties that exist in dest will not be overwritten by src</p>
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Wed Sep 10 2014 09:14:12 GMT+0200 (CEST)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Sep 28 2014 12:10:24 GMT+0200 (W. Europe Daylight Time)
         </footer>
     </div>
 </div>

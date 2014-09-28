@@ -2,7 +2,7 @@ release:
 	npm install
 	cd node_modules/hammerjs && \
 		npm install && \
-		grunt concat string-replace uglify:min && \
+		grunt concat string-replace uglify:min usebanner && \
 		mv hammer.js ../../dist/hammer.js && \
 		mv hammer.min.js ../../dist/hammer.min.js && \
 		mv hammer.min.map ../../dist/hammer.min.map
