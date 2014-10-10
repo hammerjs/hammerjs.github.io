@@ -9,7 +9,7 @@ Hammer provides a debug tool to emulate touch support in the browser. It fires D
 you can also use multi-touch events like pinch and rotate. You can also use this in other projects without Hammer.js.
 
 ## How to use
-Include the javascript file, and call the `Emulator()` function before any other libraries that do something with the 
+Include the javascript file, and call the `TouchEmulator()` function before any other libraries that do something with the 
 touch input. It will set some fake properties to spoof the touch detection of some libraries, and triggers `touchstart`, `touchmove` and `touchend` events on the mouse target.
  
 ````html
