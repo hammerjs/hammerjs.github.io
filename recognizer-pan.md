@@ -23,3 +23,6 @@ Recognized when the pointer is down and moved in the allowed direction.
 - panright
 - panup 
 - pandown
+
+## Notes
+When calling `Hammer()` to create a simple instance, the pan and swipe recognizers are configured to only detect horizontal gestures.
