@@ -21,3 +21,5 @@ Recognized when the pointer is moving fast (velocity), with enough distance in t
 - swipeup
 - swipedown
 
+## Notes
+When calling `Hammer()` to create a simple instance, the pan and swipe recognizers are configured to only detect horizontal gestures.
