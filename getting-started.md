@@ -47,7 +47,7 @@ hammertime.get('pan').set({ direction: Hammer.DIRECTION_ALL });
 hammertime.get('swipe').set({ direction: Hammer.DIRECTION_VERTICAL });
 ````
 
-Also the viewport meta tag is recommended, it gives more control back to the webpage by disableing the
+Also the viewport meta tag is recommended, it gives more control back to the webpage by disabling the
 doubletap/pinch zoom. More recent browsers that support the touch-action property don't require this.
 
 ````html
