@@ -44,7 +44,7 @@ correct value for you, based on the recognizers.
 Let Hammer also fire DOM events. This is a bit slower, so disabled by default. Recommended to set to `true` if you want to play with event delegation.
 
 ### enable: true
-Acceps a boolean, or an function that should return a boolean which is.
+Accepts a boolean, or a function that should return a boolean, which is TBD.
 
 ### cssProps: {....}
 A collection of css properties that improve the handling of the input events. For details [take a look at
