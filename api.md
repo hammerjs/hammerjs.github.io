@@ -15,16 +15,16 @@ title: API
 - [Utils](#utils)
 
 ## Hammer
-Creates a Manager instance with a default set of recognizers and returns the manager instance. The default set
+Creates a [Hammer.Manager](#hammer.manager) instance with a default set of recognizers and returns the manager instance. The default set
 contains `tap`, `doubletap`, `pan`, `swipe`, `press`, `pinch` and `rotate` recognizer instances.
 
-You should only use this when you're fine with the default setup, or have set your own initial setup.
+You should only use this when you're fine with the default setup, or have defined your own initial setup.
 
-### Contructor(HTMLElement, [options])
-Just your element, and options. the options will be merged with Hammer.defaults. Also,
+### Constructor(HTMLElement, [options])
+The `options` will be merged with [Hammer.defaults](#hammer.defaults). Also,
 the recognizer set as defined in `Hammer.defaults.preset` will be added.
 
-If you'll pass an empty `recognizer` option, no initial recognizers will be added.
+If you pass an empty `recognizer` option, no initial recognizers will be added.
 
 ````js
 var myElement = document.getElementById('hitarea');
@@ -34,7 +34,7 @@ var mc = new Hammer(myElement);
 ---
 
 ## Hammer.defaults
-The defaults when creating an instance that are merged being with your options.
+The defaults when creating an instance. They'll be merged with your options.
 
 ### touchAction: 'compute'
 Accepts the `compute`, `auto`, `pan-y`, `pan-x` and `none` values. The default option will choose the
@@ -47,8 +47,8 @@ Let Hammer also fire DOM events. This is a bit slower, so disabled by default. R
 Acceps a boolean, or an function that should return a boolean which is.
 
 ### cssProps: {....}
-A collection of css properties that improve the handling of the input events. For details [take a look at
-the JSDoc.](/jsdoc/Hammer.defaults.cssProps.html)
+A collection of CSS properties that improve the handling of the input events. For details [take a look at
+the JSDoc](/jsdoc/Hammer.defaults.cssProps.html).
 
 ### preset: [....]
 Default recognizer setup when calling `Hammer()`. When creating a new Manager these will be skipped.
@@ -63,17 +63,17 @@ because they would make the element blocking.
 The Manager is the container of all the recognizer instances for your element. It sets up the input
 event listeners, and sets the touch-action property for you on the element.
 
-### constructor(HTMLElement, [options])
-Just your element, and options. the options will be merged with Hammer.defaults.
+### Constructor(HTMLElement, [options])
+Pass your DOM element and the options. The options will be merged with [Hammer.defaults](#hammer.defaults).
 
-````js
+```js
 var mc = new Hammer.Manager(myElement);
-````
+```
 
 You can setup an initial recognizer set with the option `recognizers`. The Array should be structured
 like this;
 
-````js
+```js
 var mc = new Hammer.Manager(myElement, {
 	recognizers: [
 		// RecognizerClass, [options], [recognizeWith, ...], [requireFailure, ...]
@@ -82,55 +82,55 @@ var mc = new Hammer.Manager(myElement, {
 		[Hammer.Swipe,{ direction: Hammer.DIRECTION_HORIZONTAL }],
 	]
 });
-````
+```
 
 ### set(options)
 Change an option on the manager instance. Using this method is recommended,
 because it will update the `touchAction` value if needed.
 
-````js
+```js
 mc.set({ enable: true });
-````
+```
 
 ### get(string), add(Recognizer) and remove(Recognizer)
 Add a new `Recognizer` instance to the Manager. The order of adding is also the order of the recognizers being
 executed. Just like the `get` method, it returns the added `Recognizer` instance.
-The `get` and `remove` methods takes the event name (from a recognizer) or a recognizer instance as an argument.
+The `get` and `remove` methods take the event name (from a recognizer) or a recognizer instance as an argument.
 
 Add and remove also accept an array of recognizers.
 
-````js
+```js
 // both return instance of myPinchRecognizer
 mc.get('pinch');
 mc.get(myPinchRecognizer);
-````
+```
 
-````js
-mc.add(myPinchRecognizer); // returns the recognizer
-mc.add([mySecondRecogizner, myThirdRecognizer]);
-````
+```js
+mc.add(myPinchRecognizer);  // returns the recognizer
+mc.add([mySecondRecognizer, myThirdRecognizer]);
+```
 
-````js
+```js
 mc.remove(myPinchRecognizer);
 mc.remove('rotate');
 mc.remove([myPinchRecognizer, 'rotate']);
-````
+```
 
 ### on(events, handler) and .off(events, [handler])
-Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events seperated
-by a space.
+Listen to events triggered by the added recognizers, or remove the bound events. Accepts multiple events separated
+by spaces.
 
-````js
-mc.on("pinch", function(ev) {
+```js
+mc.on('pinch', function(ev) {
 	console.log(ev.scale);
 });
-````
+```
 
 ### stop([force])
 Stop recognizing for the current input session. When forced, the recognizer cycle is stopped immediately.
 
 ### destroy()
-Unbinds all events and input events and makes the manager unusable. It does NOT unbind any domEvent listeners.
+Unbinds all events and input events and makes the manager unusable. It does NOT unbind any `domEvent` listeners.
 
 ---
 
@@ -141,17 +141,17 @@ which is a boolean value or a callback function to enable/disable the recognizer
 ### constructor([options])
 Just set the options.
 
-````js
+```js
 var pinch = new Hammer.Pinch();
 mc.add(pinch); // add it to the Manager instance
-````
+```
 
 ### set(options)
 Change an option on the recognizer instance. Using this method is recommended,
 because it will update the `touchAction` value if needed.
 
 ### recognizeWith(otherRecognizer) and dropRecognizeWith(otherRecognizer)
-Run the recognizer simultaneous with the given other recognizer, in both directions. This is usable for like
+Run the recognizer simultaneously with the given other recognizer, in both directions. This is usable e.g. for
 combining a pan with a swipe at the end, or a pinch with the ability to rotate the target as well. Dropping the
 connection only removes the link on the recognizer, not on the other recognizer. Both accept an
 array of recognizers.
@@ -173,18 +173,18 @@ as a string.
 ---
 
 ## Hammer.input event
-A *secret* event is being triggered by Hammer, `hammer.input`. It is being emitted on every input that is being received, and enabled you to things with the raw input. Small, but powerful feature.
+A *secret* event is being triggered by Hammer, `Hammer.input`. It is being emitted on every input that is being received, and enabled you to things with the raw input. Small, but powerful feature.
 
-````js
+```js
 hammertime.on("hammer.input", function(ev) {
    console.log(ev.pointers);
 });
-````
+```
 
 ---
 
 ## Event object
-All events that Hammer triggers all receive an event object containing the following properties.
+All events that Hammer triggers receive an event object containing the following properties:
 
 | Name			| Value |
 |-----------------------|-------|
@@ -215,10 +215,9 @@ All events that Hammer triggers all receive an event object containing the follo
 ---
 
 ## Constants
-All constants are defined at the `Hammer` object. Since it are binary flags,
-you can use bitwise operators on it. MDN has some excellent
-[documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)
-about this.
+All constants are defined in the `Hammer` object. Since they are binary flags,
+you can use bitwise operators on them. MDN has some excellent
+[documentation on bitwise operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators).
 
 ### Directions
 Used for setting the direction of a recognizer, and for reading the value of an event.
@@ -235,7 +234,7 @@ Used for setting the direction of a recognizer, and for reading the value of an 
 | DIRECTION_ALL     | 30            |
 
 ### Input Events
-Hammer maps all types of input (mousedown, mousemove, touchmove, pointercancel) to these contants.
+Hammer maps all types of input (`mousedown`, `mousemove`, `touchmove`, `pointercancel`) to these contants.
 
 | Name              | Value         |
 |-------------------|---------------|
@@ -264,27 +263,27 @@ Used internally by the recognizers to define its state.
 ### Hammer.on(element, types, handler)
 Wrapper around `addEventListener` that accepts multiple event types.
 
-````js
+```js
 Hammer.on(window, "load resize scroll", function(ev) {
 	console.log(ev.type);
 });
-````
+```
  
 ### Hammer.off(element, types, handler)
 Like `Hammer.on`, this is a wrapper around `removeEventListener` that accepts multiple event types.
 
 ### Hammer.each(obj, handler)
-Iterate an array or an object's own properties.
+Iterate over an array or an object's own properties. Like Underscore's `each`, but we want to avoid the dependency.
 
-````js
+```js
 Hammer.each([10,20,30,40], function(item, index, src) { });
 Hammer.each({a:10, b:20, c:30}, function(item, key, src) { });
-````
+```
 
 ### Hammer.merge(obj1, obj2)
 Merge properties from obj2 into obj1. Properties won't be overwritten.
 
-````js
+```js
 var options = {
 	b: false
 };
@@ -299,12 +298,12 @@ Hammer.merge(options, defaults);
 // options.a == true
 // options.b == false
 // options.c == [1,2,3]
-````
+```
 
 ### Hammer.extend(obj1, obj2)
 Extend obj1 with the properties from obj2. Properties will be overwritten.
 
-````js
+```js
 var obj1 = {
 	a: true,
 	b: false,
@@ -320,12 +319,12 @@ Hammer.extend(obj1, obj2);
 // obj1.a == true
 // obj1.b == true
 // obj1.c == [4,5,6]
-````
+```
 
 ### Hammer.inherit(child, base, [properties])
 Simple class inheritance.
 
-````js
+```js
 function Animal(name) {
 	this.name = name;
 }
@@ -342,12 +341,12 @@ Hammer.inherit(Dog, Animal, {
 
 var dog = new Dog('Spaikie');
 dog.bark();
-````
+```
 
 ### Hammer.bindFn(fn, scope)
 Simple alternative for `Function.bind`.
 
-````js
+```js
 function myFunction(ev) {
 	console.log(this === myContext); // is true
 }
@@ -358,12 +357,12 @@ var myContext = {
 };
 
 window.addEventListener('load', Hammer.bindFn(myFunction, myContext), false);
-````
+```
 
 ### Hammer.prefixed(obj, name)
 Get the (prefixed) property from the browser.
 
-````js
+```js
 Hammer.prefixed(document.body.style, 'userSelect');
 // returns "webkitUserSelect" on Chrome 35
-````
+```
