@@ -9,7 +9,7 @@ below does this with the pinch and rotate recognizers, which will improve usabil
 
 ````js
 var pinch = new Hammer.Pinch();
-var rotate = new Hammer.Rotation();
+var rotate = new Hammer.Rotate();
 pinch.recognizeWith(rotate);
 ````
 
