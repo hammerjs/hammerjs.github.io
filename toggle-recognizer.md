@@ -17,7 +17,7 @@ hammer.get('tap').set({ enable: true });
 ````
 
 Instead of toggling the `enable` property each time on your app, you
-could delegate this responsability to a custom function which will be
+could delegate this responsibility to a custom function which will be
 checked with each new incoming touch event to decide if the event can be dispatched
 to the recognizer or not. This feature provides support to build complex gesture scenarios
 based on App/UI logic.
