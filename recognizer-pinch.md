@@ -21,3 +21,5 @@ Recognized when two or more pointers are moving toward (zoom-in) or away from ea
 - pinchin
 - pinchout
 
+Gotcha : Adding a pinch manager to an element will disable all tap events within this element, including input focus, button click, etc ..  Use the `{"touchAction":"auto"}` manager option for normal input behavior within the element.
+
