@@ -23,6 +23,7 @@ don't. See the [touch-action page](/touch-action) for more details.
 | Android 4 w/ mouse            | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ | n/a |
 | iOS 6                         | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ |   |
 | iOS 7                         | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ |   |
+| iOS 8                         | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ |   |
 | BlackBerry 10                 | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ | ? | ? |
 | FireFox OS (simulator)        | ♥ | ♥ | ♥ | ♥ | ♥ | ♥ | ? | ? |
 | Desktop - IE11                | ♥ |   | ♥ |   | ♥ | ♥ |   | ♥ |
