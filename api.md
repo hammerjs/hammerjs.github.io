@@ -200,7 +200,7 @@ All events that Hammer triggers all receive an event object containing the follo
 | direction		| Direction moved. Matches the `DIRECTION` constants. |
 | offsetDirection	| Direction moved from it's starting point. Matches the `DIRECTION` constants. |
 | scale			| Scaling that has been done when multi-touch. 1 on a single touch. |
-| rotation		| Rotation that has been done when multi-touch. 0 on a single touch. |
+| rotation		| Rotation (in deg) that has been done when multi-touch. 0 on a single touch. |
 | center		| Center position for multi-touch, or just the single pointer. |
 | srcEvent		| Source event object, type `TouchEvent`, `MouseEvent` or `PointerEvent`. |
 | target		| Target that received the event. |
