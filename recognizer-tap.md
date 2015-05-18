@@ -9,7 +9,7 @@ interval and position.  The eventData from the emitted event contains the proper
 which contains the amount of multi-taps being recognized.
 
 If an Tap recognizer has a failing requirement, it waits the interval time before emitting the event. This is
-because if you want to only trigger a doubletap, hammer needs to see if any other taps are comming in.
+because if you want to only trigger a doubletap, hammer needs to see if any other taps are coming in.
 [Read more about requireFailure](/require-failure)
 
 | Option    | Default  | Description       |
