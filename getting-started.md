@@ -16,7 +16,7 @@ It doesn't have any dependencies, and it's small, only __{{site.data.hammer.gzip
 > ##### What's new in 2.0?
 It's completely rewritten, with reusable gesture recognizers, and improved support for the recent mobile
 browsers by making use of the touch-action css property when possible. Also support for multiple Hammer
-instances the same time, so multi-user became possible.
+instances at the same time, so multi-touch becames possible.
 
 ---
 
