@@ -10,7 +10,7 @@ Recognized when the pointer is down for x ms without any movement.
 |-----------|----------|-------------------|
 | event     | press    | Name of the event. |
 | pointers  | 1        | Required pointers. |
-| threshold | 5        | Minimal movement that is allowed while pressing. |
+| threshold | 5        | Maximum movement that is allowed while pressing. |
 | time      | 500      | Minimal press time in ms. |
 
 ## Events
