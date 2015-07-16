@@ -5,7 +5,7 @@ title: Angular.js directive
 
 # Angular.js directive
 
-An Angular.js directive has been made by Ryan Mullins, which allows to you to easy integrate Hammer in your Angular.js 
+An Angular.js directive has been made by Ryan Mullins, which allows you to easy integrate Hammer in your Angular.js 
 based projects. You can find documentation at the project page on GitHub.
 
 - [Get the plugin at GitHub](http://ryanmullins.github.io/angular-hammer/)
