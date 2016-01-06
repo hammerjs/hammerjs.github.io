@@ -70,9 +70,9 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="AttrRecognizer.attrTest"><a href="AttrRecognizer.html#attrTest">attrTest</a></li>
+                <li data-name="AttrRecognizer.attrTest"><a href="AttrRecognizer.html#.attrTest">attrTest</a></li>
             
-                <li data-name="AttrRecognizer.process"><a href="AttrRecognizer.html#process">process</a></li>
+                <li data-name="AttrRecognizer.process"><a href="AttrRecognizer.html#.process">process</a></li>
             
                 <li data-name="AttrRecognizer#canEmit"><a href="AttrRecognizer.html#canEmit">canEmit</a></li>
             
@@ -119,7 +119,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="AttrRecognizer.defaults.pointers"><a href="AttrRecognizer.defaults.html#pointers">pointers</a></li>
+                <li data-name="AttrRecognizer.defaults.pointers"><a href="AttrRecognizer.defaults.html#.pointers">pointers</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -142,7 +142,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="Hammer.VERSION"><a href="Hammer.html#VERSION">VERSION</a></li>
+                <li data-name="Hammer.VERSION"><a href="Hammer.html#.VERSION">VERSION</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -167,17 +167,17 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="Hammer.defaults.domEvents"><a href="Hammer.defaults.html#domEvents">domEvents</a></li>
+                <li data-name="Hammer.defaults.domEvents"><a href="Hammer.defaults.html#.domEvents">domEvents</a></li>
             
-                <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
+                <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#.enable">enable</a></li>
             
-                <li data-name="Hammer.defaults.inputClass"><a href="Hammer.defaults.html#inputClass">inputClass</a></li>
+                <li data-name="Hammer.defaults.inputClass"><a href="Hammer.defaults.html#.inputClass">inputClass</a></li>
             
-                <li data-name="Hammer.defaults.inputTarget"><a href="Hammer.defaults.html#inputTarget">inputTarget</a></li>
+                <li data-name="Hammer.defaults.inputTarget"><a href="Hammer.defaults.html#.inputTarget">inputTarget</a></li>
             
-                <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#preset">preset</a></li>
+                <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#.preset">preset</a></li>
             
-                <li data-name="Hammer.defaults.touchAction"><a href="Hammer.defaults.html#touchAction">touchAction</a></li>
+                <li data-name="Hammer.defaults.touchAction"><a href="Hammer.defaults.html#.touchAction">touchAction</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -202,17 +202,17 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="Hammer.defaults.cssProps.contentZooming"><a href="Hammer.defaults.cssProps.html#contentZooming">contentZooming</a></li>
+                <li data-name="Hammer.defaults.cssProps.contentZooming"><a href="Hammer.defaults.cssProps.html#.contentZooming">contentZooming</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.tapHighlightColor"><a href="Hammer.defaults.cssProps.html#tapHighlightColor">tapHighlightColor</a></li>
+                <li data-name="Hammer.defaults.cssProps.tapHighlightColor"><a href="Hammer.defaults.cssProps.html#.tapHighlightColor">tapHighlightColor</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.touchCallout"><a href="Hammer.defaults.cssProps.html#touchCallout">touchCallout</a></li>
+                <li data-name="Hammer.defaults.cssProps.touchCallout"><a href="Hammer.defaults.cssProps.html#.touchCallout">touchCallout</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.touchSelect"><a href="Hammer.defaults.cssProps.html#touchSelect">touchSelect</a></li>
+                <li data-name="Hammer.defaults.cssProps.touchSelect"><a href="Hammer.defaults.cssProps.html#.touchSelect">touchSelect</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.userDrag"><a href="Hammer.defaults.cssProps.html#userDrag">userDrag</a></li>
+                <li data-name="Hammer.defaults.cssProps.userDrag"><a href="Hammer.defaults.cssProps.html#.userDrag">userDrag</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.userSelect"><a href="Hammer.defaults.cssProps.html#userSelect">userSelect</a></li>
+                <li data-name="Hammer.defaults.cssProps.userSelect"><a href="Hammer.defaults.cssProps.html#.userSelect">userSelect</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -968,7 +968,7 @@
     
     <section>
         <article>
-            <pre class="prettyprint source"><code>var VENDOR_PREFIXES = ['', 'webkit', 'moz', 'MS', 'ms', 'o'];
+            <pre class="prettyprint source"><code>var VENDOR_PREFIXES = ['', 'webkit', 'Moz', 'MS', 'ms', 'o'];
 var TEST_ELEMENT = document.createElement('div');
 
 var TYPE_FUNCTION = 'function';
@@ -1034,14 +1034,68 @@ function each(obj, iterator, context) {
 }
 
 /**
+ * wrap a method with a deprecation warning and stack trace
+ * @param {Function} method
+ * @param {String} name
+ * @param {String} message
+ * @returns {Function} A new function wrapping the supplied method.
+ */
+function deprecate(method, name, message) {
+    var deprecationMessage = 'DEPRECATED METHOD: ' + name + '\n' + message + ' AT \n';
+    return function() {
+        var e = new Error('get-stack-trace');
+        var stack = e &amp;&amp; e.stack ? e.stack.replace(/^[^\(]+?[\n$]/gm, '')
+            .replace(/^\s+at\s+/gm, '')
+            .replace(/^Object.&lt;anonymous>\s*\(/gm, '{anonymous}()@') : 'Unknown Stack Trace';
+
+        var log = window.console &amp;&amp; (window.console.warn || window.console.log);
+        if (log) {
+            log.call(window.console, deprecationMessage, stack);
+        }
+        return method.apply(this, arguments);
+    };
+}
+
+/**
+ * extend object.
+ * means that properties in dest will be overwritten by the ones in src.
+ * @param {Object} target
+ * @param {...Object} objects_to_assign
+ * @returns {Object} target
+ */
+var assign;
+if (typeof Object.assign !== 'function') {
+    assign = function assign(target) {
+        if (target === undefined || target === null) {
+            throw new TypeError('Cannot convert undefined or null to object');
+        }
+
+        var output = Object(target);
+        for (var index = 1; index &lt; arguments.length; index++) {
+            var source = arguments[index];
+            if (source !== undefined &amp;&amp; source !== null) {
+                for (var nextKey in source) {
+                    if (source.hasOwnProperty(nextKey)) {
+                        output[nextKey] = source[nextKey];
+                    }
+                }
+            }
+        }
+        return output;
+    };
+} else {
+    assign = Object.assign;
+}
+
+/**
  * extend object.
  * means that properties in dest will be overwritten by the ones in src.
  * @param {Object} dest
  * @param {Object} src
- * @param {Boolean} [merge]
+ * @param {Boolean} [merge=false]
  * @returns {Object} dest
  */
-function extend(dest, src, merge) {
+var extend = deprecate(function extend(dest, src, merge) {
     var keys = Object.keys(src);
     var i = 0;
     while (i &lt; keys.length) {
@@ -1051,7 +1105,7 @@ function extend(dest, src, merge) {
         i++;
     }
     return dest;
-}
+}, 'extend', 'Use `assign`.');
 
 /**
  * merge the values from src in the dest.
@@ -1060,9 +1114,9 @@ function extend(dest, src, merge) {
  * @param {Object} src
  * @returns {Object} dest
  */
-function merge(dest, src) {
+var merge = deprecate(function merge(dest, src) {
     return extend(dest, src, true);
-}
+}, 'merge', 'Use `assign`.');
 
 /**
  * simple class inheritance
@@ -1079,7 +1133,7 @@ function inherit(child, base, properties) {
     childP._super = baseP;
 
     if (properties) {
-        extend(childP, properties);
+        assign(childP, properties);
     }
 }
 
@@ -1282,8 +1336,8 @@ function uniqueId() {
  * @returns {DocumentView|Window}
  */
 function getWindowForElement(element) {
-    var doc = element.ownerDocument;
-    return (doc.defaultView || doc.parentWindow);
+    var doc = element.ownerDocument || element;
+    return (doc.defaultView || doc.parentWindow || window);
 }
 </code></pre>
         </article>
@@ -1296,7 +1350,7 @@ function getWindowForElement(element) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Sep 28 2014 12:10:23 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jan 06 2016 18:12:05 GMT-0500 (EST)
         </footer>
     </div>
 </div>

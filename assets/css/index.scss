@@ -75,7 +75,9 @@ h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px;
   text-align: right;
   font-size: 85%;
 }
-
+.footer {
+  background: $red;
+}
 .header {
   background: $red;
   color: #fff;
@@ -156,7 +158,6 @@ h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px;
 }
 
 .homepage {
-  background: $red;
 
   ::selection {
     background: none;
@@ -190,7 +191,7 @@ h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px;
     line-height: normal;
     padding: .7em 0;
     margin-bottom: 25px;
-    color: #fff;
+    color: #333;
   }
 
   @media #{$medium-up} {
@@ -209,8 +210,208 @@ h4 { color: #000; text-transform: uppercase; font-size: 1em; margin-bottom: 5px;
   @import "demo";
 }
 
+.callout.large.primary {
+  padding: 3em;
+  background: #ccc;
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
 
 .small-text {
   font-size: 12px;
   line-height: 16px;
 }
+
+.demo-box {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.demo-box>img {
+  height: 400px;
+  width: 1900px;
+  position: absolute;
+  margin-left: -950px;
+  display: none;
+  pointer-events: none;
+  margin-top: -220px;
+  left: 50%;
+  top: 50%;
+  max-width: none;
+}
+
+.demo-box-wrap h2,
+.target-wrap h2 {
+  pointer-events: none;
+  color: white;
+}
+
+.demo-box-wrap, .target-wrap {
+  border: 1px solid #333;
+  font-family: sans-serif;
+  background: #333;
+  text-align: center;
+  color: white;
+  width: 302px;
+  height: 245px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+}
+
+.target-wrap {
+  width: 315px;
+  height: auto;
+}
+
+.target {
+  background: white;
+  padding: 1em;
+  color: #333;
+}
+
+.demo-box img.active {
+ display: block;
+}
+
+.page-num .active {
+  color: red;
+}
+
+.demo-box .page-num {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  margin-left: -20px;
+  color: white;
+  z-index: 999;
+  background: rgba( 170, 170, 170, .5 );
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid black;
+  pointer-events: none;
+}
+
+.demo-overlay {
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background: rgba( 70, 70, 70, .8 );
+ display: none;
+}
+
+.demo-overlay img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+.row-try-it {
+  max-width: none;
+}
+
+.target {
+  background: white;
+}
+
+.hit-target {
+  width: 96%;
+  margin: auto;
+  height: 75px;
+  background: $red;
+  color: white;
+  text-align: center;
+  margin-top: 1em;
+}
+.hit-target:after {
+  position: relative;
+  top: calc( 37px - .5em );
+  content: "Target";
+}
+.click-gauge {
+  -webkit-appearance: none;
+  height: 2em;
+  width: 100%;
+  border-radius: 2px
+}
+.click-gauge[value]::-webkit-progress-bar {
+  box-shadow: inset
+    -3px -3px 3px #ccc,
+    inset 3px 3px 3px #ccc;
+  background-color: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.click-gauge[value]::-webkit-progress-value {
+  box-shadow:
+    2px .5px 1px #333,
+    inset 2px 2px 7px darkgreen,
+    inset -2px -2px 7px darkgreen;
+  border-radius: 2px 0 0 2px;
+  position: relative;
+}
+.click-gauge.warning[value]::-webkit-progress-value {
+  background: orange;
+  box-shadow:
+    2px .5px 1px #333,
+    inset 2px 2px 7px darkorange,
+    inset -2px -2px 7px darkorange;
+}
+.click-gauge.failure[value]::-webkit-progress-value {
+  background: red;
+  box-shadow:
+    2px .5px 1px #333,
+    inset 2px 2px 7px darkred,
+    inset -2px -2px 7px darkred;
+}
+.output {
+  height: 30px;
+  width: 100%;
+  display: block;
+  color: #333;
+  text-align: left;
+}
+.top-header {
+  margin-top: -1.8em !important;
+}
+.contrib-box {
+  width: 250px;
+  height: 325px;
+  background: #333;
+  color: white;
+  text-align: center;
+  border: 1px solid #333;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.contrib-box h4 {
+  color: white;
+}
+
+.contrib-box img {
+  width: 100%;
+}
+
+.support-row {
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+.support-row a {
+  text-decoration: none;
+}
+
+.support-row img {
+  width: 150px;
+}
+

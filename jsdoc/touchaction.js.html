@@ -70,9 +70,9 @@
             
             <span class="subtitle">Methods</span>
             
-                <li data-name="AttrRecognizer.attrTest"><a href="AttrRecognizer.html#attrTest">attrTest</a></li>
+                <li data-name="AttrRecognizer.attrTest"><a href="AttrRecognizer.html#.attrTest">attrTest</a></li>
             
-                <li data-name="AttrRecognizer.process"><a href="AttrRecognizer.html#process">process</a></li>
+                <li data-name="AttrRecognizer.process"><a href="AttrRecognizer.html#.process">process</a></li>
             
                 <li data-name="AttrRecognizer#canEmit"><a href="AttrRecognizer.html#canEmit">canEmit</a></li>
             
@@ -119,7 +119,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="AttrRecognizer.defaults.pointers"><a href="AttrRecognizer.defaults.html#pointers">pointers</a></li>
+                <li data-name="AttrRecognizer.defaults.pointers"><a href="AttrRecognizer.defaults.html#.pointers">pointers</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -142,7 +142,7 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="Hammer.VERSION"><a href="Hammer.html#VERSION">VERSION</a></li>
+                <li data-name="Hammer.VERSION"><a href="Hammer.html#.VERSION">VERSION</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -167,17 +167,17 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="Hammer.defaults.domEvents"><a href="Hammer.defaults.html#domEvents">domEvents</a></li>
+                <li data-name="Hammer.defaults.domEvents"><a href="Hammer.defaults.html#.domEvents">domEvents</a></li>
             
-                <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#enable">enable</a></li>
+                <li data-name="Hammer.defaults.enable"><a href="Hammer.defaults.html#.enable">enable</a></li>
             
-                <li data-name="Hammer.defaults.inputClass"><a href="Hammer.defaults.html#inputClass">inputClass</a></li>
+                <li data-name="Hammer.defaults.inputClass"><a href="Hammer.defaults.html#.inputClass">inputClass</a></li>
             
-                <li data-name="Hammer.defaults.inputTarget"><a href="Hammer.defaults.html#inputTarget">inputTarget</a></li>
+                <li data-name="Hammer.defaults.inputTarget"><a href="Hammer.defaults.html#.inputTarget">inputTarget</a></li>
             
-                <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#preset">preset</a></li>
+                <li data-name="Hammer.defaults.preset"><a href="Hammer.defaults.html#.preset">preset</a></li>
             
-                <li data-name="Hammer.defaults.touchAction"><a href="Hammer.defaults.html#touchAction">touchAction</a></li>
+                <li data-name="Hammer.defaults.touchAction"><a href="Hammer.defaults.html#.touchAction">touchAction</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -202,17 +202,17 @@
             
             <span class="subtitle">Members</span>
             
-                <li data-name="Hammer.defaults.cssProps.contentZooming"><a href="Hammer.defaults.cssProps.html#contentZooming">contentZooming</a></li>
+                <li data-name="Hammer.defaults.cssProps.contentZooming"><a href="Hammer.defaults.cssProps.html#.contentZooming">contentZooming</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.tapHighlightColor"><a href="Hammer.defaults.cssProps.html#tapHighlightColor">tapHighlightColor</a></li>
+                <li data-name="Hammer.defaults.cssProps.tapHighlightColor"><a href="Hammer.defaults.cssProps.html#.tapHighlightColor">tapHighlightColor</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.touchCallout"><a href="Hammer.defaults.cssProps.html#touchCallout">touchCallout</a></li>
+                <li data-name="Hammer.defaults.cssProps.touchCallout"><a href="Hammer.defaults.cssProps.html#.touchCallout">touchCallout</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.touchSelect"><a href="Hammer.defaults.cssProps.html#touchSelect">touchSelect</a></li>
+                <li data-name="Hammer.defaults.cssProps.touchSelect"><a href="Hammer.defaults.cssProps.html#.touchSelect">touchSelect</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.userDrag"><a href="Hammer.defaults.cssProps.html#userDrag">userDrag</a></li>
+                <li data-name="Hammer.defaults.cssProps.userDrag"><a href="Hammer.defaults.cssProps.html#.userDrag">userDrag</a></li>
             
-                <li data-name="Hammer.defaults.cssProps.userSelect"><a href="Hammer.defaults.cssProps.html#userSelect">userSelect</a></li>
+                <li data-name="Hammer.defaults.cssProps.userSelect"><a href="Hammer.defaults.cssProps.html#.userSelect">userSelect</a></li>
             
             </ul>
             <ul class="typedefs itemMembers">
@@ -1002,7 +1002,7 @@ TouchAction.prototype = {
             value = this.compute();
         }
 
-        if (NATIVE_TOUCH_ACTION) {
+        if (NATIVE_TOUCH_ACTION &amp;&amp; this.manager.element.style) {
             this.manager.element.style[PREFIXED_TOUCH_ACTION] = value;
         }
         this.actions = value.toLowerCase().trim();
@@ -1053,6 +1053,23 @@ TouchAction.prototype = {
         var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y);
         var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X);
 
+        if (hasNone) {
+            //do not prevent defaults if this is a tap gesture
+
+            var isTapPointer = input.pointers.length === 1;
+            var isTapMovement = input.distance &lt; 2;
+            var isTapTouchTime = input.deltaTime &lt; 250;
+
+            if (isTapPointer &amp;&amp; isTapMovement &amp;&amp; isTapTouchTime) {
+                return;
+            }
+        }
+
+        if (hasPanX &amp;&amp; hasPanY) {
+            // `pan-x pan-y` means browser handles all scrolling/panning, do not prevent
+            return;
+        }
+
         if (hasNone ||
             (hasPanY &amp;&amp; direction &amp; DIRECTION_HORIZONTAL) ||
             (hasPanX &amp;&amp; direction &amp; DIRECTION_VERTICAL)) {
@@ -1084,9 +1101,12 @@ function cleanTouchActions(actions) {
     var hasPanX = inStr(actions, TOUCH_ACTION_PAN_X);
     var hasPanY = inStr(actions, TOUCH_ACTION_PAN_Y);
 
-    // pan-x and pan-y can be combined
+    // if both pan-x and pan-y are set (different recognizers
+    // for different directions, e.g. horizontal pan but vertical swipe?)
+    // we need none (as otherwise with pan-x pan-y combined none of these
+    // recognizers will work, since the browser would handle all panning
     if (hasPanX &amp;&amp; hasPanY) {
-        return TOUCH_ACTION_PAN_X + ' ' + TOUCH_ACTION_PAN_Y;
+        return TOUCH_ACTION_NONE;
     }
 
     // pan-x OR pan-y
@@ -1112,7 +1132,7 @@ function cleanTouchActions(actions) {
         
 
         <footer>
-            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Sep 28 2014 12:10:23 GMT+0200 (W. Europe Daylight Time)
+            Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Jan 06 2016 18:12:05 GMT-0500 (EST)
         </footer>
     </div>
 </div>

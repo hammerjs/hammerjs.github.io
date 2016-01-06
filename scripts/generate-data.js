@@ -9,9 +9,21 @@ var data = {
         ).version;
     })(),
 
+    timeVersion: (function () {
+        return JSON.parse(
+            fs.readFileSync('./node_modules/hammer-timejs/package.json', {encoding: 'utf8'})
+        ).version;
+    })(),
+
     gzipped: (function () {
         return prettyBytes(gzipSize.sync(
             fs.readFileSync('./dist/hammer.min.js', {encoding: 'utf8'})
+        ));
+    })(),
+
+    timeGzipped: (function () {
+        return prettyBytes(gzipSize.sync(
+            fs.readFileSync('./dist/hammer-time.min.js', {encoding: 'utf8'})
         ));
     })()
 };

@@ -5,7 +5,7 @@
     "plugins": ["plugins/markdown"],
     "source": {
         "include": ["./node_modules/hammerjs/src"],
-        "exclude": [],
+        "exclude": ["node_modules/hammerjs/src/hammer.suffix.js","node_modules/hammerjs/src/hammer.prefix.js"],
         "includePattern": ".+\\.js(doc)?$",
         "excludePattern": "(^|\\/|\\\\)_"
     },

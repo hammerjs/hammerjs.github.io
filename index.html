@@ -2,17 +2,31 @@
 layout: homepage
 title: Hammer.JS
 ---
-
+<div class="callout large primary top-header">
+	<div class="text-center">
+		<h1>You can touch this!</h1>
+		<h2 class="subheader">Hammer helps you add support for touch gestures to your page, and remove the 300ms delay from clicks.</h2>
+		<h3 class="subheader">Use the original Hammer.js for gesture support,</h3>
+		<h3 class="subheader">and the all new Hammer Time for removing the 300ms delay</h3>
+	</div>
+</div>
 <div class="row splash">
 	<div class="column">
 		<div class="text-center">
-			<h1>Add touch gestures to your page.</h1>
-			<p>
-				<a class="button large download", href="dist/hammer.min.js">
-					<strong>Hammer.min.js</strong><br>
-					<small>v{{site.data.hammer.version}} &mdash; {{site.data.hammer.gzipped}} gzipped</small>
-				</a>
-			</p>
+			<div class="row">
+				<div class="large-6 columns">
+					<a class="button large download", href="dist/hammer.min.js">
+						<strong>Hammer.min.js</strong><br>
+						<small>v{{site.data.hammer.version}} &mdash; {{site.data.hammer.gzipped}} gzipped</small>
+					</a>
+				</div>
+				<div class="large-6 columns">
+					<a class="button large download", href="dist/hammer-time.min.js">
+						<strong>Hammer-time.min.js</strong><br>
+						<small>v{{site.data.hammer.timeVersion}} &mdash; {{site.data.hammer.timeGzipped}} gzipped</small>
+					</a>
+				</div>
+			</div>
 		</div>
 
 		<div class="try">
@@ -27,4 +41,277 @@ title: Hammer.JS
 		</div>
 	</div>
 </div>
+<div class="callout large primary">
+	<div class="text-center">
+		<h1>Gestures</h1>
+		<h2 class="subheader">Hammer.js supports most common single and multi-touch gestures, and is fully extendable to add custom gestures.</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="column small-2">
+		<h3>Rotate</h3>
+		<img src="/assets/img/rotate.svg" width="100%">
+	</div>
+	<div class="column small-2">
+		<h3>Pinch</h3>
+		<img src="/assets/img/pinch.svg">
+	</div>
+	<div class="column small-2">
+		<h3>Press</h3>
+		<img src="/assets/img/press.svg">
+	</div>
+	<div class="column small-2">
+		<h3>Pan</h3>
+		<img src="/assets/img/pan.svg">
+	</div>
+	<div class="column small-2">
+		<h3>Tap</h3>
+		<img src="/assets/img/tap.svg">
+	</div>
+	<div class="column small-2">
+		<h3>Swipe</h3>	
+		<img src="/assets/img/swipe.svg">
+	</div>
+</div>
+<div class="callout large primary" id="try-it">
+	<div class="text-center">
+		<h1>Try it!</h1>
+		<h2 class="subheader">Use the shift key to emulate multi touch with a mouse</h2>
+	</div>
+</div>
+<div class="row row-try-it">
+	<div class="column large-4 medium-6 small-12">
+		<div class="demo-box-wrap">
+			<h2>Swipe</h2>
+			<div class="demo-box swipe">
+				<img class="active" src="/assets/img/pano-1.jpg">
+				<img src="/assets/img/pano-2.jpg">
+				<img src="/assets/img/pano-3.jpg">
+				<div class="page-num">
+					<span class="active">1</span>
+					<span>2</span>
+					<span>3</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="column large-4 medium-6 small-12">
+		<div class="demo-box-wrap">
+			<h2>Pan</h2>
+			<div class="demo-box pan">
+				<img class="active" src="/assets/img/pano-1.jpg">
+			</div>
+		</div>
+	</div>
+	<div class="column large-4 medium-6 small-12">
+		<div class="demo-box-wrap">
+			<h2>Tap</h2>
+			<div class="demo-box tap">
+				<img class="active" src="/assets/img/pano-1.jpg">
+				<img src="/assets/img/pano-2.jpg">
+				<img src="/assets/img/pano-3.jpg">
+				<div class="page-num">
+					<span class="active">1</span>
+					<span>2</span>
+					<span>3</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="column large-4 medium-6 small-12">
+		<div class="demo-box-wrap">
+		  	<h2>Press</h2>
+			<div class="demo-box press">
+				<img class="active" src="/assets/img/pano-1.jpg">
+			 	<div class="demo-overlay">
+					<img src="/assets/img/circle-check.svg">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="column large-4 medium-6 small-12">
+		<div class="demo-box-wrap">
+			<h2>Rotate</h2>
+			<div class="demo-box rotate">
+				<img class="active" src="/assets/img/pano-1.jpg">
+			</div>
+		</div>
+	</div>
+	<div class="column large-4 medium-6 small-12">
+		<div class="demo-box-wrap">
+			<h2>Pinch / Zoom</h2>
+			<div class="demo-box pinch">
+				<img class="active" src="/assets/img/pano-1.jpg">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="callout large primary">
+	<div class="text-center">
+		<h1>Hammer Time</h1>
+		<h2 class="subheader">Hammer time removes the 300ms delay from both clicks and focus</h2>
+		<h2><small>Hammer time is a partial polyfill for the touch-action css property from the pointer events spec <a href="http://www.w3.org/TR/pointerevents/#the-touch-action-css-property">http://www.w3.org/TR/pointerevents/#the-touch-action-css-property</a></small></h2>
+	</div>
+</div>
+<div class="row row-try-it">
+	<div class="column large-4 medium-6 small-12">
+		<div class="target-wrap" id="target">
+			<h2>None</h2>
+			<div class="target" style="touch-action: none;">
+				<code>style="touch-action: none;"</code><br>
+				Click Time: <span class="click-time-output">0ms</span>
+				<progress class="click-gauge" max="500" value="0"></progress>
+				<span class="output"></span>
+				<div class="hit-target"></div>
+			</div>
+		</div>
+	</div>
+	<div class="column large-4 medium-6 small-12">
+		<div class="target-wrap" id="target">
+			<h2>Manipulation</h2>
+			<div class="target" style="touch-action: manipulation;">
+				<code>style="touch-action: manipulation;"</code><br>
+				Click Time: <span class="click-time-output">0ms</span>
+				<progress class="click-gauge" max="500" value="0"></progress>
+				<span class="output"></span>
+				<div class="hit-target"></div>
+			</div>
+		</div>
+	</div>
+	<div class="column large-4 medium-12 small-12">
+		<div class="target-wrap">
+			<h2>Auto / unset</h2>
+			<div class="target">
+				<code>style=""</code><br>
+				Click Time: <span class="click-time-output">0ms</span>
+				<progress class="click-gauge" max="500" value="0"></progress>
+				<span class="output"></span>
+				<div class="hit-target" style=""></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="callout large primary" id="team">
+	<div class="text-center">
+		<h1>Team</h1>
+		<h2 class="subheader">Hammerjs and its associated libraries are developed entirely by volunteer contributors</h2>
+	</div>
+</div>
+<div class="row splash">
+	<div class="column">
+		<div class="row">
+			<div class="column">
+				<div class="row">
+					<div class="large-4 medium-6 small-12 columns">
+						<div class="contrib-box">
+							<img src="https://avatars0.githubusercontent.com/u/462993?v=3&s=460" style="width:100%">
+							<h4>Alexander Schmitz</h4>
+							<a href="https://github.com/arschmitz">(arschmitz)</a>
+							<h4>Project Lead</h4>
+						</div>
+					</div>
+					<div class="large-4 medium-6 small-12 columns">
+						<div class="contrib-box">
+							<img src="https://avatars0.githubusercontent.com/u/650309?v=3&s=460" style="width:100%">
+							<h4>Chris Thoburn</h4>
+							<a href="https://github.com/runspired">(runspired)</a>
+							<h4>Developer</h4>
+						</div>
+					</div>
+					<div class="large-4 medium-12 small-12 columns">
+						<div class="contrib-box">
+							<img src="https://avatars1.githubusercontent.com/u/1243901?v=3&s=460" style="width:100%">
+							<h4>Jorik Tangelder</h4>
+							<a href="https://github.com/jtangelder">(jtangelder)</a>
+							<h4>Original Creator (inactive)</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="callout large primary" id="contribute">
+	<div class="text-center">
+		<h1>Contributing</h1>
+		<h2 class="subheader">Interested in helping out on hammer?</h2>
+		<h2 class="subheader">We are always looking for new team members to help out.</h2>
+		<h2><small>There is no need to be an expert or even really know JavaScript</small></h2>
+	</div>
+</div>
+<div class="row">
+	<div class="column">
+		<h1>Just a few of the areas we could use help in are...</h1>
+	</div>
+</div>
+<div class="row">
+	<div class="columns medium-6 small-12">
+		<ul>
+			<li>Documentation</li>
+			<li>Copy Editing ( we make a lot of typos )</li>
+			<li>testing</li>
+			<li>Website design</li>
+		</ul>
+	</div>
+	<div class="columns medium-6 small-12">
+		<ul>
+			<li>Fixing Bugs</li>
+			<li>Triaging issues</li>
+			<li>Supporting other hammer users</li>
+			<li>Testing</li>
+		</ul>
+	</div>
+</div>
 
+<div class="callout large primary" id="support">
+	<div class="text-center">
+		<h1>Support</h1>
+		<h2 class="subheader">Need help using Hammerjs?</h2>
+	</div>
+</div>
+<div class="row row-try-it support-row">
+	<div class="columns large-6 small-12">
+		<h2>General Help</h2>
+	</div>
+	<div class="columns large-6 show-for-large-up">
+		<h2>Bugs / Features</h2>
+	</div>
+	<div class="columns large-2 medium-4 small-6">
+		<a class="help-wrap" href="http://hammerjs.github.io/api/">
+			<h3>Docs / API</h3>
+			<img src="/assets/img/docs-icon.png">
+		</a>
+	</div>
+	<div class="columns large-2 medium-4 small-6">
+		<a class="help-wrap" href="http://stackoverflow.com/questions/tagged/hammer.js">
+			<h3>Stack Overflow</h3>
+			<img src="/assets/img/stackoverflow-icon.svg">
+		</a>
+	</div>
+	<div class="columns large-2 medium-4 small-12">
+		<a class="help-wrap" href="https://hammerjs.herokuapp.com/">
+			<h3>Slack #support</h3>
+			<img src="/assets/img/slack-icon.png">
+		</a>
+	</div>
+	<div class="columns small-12 hide-for-large-up">
+		<h2>Bugs / Features</h2>
+	</div>
+	<div class="columns large-3 small-6">
+		<a class="help-wrap" href="https://github.com/hammerjs/hammer.js/issues">
+			<h3>Github Issues</h3>
+			<img src="/assets/img/github-icon.png">
+		</a>
+	</div>
+	<div class="columns large-3 small-6">
+		<a class="help-wrap" href="https://hammerjs.herokuapp.com/">
+			<h3>Slack #general</h3>
+			<img src="/assets/img/slack-icon.png">
+		</a>
+	</div>
+</div>
+
+
+<script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>
+<script> TouchEmulator(); </script>
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
