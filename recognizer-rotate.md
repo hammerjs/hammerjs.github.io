@@ -20,3 +20,8 @@ Recognized when two or more pointer are moving in a circular motion.
 - rotateend
 - rotatecancel
 
+## Notes
+This recognizer is disabled by default because it would make the element blocking. You can enable it by calling:
+```javascript
+hammertime.get('rotate').set({ enable: true });
+```
