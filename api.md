@@ -20,7 +20,7 @@ contains `tap`, `doubletap`, `pan`, `swipe`, `press`, `pinch` and `rotate` recog
 
 You should only use this when you're fine with the default setup, or have set your own initial setup.
 
-### Contructor(HTMLElement, [options])
+### Constructor(HTMLElement, [options])
 Just your element, and options. the options will be merged with Hammer.defaults. Also,
 the recognizer set as defined in `Hammer.defaults.preset` will be added.
 
@@ -44,7 +44,7 @@ correct value for you, based on the recognizers.
 Let Hammer also fire DOM events. This is a bit slower, so disabled by default. Recommended to set to `true` if you want to play with event delegation.
 
 ### enable: true
-Accepts a boolean, or an function that should return a boolean which is.
+Accepts a boolean, or a function that should return a boolean which is.
 
 ### cssProps: {....}
 A collection of css properties that improve the handling of the input events. For details [take a look at
