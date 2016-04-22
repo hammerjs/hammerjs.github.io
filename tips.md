@@ -6,16 +6,16 @@ title: Tips 'n Tricks
 # Tips 'n Tricks
 
 ### Event delegation and DOM events
-Hammer is able to trigger DOM events with the option `domEvents: true`. This will give your methods like `stopPropagation()`, so you can use event delegation. Hammer will not unbind the bound events.
+Hammer is able to trigger DOM events with the option `domEvents: true`. This will give you methods like `stopPropagation()`, so you can use event delegation. Hammer will not unbind the bound events.
 
 ### Try to avoid vertical pan/swipe
-Vertical panning is used to scroll your page, and some (older) browsers don't send events so Hammer isn't
+Vertical panning is used to scroll your page, and some (older) browsers don't send these events so Hammer isn't
 able to recognize these gestures. An option would be to provide an alternative way to do the same action.
 
 ### Test on a real device
 Sometimes Hammer just needs some fine-tuning, like the swipe velocity or some other thresholds. Also,
-for better performance on slower devices your should try to keep you callbacks as simple as possible.
-Sites like [JankFree.org](http://jankfree.org/) have articles about how to improve the performance.
+for better performance on slower devices you should try to keep your callbacks as simple as possible.
+Sites like [JankFree.org](http://jankfree.org)/ have articles about how to improve the performance.
 
 ### Remove tap highlight on Windows Phone
 IE10 and IE11 on Windows Phone have a small tap highlight when you tap an element. Adding this meta tag
