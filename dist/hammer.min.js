@@ -1,4 +1,4 @@
-/*! Hammer.JS - v2.0.8 - 2016-04-22
+/*! Hammer.JS - v2.0.8 - 2016-04-23
  * http://hammerjs.github.io/
  *
  * Copyright (c) 2016 Jorik Tangelder;
