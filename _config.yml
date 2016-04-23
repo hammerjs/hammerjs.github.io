@@ -6,7 +6,6 @@ baseurl: ""
 url: ""
 
 # Build settings
-markdown: redcarpet
 permalink: pretty
 exclude: [node_modules, scripts, bower_components, jsdoc-template, assets/css/index.scss]
 
