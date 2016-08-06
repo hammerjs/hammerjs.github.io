@@ -23,6 +23,6 @@ Recognized when two or more pointers are moving toward (zoom-in) or away from ea
 
 ## Notes
 This recognizer is disabled by default because it would make the element blocking. You can enable it by calling:
-```javascript
+````js
 hammertime.get('pinch').set({ enable: true });
-```
+````
