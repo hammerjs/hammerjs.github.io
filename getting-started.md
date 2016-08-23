@@ -76,3 +76,5 @@ more details.
 ### Notes
 Built by [Jorik Tangelder](https://twitter.com/jorikdelaporik). It's recommended to listen to [this loop](http://soundcloud.com/eightmedia/hammerhammerhammer) while using hammer.js.
 Follow [@jorikdelaporik](https://twitter.com/jorikdelaporik) for some tweets about this library.
+
+**Lots of love to <a href="http://eight.nl"><img src="https://hammerjs.github.io/assets/img/eight.png" width="60" alt="Eight Media" align="center" /></a> for making this project possible and open source.**
