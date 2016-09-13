@@ -40,3 +40,6 @@ delete Hammer.defaults.cssProps.userSelect;
 That click event is also being called a 'ghost click'. I've created a small function to prevent clicks after a touchend. It is heavily inspired from [this article from Ryan Fioravanti](https://developers.google.com/mobile/articles/fast_buttons#ghost).
 
 - https://gist.github.com/jtangelder/361052976f044200ea17
+
+### Dragging images
+Hammer does not override the browser's default image drag behavior. To interact with images in swipe/pan/etc. gestures, disable, mouse events on images ([example](https://jsfiddle.net/244u1xgj/4/)). Note that there is an [outstanding issue affecting Firefox](https://github.com/hammerjs/hammer.js/issues/906).
