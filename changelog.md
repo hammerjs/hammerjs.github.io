@@ -9,7 +9,7 @@ title: Changelog
 
 ##### Manager
 - Added check to ensure that the required parameters are present ([#908](https://github.com/hammerjs/hammer.js/issues/908), [085d3a8](https://github.com/hammer.js/hammerjs/commit/085d3a87eab8674c45e9d3a14c4ca44ad7b97e26))
-- Fixed restoration of Hammer.defaults.cssProps on destory ([#904theregttr5ki](https://github.com/hammerjs/hammer.js/issues/904), [7d0e60f](https://github.com/hammer.js/hammerjs/commit/7d0e60f6743517db3c05a38e966fb9fb5052fa03))
+- Fixed restoration of Hammer.defaults.cssProps on destroy ([#904theregttr5ki](https://github.com/hammerjs/hammer.js/issues/904), [7d0e60f](https://github.com/hammer.js/hammerjs/commit/7d0e60f6743517db3c05a38e966fb9fb5052fa03))
 
 ##### Input
 - Fixed de-duping of mouse events on mouse touch combo devices ([#917](https://github.com/hammer.js/hammer.js/issues/917), [#863](https://github.com/hammerjs/hammer.js/issues/863), [bfeb89a](https://github.com/hammerjs/hammerjs/commit/bfeb89a77f778c527f771150d1e9687bd318ce8d))
@@ -22,7 +22,7 @@ title: Changelog
 - Expose Hammer on window or self if either is defined to avoid issues when AMD is present but not used. ( [356f795](https://github.com/hammerjs/hammer.js/commit/356f7955b01f3679c29d6c45931679256b45036e))
 - Add support for PointerEvent instead of MSPointerEvent if supported. ([#754](https://github.com/hammerjs/hammer.js/issues/754), [439c7a6](https://github.com/hammerjs/hammer.js/commit/439c7a6c46978ab387b4b8289399e904d1c49535))
 - Fixed moz-prefix, prefix should be Moz not moz. ([3ea47f3](https://github.com/hammerjs/hammer.js/commit/3ea47f3aebadc9d3bb6bf52bc8402cad135ef8a9))
-- Removed non-existant recognizer ([f1c2d3b](https://github.com/hammerjs/hammer.js/commit/f1c2d3bf05f530ae092ecfc2335fceeff0e9eec9))
+- Removed non-existent recognizer ([f1c2d3b](https://github.com/hammerjs/hammer.js/commit/f1c2d3bf05f530ae092ecfc2335fceeff0e9eec9))
 - Fixed config leaking between instances([189098f](https://github.com/hammerjs/hammer.js/commit/189098ff7736f6ed2fce9a3d3e1f5a3afee085ba))
 - Fixed gaps in gesture configs and update tests to match ([70c2902](https://github.com/hammerjs/hammer.js/commit/70c2902d773a750e92ce8c423f8a4165c07eab97))
 - Fixed Manager off method ([#768](https://github.com/hammerjs/hammer.js/issues/768), [da49a27](https://github.com/hammerjs/hammer.js/commit/da49a2730779ecc3b4dd147cc418a0df7c70fad9))

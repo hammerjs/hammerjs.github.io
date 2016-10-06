@@ -14,7 +14,7 @@ too. Still, on some (unpopular) devices the fallback might not work as good as t
 By default it sets a value based on the recognizer settings. You can overwrite this by giving the option `touchAction`
 to the Manager.
 
-When you set the touchAction to `auto` it doesnt prevent any defaults, and Hammer would probably break. You have to
+When you set the touchAction to `auto` it doesn't prevent any defaults, and Hammer would probably break. You have to
 call `preventDefault` manually to fix this. You should only use this if you know what you're doing.
 
 **[View the touch-action test.](https://cdn.rawgit.com/hammerjs/hammer.js/master/tests/manual/touchaction.html)**

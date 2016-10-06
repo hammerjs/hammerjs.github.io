@@ -235,7 +235,7 @@ Used for setting the direction of a recognizer, and for reading the value of an 
 | DIRECTION_ALL     | 30            |
 
 ### Input Events
-Hammer maps all types of input (mousedown, mousemove, touchmove, pointercancel) to these contants.
+Hammer maps all types of input (mousedown, mousemove, touchmove, pointercancel) to these constants.
 
 | Name              | Value         |
 |-------------------|---------------|
