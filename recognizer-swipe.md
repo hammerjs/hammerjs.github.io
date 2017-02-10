@@ -18,7 +18,7 @@ Recognized when the pointer is moving fast (velocity), with enough distance in t
 - swipe, together with all of below
 - swipeleft
 - swiperight
-- swipeup
+- swipeUp
 - swipedown
 
 ## Notes
