@@ -37,6 +37,6 @@ delete Hammer.defaults.cssProps.userSelect;
 ````
 
 ### "After a tap, also a click is being triggered, I don't want that!"
-That click event is also being called a 'ghost click'. I've created a small function to prevent clicks after a touchend. It is heavily inspired from [this article from Ryan Fioravanti](https://developers.google.com/mobile/articles/fast_buttons#ghost).
+That click event is also being called a 'ghost click'. I've created a small function to prevent clicks after a touchend. It is heavily inspired from [this article from Ryan Fioravanti](https://web.archive.org/web/20130616015724/https://developers.google.com/mobile/articles/fast_buttons).
 
 - https://gist.github.com/jtangelder/361052976f044200ea17
