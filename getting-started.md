@@ -73,8 +73,13 @@ create are being executed in the order they are added, and only one can be recog
 See the pages about the [`recognizeWith`](/recognize-with) and [`requireFailure`](/require-failure) for
 more details.
 
-### Notes
-Built by [Jorik Tangelder](https://twitter.com/jorikdelaporik). It's recommended to listen to [this loop](http://soundcloud.com/eightmedia/hammerhammerhammer) while using hammer.js.
-Follow [@jorikdelaporik](https://twitter.com/jorikdelaporik) for some tweets about this library.
+## Team
+Hammerjs and its associated libraries are developed entirely by volunteer contributors.
+- [Alexander Schmitz](https://github.com/arschmitz) (project lead)
+- [Chris Thoburn](https://github.com/runspired)
+- [Jorik Tangelder](https://github.com/jtangelder) (orginal creator, inactive)
 
 **Lots of love to <a href="http://eight.nl"><img src="https://hammerjs.github.io/assets/img/eight.png" width="60" alt="Eight Media" align="center" /></a> for making this project possible and open source.**
+
+It's recommended to listen to [this loop](http://soundcloud.com/eightmedia/hammerhammerhammer) while using hammer.js.
+
