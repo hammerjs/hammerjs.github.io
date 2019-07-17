@@ -6,10 +6,10 @@ title: API
 # General API
 
 - [Hammer](#hammer)
-- [Hammer.defaults](#hammer-defaults)
-- [Hammer.Manager](#hammer-manager)
-- [Hammer.Recognizer](#hammer-recognizer)
-- [Hammer.input event](#hammer-input-event)
+- [Hammer.defaults](#hammerdefaults)
+- [Hammer.Manager](#hammermanager)
+- [Hammer.Recognizer](#hammerrecognizer)
+- [Hammer.input event](#hammerinput-event)
 - [Event object](#event-object)
 - [Constants](#constants)
 - [Utils](#utils)
