@@ -4,7 +4,7 @@ title: Getting Started
 ---
 
 # Getting Started
-Hammer is a open-source library that can recognize gestures made by touch, mouse and pointerEvents.
+Hammer is an open-source library that can recognize gestures made by touch, mouse, and pointerEvents.
 It doesn't have any dependencies, and it's small, only __{{site.data.hammer.gzipped}} minified + gzipped__!
 
 - [Minified code (v{{site.data.hammer.version}})](/dist/hammer.min.js)
@@ -15,7 +15,7 @@ It doesn't have any dependencies, and it's small, only __{{site.data.hammer.gzip
 
 > ##### What's new in 2.0?
 It's completely rewritten, with reusable gesture recognizers, and improved support for the recent mobile
-browsers by making use of the touch-action css property when possible. Also support for multiple Hammer
+browsers by making use of the touch-action CSS property when possible. Also, support for multiple Hammer
 instances at the same time, so multi-touch becomes possible.
 
 ---
@@ -77,7 +77,7 @@ more details.
 Hammerjs and its associated libraries are developed entirely by volunteer contributors.
 - [Alexander Schmitz](https://github.com/arschmitz) (project lead)
 - [Chris Thoburn](https://github.com/runspired)
-- [Jorik Tangelder](https://github.com/jtangelder) (orginal creator, inactive)
+- [Jorik Tangelder](https://github.com/jtangelder) (original creator, inactive)
 
 **Lots of love to <a href="http://eight.nl"><img src="https://hammerjs.github.io/assets/img/eight.png" width="60" alt="Eight Media" align="center" /></a> for making this project possible and open source.**
 
