@@ -13,11 +13,6 @@ It doesn't have any dependencies, and it's small, only __{{site.data.hammer.gzip
 - [Browse the source on GitHub](https://github.com/hammerjs/hammer.js/tree/master/)
 - Looking for the 1.1 version? [You can find it here.](https://github.com/hammerjs/hammer.js/tree/1.1.x)
 
-> ##### What's new in 2.0?
-It's completely rewritten, with reusable gesture recognizers, and improved support for the recent mobile
-browsers by making use of the touch-action css property when possible. Also support for multiple Hammer
-instances at the same time, so multi-touch becomes possible.
-
 ---
 
 ## Usage
@@ -73,11 +68,8 @@ create are being executed in the order they are added, and only one can be recog
 See the pages about the [`recognizeWith`](/recognize-with) and [`requireFailure`](/require-failure) for
 more details.
 
-## Team
-Hammerjs and its associated libraries are developed entirely by volunteer contributors.
-- [Alexander Schmitz](https://github.com/arschmitz) (project lead)
-- [Chris Thoburn](https://github.com/runspired)
-- [Jorik Tangelder](https://github.com/jtangelder) (orginal creator, inactive)
+## Maintenance mode
+Hammerjs and its associated libraries are developed entirely by volunteer contributors, but is currently in low maintenance mode. 
 
 **Lots of love to <a href="http://eight.nl"><img src="https://hammerjs.github.io/assets/img/eight.png" width="60" alt="Eight Media" align="center" /></a> for making this project possible and open source.**
 
