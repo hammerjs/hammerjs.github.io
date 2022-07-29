@@ -7,7 +7,7 @@ title: Browser/device support
 Don't worry if your browser or OS isn't listed, it might work anyway!
 Internet Explorer 8 and older aren't supported.
 
-Browsers that have native support for touch-action might have an improved experience then the browsers that
+Browsers that have native support for touch-action might have an improved experience than the browsers that
 don't. See the [touch-action page](/touch-action) for more details.
 
 | Browser                    | Pan | Pinch | Press | Rotate | Swipe | Tap | Multi-user | Touch-action |
