@@ -4,7 +4,7 @@ title: Touch Action
 ---
 
 # The Touch-action property
-Chrome 35+, IE10+ and soon FireFox, support the `touch-action` property. This property tells the browser how to
+Chrome 35+, IE10+ and soon FireFox, support the `touch-action` CSS property. This property tells the browser how to
 handle touches on an element. It improves the detection and experience of the gestures a lot, because it can prevent
 scrolling of the page without any JavaScript has to be executed, which can be too late in some cases.
 
