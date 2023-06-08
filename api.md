@@ -117,7 +117,7 @@ mc.remove([myPinchRecognizer, 'rotate']);
 ````
 
 ### on(events, handler) and .off(events, [handler])
-Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events seperated
+Listen to events triggered by the added recognizers, or remove the binded events. Accepts multiple events separated
 by a space.
 
 ````js
