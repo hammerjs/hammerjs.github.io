@@ -13,6 +13,6 @@
         "marked": "0.3.5",
         "pretty-bytes": "3.0.1",
         "gzip-size": "3.0.0",
-        "node-sass": "3.5.3"
+        "node-sass": "4.14.1"
     }
 }
