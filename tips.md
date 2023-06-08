@@ -14,7 +14,7 @@ able to recognize these gestures. An option would be to provide an alternative w
 
 ### Test on a real device
 Sometimes Hammer just needs some fine-tuning, like the swipe velocity or some other thresholds. Also,
-for better performance on slower devices your should try to keep you callbacks as simple as possible.
+for better performance on slower devices your should try to keep your callbacks as simple as possible.
 Sites like [JankFree.org](http://jankfree.org/) have articles about how to improve the performance.
 
 ### Remove tap highlight on Windows Phone
