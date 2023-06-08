@@ -22,6 +22,6 @@ Recognized when two or more pointer are moving in a circular motion.
 
 ## Notes
 This recognizer is disabled by default because it would make the element blocking. You can enable it by calling:
-```javascript
+````js
 hammertime.get('rotate').set({ enable: true });
-```
+````
