@@ -1,13 +1,13 @@
-/*! Hammer.JS - v2.0.8 - 2016-04-23
- * http://hammerjs.github.io/
+/*! Hammer.JS - v2.0.9 - 2026-11-25
+ * https://hammerjs.github.io/
  *
- * Copyright (c) 2016 Jorik Tangelder;
+ * Copyright (c) 2026 Hammer.js contributors;
  * Licensed under the MIT license */
 (function(window, document, exportName, undefined) {
   'use strict';
 
 var VENDOR_PREFIXES = ['', 'webkit', 'Moz', 'MS', 'ms', 'o'];
-var TEST_ELEMENT = document.createElement('div');
+var TEST_ELEMENT = document && document.createElement ? document.createElement('div') : {style: {}};
 
 var TYPE_FUNCTION = 'function';
 
@@ -268,7 +268,8 @@ function inStr(str, find) {
  * @returns {Array} words
  */
 function splitStr(str) {
-    return str.trim().split(/\s+/g);
+    var trimmed = str.trim();
+    return trimmed ? trimmed.split(/\s+/g) : [];
 }
 
 /**
@@ -276,7 +277,7 @@ function splitStr(str) {
  * @param {Array} src
  * @param {String} find
  * @param {String} [findByKey]
- * @return {Boolean|Number} false when not found, or the index
+ * @return {number} -1 when not found, or the index
  */
 function inArray(src, find, findByKey) {
     if (src.indexOf && !findByKey) {
@@ -328,7 +329,7 @@ function uniqueArray(src, key, sort) {
             results = results.sort();
         } else {
             results = results.sort(function sortUniqueArray(a, b) {
-                return a[key] > b[key];
+                return a[key] > b[key] ? 1 : a[key] < b[key] ? -1 : 0;
             });
         }
     }
@@ -343,6 +344,9 @@ function uniqueArray(src, key, sort) {
  * @returns {String|Undefined} prefixed
  */
 function prefixed(obj, property) {
+    if (!obj) {
+        return undefined;
+    }
     var prefix, prop;
     var camelProp = property[0].toUpperCase() + property.slice(1);
 
@@ -382,7 +386,7 @@ var MOBILE_REGEX = /mobile|tablet|ip(ad|hone|od)|android/i;
 
 var SUPPORT_TOUCH = ('ontouchstart' in window);
 var SUPPORT_POINTER_EVENTS = prefixed(window, 'PointerEvent') !== undefined;
-var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && MOBILE_REGEX.test(navigator.userAgent);
+var SUPPORT_ONLY_TOUCH = SUPPORT_TOUCH && typeof navigator !== 'undefined' && MOBILE_REGEX.test(navigator.userAgent);
 
 var INPUT_TYPE_TOUCH = 'touch';
 var INPUT_TYPE_PEN = 'pen';
@@ -426,7 +430,7 @@ function Input(manager, callback) {
     // smaller wrapper around the handler, for the scope and the enabled state of the manager,
     // so when disabled the input events are completely bypassed.
     this.domHandler = function(ev) {
-        if (boolOrFn(manager.options.enable, [manager])) {
+        if (manager.element && boolOrFn(manager.options.enable, [manager])) {
             self.handler(ev);
         }
     };
@@ -436,6 +440,8 @@ function Input(manager, callback) {
 }
 
 Input.prototype = {
+    constructor: Input,
+
     /**
      * should handle the inputEvent data and trigger the callback
      * @virtual
@@ -501,6 +507,12 @@ function inputHandler(manager, eventType, input) {
     input.isFinal = !!isFinal;
 
     if (isFirst) {
+        if (manager.session.stopped) {
+            each(manager.recognizers, function(recognizer) {
+                recognizer.reset();
+                recognizer.state = STATE_POSSIBLE;
+            });
+        }
         manager.session = {};
     }
 
@@ -515,7 +527,9 @@ function inputHandler(manager, eventType, input) {
     manager.emit('hammer.input', input);
 
     manager.recognize(input);
-    manager.session.prevInput = input;
+    if (manager.element) {
+        manager.session.prevInput = input;
+    }
 }
 
 /**
@@ -709,7 +723,7 @@ function getVelocity(deltaTime, x, y) {
  * @return {Number} direction
  */
 function getDirection(x, y) {
-    if (x === y) {
+    if (x === 0 && y === 0) {
         return DIRECTION_NONE;
     }
 
@@ -759,7 +773,7 @@ function getAngle(p1, p2, props) {
  * @return {Number} rotation
  */
 function getRotation(start, end) {
-    return getAngle(end[1], end[0], PROPS_CLIENT_XY) + getAngle(start[1], start[0], PROPS_CLIENT_XY);
+    return getAngle(end[1], end[0], PROPS_CLIENT_XY) - getAngle(start[1], start[0], PROPS_CLIENT_XY);
 }
 
 /**
@@ -770,7 +784,8 @@ function getRotation(start, end) {
  * @return {Number} scale
  */
 function getScale(start, end) {
-    return getDistance(end[0], end[1], PROPS_CLIENT_XY) / getDistance(start[0], start[1], PROPS_CLIENT_XY);
+    var startDist = getDistance(start[0], start[1], PROPS_CLIENT_XY);
+    return startDist ? getDistance(end[0], end[1], PROPS_CLIENT_XY) / startDist : 1;
 }
 
 var MOUSE_INPUT_MAP = {
@@ -809,7 +824,7 @@ inherit(MouseInput, Input, {
             this.pressed = true;
         }
 
-        if (eventType & INPUT_MOVE && ev.which !== 1) {
+        if (eventType & INPUT_MOVE && ev.which !== 1 && !(ev.buttons & 1)) {
             eventType = INPUT_END;
         }
 
@@ -896,6 +911,9 @@ inherit(PointerEventInput, Input, {
             }
         } else if (eventType & (INPUT_END | INPUT_CANCEL)) {
             removePointer = true;
+        } else if (eventType & INPUT_MOVE && pointerType === INPUT_TYPE_MOUSE && ev.buttons === 0) {
+            eventType = INPUT_END;
+            removePointer = true;
         }
 
         // it not found, so the pointer hasn't been down (so it's probably a hover)
@@ -905,18 +923,24 @@ inherit(PointerEventInput, Input, {
 
         // update the event in the store
         store[storeIndex] = ev;
-
-        this.callback(this.manager, eventType, {
-            pointers: store,
-            changedPointers: [ev],
-            pointerType: pointerType,
-            srcEvent: ev
-        });
+        var pointers = store.slice();
 
         if (removePointer) {
             // remove from the store
             store.splice(storeIndex, 1);
         }
+
+        this.callback(this.manager, eventType, {
+            pointers: pointers,
+            changedPointers: [ev],
+            pointerType: pointerType,
+            srcEvent: ev
+        });
+    },
+
+    destroy: function() {
+        this.store.length = 0;
+        Input.prototype.destroy.call(this);
     }
 });
 
@@ -1051,7 +1075,7 @@ function getTouches(ev, type) {
 
     // get target touches from touches
     targetTouches = allTouches.filter(function(touch) {
-        return hasParent(touch.target, target);
+        return hasParent(touch.target, target) || targetIds[touch.identifier];
     });
 
     // collect touches
@@ -1123,7 +1147,8 @@ inherit(TouchMouseInput, Input, {
         var isTouch = (inputData.pointerType == INPUT_TYPE_TOUCH),
             isMouse = (inputData.pointerType == INPUT_TYPE_MOUSE);
 
-        if (isMouse && inputData.sourceCapabilities && inputData.sourceCapabilities.firesTouchEvents) {
+        if (isMouse && inputData.srcEvent && inputData.srcEvent.sourceCapabilities &&
+            inputData.srcEvent.sourceCapabilities.firesTouchEvents) {
             return;
         }
 
@@ -1135,6 +1160,20 @@ inherit(TouchMouseInput, Input, {
         }
 
         this.callback(manager, inputEvent, inputData);
+    },
+
+    /**
+     * bind the event listeners (used when inputTarget changes via Manager.set)
+     */
+    init: function init() {
+        if (this.touch) {
+            this.touch.target = this.target;
+            this.touch.init();
+        }
+        if (this.mouse) {
+            this.mouse.target = this.target;
+            this.mouse.init();
+        }
     },
 
     /**
@@ -1209,20 +1248,24 @@ function TouchAction(manager, value) {
 }
 
 TouchAction.prototype = {
+    constructor: TouchAction,
+
     /**
      * set the touchAction value on the element or enable the polyfill
      * @param {String} value
      */
     set: function(value) {
+        value = value.toLowerCase().trim();
+
         // find out the touch-action by the event handlers
         if (value == TOUCH_ACTION_COMPUTE) {
             value = this.compute();
         }
 
-        if (NATIVE_TOUCH_ACTION && this.manager.element.style && TOUCH_ACTION_MAP[value]) {
+        if (NATIVE_TOUCH_ACTION && this.manager.element && this.manager.element.style && TOUCH_ACTION_MAP[value]) {
             this.manager.element.style[PREFIXED_TOUCH_ACTION] = value;
         }
-        this.actions = value.toLowerCase().trim();
+        this.actions = value;
     },
 
     /**
@@ -1256,7 +1299,9 @@ TouchAction.prototype = {
 
         // if the touch action did prevented once this session
         if (this.manager.session.prevented) {
-            srcEvent.preventDefault();
+            if (srcEvent.cancelable !== false) {
+                srcEvent.preventDefault();
+            }
             return;
         }
 
@@ -1294,8 +1339,10 @@ TouchAction.prototype = {
      * @param {Object} srcEvent
      */
     preventSrc: function(srcEvent) {
-        this.manager.session.prevented = true;
-        srcEvent.preventDefault();
+        if (srcEvent.cancelable !== false) {
+            this.manager.session.prevented = true;
+            srcEvent.preventDefault();
+        }
     }
 };
 
@@ -1407,6 +1454,8 @@ function Recognizer(options) {
 }
 
 Recognizer.prototype = {
+    constructor: Recognizer,
+
     /**
      * @virtual
      * @type {Object}
@@ -1438,7 +1487,7 @@ Recognizer.prototype = {
 
         var simultaneous = this.simultaneous;
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        if (!simultaneous[otherRecognizer.id]) {
+        if (otherRecognizer && !simultaneous[otherRecognizer.id]) {
             simultaneous[otherRecognizer.id] = otherRecognizer;
             otherRecognizer.recognizeWith(this);
         }
@@ -1456,7 +1505,9 @@ Recognizer.prototype = {
         }
 
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        delete this.simultaneous[otherRecognizer.id];
+        if (otherRecognizer) {
+            delete this.simultaneous[otherRecognizer.id];
+        }
         return this;
     },
 
@@ -1472,7 +1523,7 @@ Recognizer.prototype = {
 
         var requireFail = this.requireFail;
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        if (inArray(requireFail, otherRecognizer) === -1) {
+        if (otherRecognizer && inArray(requireFail, otherRecognizer) === -1) {
             requireFail.push(otherRecognizer);
             otherRecognizer.requireFailure(this);
         }
@@ -1490,9 +1541,11 @@ Recognizer.prototype = {
         }
 
         otherRecognizer = getRecognizerByNameIfManager(otherRecognizer, this);
-        var index = inArray(this.requireFail, otherRecognizer);
-        if (index > -1) {
-            this.requireFail.splice(index, 1);
+        if (otherRecognizer) {
+            var index = inArray(this.requireFail, otherRecognizer);
+            if (index > -1) {
+                this.requireFail.splice(index, 1);
+            }
         }
         return this;
     },
@@ -1726,6 +1779,8 @@ inherit(AttrRecognizer, Recognizer, {
         // on cancel input and we've recognized before, return STATE_CANCELLED
         if (isRecognized && (eventType & INPUT_CANCEL || !isValid)) {
             return state | STATE_CANCELLED;
+        } else if (eventType & INPUT_CANCEL) {
+            return STATE_FAILED;
         } else if (isRecognized || isValid) {
             if (eventType & INPUT_END) {
                 return state | STATE_ENDED;
@@ -1777,6 +1832,9 @@ inherit(PanRecognizer, AttrRecognizer, {
 
     directionTest: function(input) {
         var options = this.options;
+        if (!(options.direction & DIRECTION_ALL)) {
+            return false;
+        }
         var hasMoved = true;
         var distance = input.distance;
         var direction = input.direction;
@@ -1815,6 +1873,11 @@ inherit(PanRecognizer, AttrRecognizer, {
             input.additionalEvent = this.options.event + direction;
         }
         this._super.emit.call(this, input);
+    },
+
+    reset: function() {
+        this.pX = null;
+        this.pY = null;
     }
 });
 
@@ -1896,7 +1959,8 @@ inherit(PressRecognizer, Recognizer, {
 
         // we only allow little movement
         // and we've reached an end event, so a tap is possible
-        if (!validMovement || !validPointers || (input.eventType & (INPUT_END | INPUT_CANCEL) && !validTime)) {
+        if (!validMovement || !validPointers || (input.eventType & INPUT_CANCEL) ||
+            (input.eventType & INPUT_END && !validTime)) {
             this.reset();
         } else if (input.eventType & INPUT_START) {
             this.reset();
@@ -1905,6 +1969,7 @@ inherit(PressRecognizer, Recognizer, {
                 this.tryEmit();
             }, options.time, this);
         } else if (input.eventType & INPUT_END) {
+            this.reset();
             return STATE_RECOGNIZED;
         }
         return STATE_FAILED;
@@ -1990,7 +2055,7 @@ inherit(SwipeRecognizer, AttrRecognizer, {
         var direction = this.options.direction;
         var velocity;
 
-        if (direction & (DIRECTION_HORIZONTAL | DIRECTION_VERTICAL)) {
+        if (direction & DIRECTION_HORIZONTAL && direction & DIRECTION_VERTICAL) {
             velocity = input.overallVelocity;
         } else if (direction & DIRECTION_HORIZONTAL) {
             velocity = input.overallVelocityX;
@@ -2137,7 +2202,7 @@ inherit(TapRecognizer, Recognizer, {
  * @constructor
  */
 function Hammer(element, options) {
-    options = options || {};
+    options = assign({}, options);
     options.recognizers = ifUndefined(options.recognizers, Hammer.defaults.preset);
     return new Manager(element, options);
 }
@@ -2145,7 +2210,7 @@ function Hammer(element, options) {
 /**
  * @const {string}
  */
-Hammer.VERSION = '2.0.8';
+Hammer.VERSION = '2.0.9';
 
 /**
  * default settings
@@ -2292,15 +2357,23 @@ function Manager(element, options) {
 }
 
 Manager.prototype = {
+    constructor: Manager,
+
     /**
      * set options
      * @param {Object} options
      * @returns {Manager}
      */
     set: function(options) {
+        if (options.cssProps) {
+            this.element && toggleCssProps(this, false);
+        }
         assign(this.options, options);
 
         // Options that need a little more setup
+        if (options.cssProps) {
+            this.element && toggleCssProps(this, true);
+        }
         if (options.touchAction) {
             this.touchAction.update();
         }
@@ -2309,6 +2382,13 @@ Manager.prototype = {
             this.input.destroy();
             this.input.target = options.inputTarget;
             this.input.init();
+        }
+        if (options.enable !== undefined && !boolOrFn(this.options.enable, [this])) {
+            this.stop(true);
+            each(this.recognizers, function(recognizer) {
+                recognizer.reset();
+                recognizer.state = STATE_POSSIBLE;
+            });
         }
         return this;
     },
@@ -2331,7 +2411,7 @@ Manager.prototype = {
      */
     recognize: function(inputData) {
         var session = this.session;
-        if (session.stopped) {
+        if (session.stopped || !this.element) {
             return;
         }
 
@@ -2441,6 +2521,8 @@ Manager.prototype = {
 
             if (index !== -1) {
                 recognizers.splice(index, 1);
+                recognizer.reset();
+                recognizer.manager = null;
                 this.touchAction.update();
             }
         }
@@ -2485,8 +2567,11 @@ Manager.prototype = {
         each(splitStr(events), function(event) {
             if (!handler) {
                 delete handlers[event];
-            } else {
-                handlers[event] && handlers[event].splice(inArray(handlers[event], handler), 1);
+            } else if (handlers[event]) {
+                var index = inArray(handlers[event], handler);
+                if (index > -1) {
+                    handlers[event].splice(index, 1);
+                }
             }
         });
         return this;
@@ -2500,6 +2585,10 @@ Manager.prototype = {
     emit: function(event, data) {
         // we also want to trigger dom events
         if (this.options.domEvents) {
+            data.type = event;
+            data.preventDefault = function() {
+                data.srcEvent.preventDefault();
+            };
             triggerDomEvent(event, data);
         }
 
@@ -2528,10 +2617,16 @@ Manager.prototype = {
     destroy: function() {
         this.element && toggleCssProps(this, false);
 
+        this.stop(true);
+        each(this.recognizers, function(recognizer) {
+            recognizer.reset();
+        });
         this.handlers = {};
         this.session = {};
-        this.input.destroy();
+        this.input && this.input.destroy();
+        this.input = null;
         this.element = null;
+        this.options.inputTarget = null;
     }
 };
 
@@ -2548,11 +2643,13 @@ function toggleCssProps(manager, add) {
     var prop;
     each(manager.options.cssProps, function(value, name) {
         prop = prefixed(element.style, name);
-        if (add) {
-            manager.oldCssProps[prop] = element.style[prop];
-            element.style[prop] = value;
-        } else {
-            element.style[prop] = manager.oldCssProps[prop] || '';
+        if (prop) {
+            if (add) {
+                manager.oldCssProps[prop] = element.style[prop];
+                element.style[prop] = value;
+            } else {
+                element.style[prop] = manager.oldCssProps[prop] || '';
+            }
         }
     });
     if (!add) {
@@ -2640,4 +2737,4 @@ if (typeof define === 'function' && define.amd) {
     window[exportName] = Hammer;
 }
 
-})(window, document, 'Hammer');
+})(typeof window !== 'undefined' ? window : {}, typeof document !== 'undefined' ? document : {}, 'Hammer');

@@ -7,11 +7,30 @@ title: Getting Started
 Hammer is a open-source library that can recognize gestures made by touch, mouse and pointerEvents.
 It doesn't have any dependencies, and it's small, only __{{site.data.hammer.gzipped}} minified + gzipped__!
 
-- [Minified code (v{{site.data.hammer.version}})](/dist/hammer.min.js)
+- [Minified code (v{{site.data.hammer.version}})](/dist/hammer.min.js) ([Source map](/dist/hammer.min.js.map))
 - [Uncompressed code (v{{site.data.hammer.version}})](/dist/hammer.js)
 - [Changelog](/changelog)
+- [GitHub Releases](https://github.com/hammerjs/hammer.js/releases)
 - [Browse the source on GitHub](https://github.com/hammerjs/hammer.js/tree/master/)
 - Looking for the 1.1 version? [You can find it here.](https://github.com/hammerjs/hammer.js/tree/1.1.x)
+
+---
+
+## Installation
+
+Install via npm:
+
+````bash
+npm install hammerjs
+````
+
+Or load it from a CDN:
+
+````html
+<script src="https://cdn.jsdelivr.net/npm/hammerjs@{{site.data.hammer.version}}/hammer.min.js"></script>
+````
+
+Hammer.js safely guards `window`, `document`, and `navigator` on module load, so it can be imported in SSR / Node.js environments (instantiate `new Hammer(...)` in the browser once the DOM is available).
 
 ---
 
