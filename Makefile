@@ -17,4 +17,4 @@ serve:
 	bundle exec jekyll serve
 
 sass:
-	npx sass assets/css/index.scss assets/css/index.css --style=compressed --no-source-map
+	npx sass assets/css/index.scss assets/css/index.css --style=compressed

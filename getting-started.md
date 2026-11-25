@@ -90,7 +90,7 @@ more details.
 ## Maintenance mode
 Hammerjs and its associated libraries are developed entirely by volunteer contributors, but is currently in low maintenance mode. 
 
-**Lots of love to <a href="http://eight.nl"><picture><source srcset="/assets/img/eight-white.png" media="(prefers-color-scheme: dark)"><img src="/assets/img/eight.png" width="60" alt="Eight Media" align="center" /></picture></a> for making this project possible and open source.**
+**Lots of love to <a href="http://eight.nl"><img src="https://hammerjs.github.io/assets/img/eight.png" width="60" alt="Eight Media" align="center" /></a> for making this project possible and open source.**
 
 It's recommended to listen to [this loop](http://soundcloud.com/eightmedia/hammerhammerhammer) while using hammer.js.
 
