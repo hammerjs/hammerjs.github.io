@@ -6,10 +6,10 @@ title: API
 # General API
 
 - [Hammer](#hammer)
-- [Hammer.defaults](#hammer-defaults)
-- [Hammer.Manager](#hammer-manager)
-- [Hammer.Recognizer](#hammer-recognizer)
-- [Hammer.input event](#hammer-input-event)
+- [Hammer.defaults](#hammerdefaults)
+- [Hammer.Manager](#hammermanager)
+- [Hammer.Recognizer](#hammerrecognizer)
+- [Hammer.input event](#hammerinput-event)
 - [Event object](#event-object)
 - [Constants](#constants)
 - [Utils](#utils)
@@ -21,10 +21,10 @@ contains `tap`, `doubletap`, `pan`, `swipe`, `press`, `pinch` and `rotate` recog
 You should only use this when you're fine with the default setup, or have set your own initial setup.
 
 ### Constructor(HTMLElement, [options])
-Just your element, and options. the options will be merged with Hammer.defaults. Also,
+Just your element, and options. The options object is shallow-cloned (not mutated) and merged with `Hammer.defaults`. Also,
 the recognizer set as defined in `Hammer.defaults.preset` will be added.
 
-If you'll pass an empty `recognizer` option, no initial recognizers will be added.
+If you'll pass an empty `recognizers` option, no initial recognizers will be added.
 
 ````js
 var myElement = document.getElementById('hitarea');
@@ -34,7 +34,7 @@ var mc = new Hammer(myElement);
 ---
 
 ## Hammer.defaults
-The defaults when creating an instance that are merged being with your options.
+The defaults when creating an instance that are merged with your options.
 
 ### touchAction: 'compute'
 Accepts the `compute`, `auto`, `pan-y`, `pan-x` and `none` values. The default option will choose the
@@ -44,11 +44,25 @@ correct value for you, based on the recognizers.
 Let Hammer also fire DOM events. This is a bit slower, so disabled by default. Recommended to set to `true` if you want to play with event delegation.
 
 ### enable: true
-Accepts a boolean, or a function that should return a boolean which is.
+Accepts a boolean, or a function that should return a boolean.
+
+### inputTarget: null
+Change the element that input event listeners are bound to. If `null`, listeners are bound to the main element.
+
+### inputClass: null
+Force a specific input class (e.g. `Hammer.TouchInput`, `Hammer.MouseInput`, `Hammer.PointerEventInput`, or `Hammer.TouchMouseInput`). If `null`, Hammer automatically selects the best input class for the browser.
 
 ### cssProps: {....}
-A collection of css properties that improve the handling of the input events. For details [take a look at
-the JSDoc.](/jsdoc/Hammer.defaults.cssProps.html)
+A collection of CSS properties applied to the element to improve handling of input events (and restored when changed via `set()` or when `destroy()` is called):
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `userSelect` | `'none'` | Disables text selection to improve dragging gestures on desktop browsers. |
+| `touchSelect` | `'none'` | Disables Windows Phone selection grippers when pressing an element. |
+| `touchCallout` | `'none'` | Disables the default iOS Safari callout shown when touching and holding a link or target. |
+| `contentZooming` | `'none'` | Disables zooming on IE10+. |
+| `userDrag` | `'none'` | Prevents dragging the entire element instead of its contents on desktop browsers. |
+| `tapHighlightColor` | `'rgba(0,0,0,0)'` | Overrides the tap highlight color shown on iOS. |
 
 ### preset: [....]
 Default recognizer setup when calling `Hammer()`. When creating a new Manager these will be skipped.
@@ -64,7 +78,7 @@ The Manager is the container of all the recognizer instances for your element. I
 event listeners, and sets the touch-action property for you on the element.
 
 ### constructor(HTMLElement, [options])
-Just your element, and options. the options will be merged with Hammer.defaults.
+Just your element, and options. The options will be merged with `Hammer.defaults`.
 
 ````js
 var mc = new Hammer.Manager(myElement);
@@ -85,8 +99,9 @@ var mc = new Hammer.Manager(myElement, {
 ````
 
 ### set(options)
-Change an option on the manager instance. Using this method is recommended,
-because it will update the `touchAction` value if needed.
+Change an option on the manager instance. Using this method is recommended, because it will update `touchAction`,
+restore and reapply `cssProps`, rebind `inputTarget`, and stop the active session / reset recognizers when
+disabling the manager (`enable: false`).
 
 ````js
 mc.set({ enable: true });
@@ -195,13 +210,17 @@ All events that Hammer triggers all receive an event object containing the follo
 | distance 		| Distance moved. |
 | angle			| Angle moved. |
 | velocityX		| Velocity on the X axis, in px/ms. |
-| velocityY		| Velocity on the Y axis, in px/ms |
+| velocityY		| Velocity on the Y axis, in px/ms. |
 | velocity		| Highest velocityX/Y value. |
+| overallVelocityX	| Overall velocity on the X axis since the start of the gesture, in px/ms. |
+| overallVelocityY	| Overall velocity on the Y axis since the start of the gesture, in px/ms. |
+| overallVelocity	| Highest overallVelocityX/Y value. |
 | direction		| Direction moved. Matches the `DIRECTION` constants. |
-| offsetDirection	| Direction moved from it's starting point. Matches the `DIRECTION` constants. |
+| offsetDirection	| Direction moved from its starting point. Matches the `DIRECTION` constants. |
 | scale			| Scaling that has been done when multi-touch. 1 on a single touch. |
 | rotation		| Rotation (in deg) that has been done when multi-touch. 0 on a single touch. |
 | center		| Center position for multi-touch, or just the single pointer. |
+| timeStamp		| Timestamp of the event in ms. |
 | srcEvent		| Source event object, type `TouchEvent`, `MouseEvent` or `PointerEvent`. |
 | target		| Target that received the event. |
 | pointerType		| Primary pointer type, could be `touch`, `mouse`, `pen` or `kinect`. |
@@ -210,6 +229,7 @@ All events that Hammer triggers all receive an event object containing the follo
 | isFinal		| `true` when the final (last) input. |
 | pointers		| Array with all pointers, including the ended pointers (`touchend`, `mouseup`). |
 | changedPointers	| Array with all new/moved/lost pointers. |
+| maxPointers		| Maximum number of pointers recorded during the current gesture. |
 | preventDefault	| Reference to the `srcEvent.preventDefault()` method. Only for experts! |
 
 ---
@@ -281,8 +301,29 @@ Hammer.each([10,20,30,40], function(item, index, src) { });
 Hammer.each({a:10, b:20, c:30}, function(item, key, src) { });
 ````
 
-### Hammer.merge(obj1, obj2)
-Merge properties from obj2 into obj1. Properties won't be overwritten.
+### Hammer.assign(target, src1, ...)
+Copies own enumerable properties from one or more source objects into `target` (uses native `Object.assign` when available). Properties in `target` will be overwritten.
+
+````js
+var target = {
+	a: true,
+	b: false,
+	c: [1,2,3]
+};
+
+var source = {
+	b: true,
+	c: [4,5,6]
+};
+Hammer.assign(target, source);
+
+// target.a == true
+// target.b == true
+// target.c == [4,5,6]
+````
+
+### Hammer.merge(obj1, obj2) *(deprecated)*
+Deprecated; use `Hammer.assign`. Merge properties from `obj2` into `obj1`. Properties won't be overwritten.
 
 ````js
 var options = {
@@ -301,8 +342,8 @@ Hammer.merge(options, defaults);
 // options.c == [1,2,3]
 ````
 
-### Hammer.extend(obj1, obj2)
-Extend obj1 with the properties from obj2. Properties will be overwritten.
+### Hammer.extend(obj1, obj2) *(deprecated)*
+Deprecated; use `Hammer.assign`. Extend `obj1` with the properties from `obj2`. Properties will be overwritten.
 
 ````js
 var obj1 = {

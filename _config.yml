@@ -7,7 +7,7 @@ url: ""
 
 # Build settings
 permalink: pretty
-exclude: [node_modules, scripts, bower_components, jsdoc-template, assets/css/index.scss]
+exclude: [node_modules, scripts, bower_components, assets/css/index.scss]
 
 sass:
   sass_dir: assets/css

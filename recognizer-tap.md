@@ -19,7 +19,7 @@ because if you want to only trigger a doubletap, hammer needs to see if any othe
 | taps      | 1        | Amount of taps required. |
 | interval  | 300      | Maximum time in ms between multiple taps. |
 | time      | 250      | Maximum press time in ms. |
-| threshold | 2        | While doing a tap some small movement is allowed. |
+| threshold | 9        | While doing a tap some small movement is allowed. |
 | posThreshold | 10    | The maximum position difference between multiple taps. |
 
 ## Events
