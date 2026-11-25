@@ -1,7 +1,7 @@
 {
     "name": "hammerjs.github.io",
     "version": "0.0.1",
-    "author": "J. Tangelder <j.tangelder@gmail.com>",
+    "author": "J. Tangelder",
     "scripts": {
         "start": "make release"
     },

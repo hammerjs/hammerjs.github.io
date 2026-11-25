@@ -1,6 +1,5 @@
 # Site settings
 title: Hammer.js
-email: j.tangelder@gmail.com
 description: "Add multi-touch gestures to your webpage."
 baseurl: ""
 url: ""
