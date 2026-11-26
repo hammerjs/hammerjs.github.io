@@ -1,4 +1,4 @@
-/*! Hammer.JS - v2.0.9 - 2026-11-25
+/*! Hammer.JS - v2.0.10 - 2026-11-26
  * https://hammerjs.github.io/
  *
  * Copyright (c) 2026 Hammer.js contributors;
@@ -2210,7 +2210,7 @@ function Hammer(element, options) {
 /**
  * @const {string}
  */
-Hammer.VERSION = '2.0.9';
+Hammer.VERSION = '2.0.10';
 
 /**
  * default settings
